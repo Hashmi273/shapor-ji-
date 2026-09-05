@@ -1,0 +1,254 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FFFFFF;
+    color: #071B3A;
+    font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: rgba(255, 107, 0, 0.2);
+    color: #071B3A;
+  }
+}
+
+/* ── Clean Card & Container Utilities ────────────── */
+.bg-subtle-pattern {
+  background-color: #FFFFFF;
+  background-image: radial-gradient(rgba(16, 47, 104, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.card-white {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px -2px rgba(16, 47, 104, 0.06), 0 2px 6px -1px rgba(16, 47, 104, 0.03);
+}
+
+.card-white-blue {
+  background: #FFFFFF;
+  border: 1px solid #D6E4FF;
+  box-shadow: 0 4px 20px -2px rgba(16, 47, 104, 0.08);
+}
+
+.card-light-blue {
+  background: #EEF4FF;
+  border: 1px solid #D6E4FF;
+}
+
+/* ── Typography & Gradients ──────────────────────── */
+.text-gradient-orange {
+  background: linear-gradient(135deg, #FF6B00 0%, #FF8A24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #102F68 0%, #1D4F91 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Button Styles ───────────────────────────────── */
+.btn-orange-primary {
+  background: #FF6B00;
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 4px 18px rgba(255, 107, 0, 0.32);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-orange-primary:hover {
+  background: #FF7D1A;
+  box-shadow: 0 6px 25px rgba(255, 107, 0, 0.45);
+  transform: translateY(-2px);
+}
+
+.btn-secondary-white {
+  background: #FFFFFF;
+  border: 1.5px solid #102F68;
+  color: #102F68;
+  font-weight: 600;
+  box-shadow: 0 2px 10px rgba(16, 47, 104, 0.06);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-secondary-white:hover {
+  background: #EEF4FF;
+  border-color: #1D4F91;
+  color: #1D4F91;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(16, 47, 104, 0.12);
+}
+
+.btn-blue-solid {
+  background: #102F68;
+  color: #FFFFFF;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(16, 47, 104, 0.2);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-blue-solid:hover {
+  background: #1D4F91;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(16, 47, 104, 0.3);
+}
+
+/* ── Scroll Reveal ──────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-scale.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Card Hover Lift ─────────────────────────────── */
+.card-lift {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px -4px rgba(16, 47, 104, 0.12), 0 6px 14px -2px rgba(255, 107, 0, 0.06);
+  border-color: #102F68;
+}
+
+/* ── Cursor Glow (Subtle Light Mode) ─────────────── */
+.cursor-glow {
+  position: fixed;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 107, 0, 0.04) 0%, rgba(16, 47, 104, 0.03) 50%, transparent 70%);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s;
+}
+
+/* ── Smooth Scrolling ────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Mouse Scroll Wheel Animation ────────────────── */
+@keyframes mouseScrollWheel {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(7px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+.animate-mouse-scroll {
+  animation: mouseScrollWheel 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes mouseFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+.animate-mouse-float {
+  animation: mouseFloat 2.5s ease-in-out infinite;
+}
+
+/* ── Top Scroll Progress Bar ─────────────────────── */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  background: linear-gradient(90deg, #102F68 0%, #FF6B00 60%, #FF8A24 100%);
+  z-index: 100;
+  transition: width 0.1s cubic-bezier(0.1, 0.9, 0.2, 1);
+  box-shadow: 0 0 10px rgba(255, 107, 0, 0.5);
+}
+
+/* ── Interactive Custom Cursor Pointer Ring ──────── */
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: #FF6B00;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease-out;
+}
+
+.cursor-follower {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid rgba(255, 107, 0, 0.45);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.16s cubic-bezier(0.2, 0.8, 0.2, 1), width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+}
+
+/* ── Hide Scrollbar ──────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
