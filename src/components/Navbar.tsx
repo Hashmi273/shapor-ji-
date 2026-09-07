@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   Menu, 
@@ -99,21 +99,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiryModal }) => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           
-          {/* Brand Logo & Lotus/Flame Monogram */}
-          <Link to="/" className="flex items-center space-x-3 group" aria-label="SHAPOORJI PALLONJ Homepage">
-            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-agarbatti-900 to-agarbatti-950 flex items-center justify-center border-1.5 border-agarbatti-gold/70 shadow-sm group-hover:border-agarbatti-gold transition-colors flex-shrink-0">
-              <span className="font-serif font-extrabold text-base sm:text-lg text-agarbatti-gold tracking-wider">
-                SP
-              </span>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-serif font-bold text-lg sm:text-xl text-agarbatti-900 tracking-tight group-hover:text-agarbatti-700 transition-colors leading-tight">
-                SHAPOORJI PALLONJ
-              </span>
-              <span className="text-[10px] sm:text-[11px] font-medium tracking-wide text-agarbatti-earth-muted uppercase">
-                Premium Agarbatti &amp; Incense
-              </span>
-            </div>
+          {/* Brand Logo & Incense Emblem */}
+          <Link to="/" className="flex items-center space-x-3 group py-1" aria-label="SHAPOORJI PALLONJ Homepage">
+            <img 
+              src="./images/logo.png" 
+              alt="SHAPOORJI PALLONJ - Premium Agarbatti & Incense" 
+              className="h-11 sm:h-13 md:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
           </Link>
 
           {/* Desktop Navigation Links */}

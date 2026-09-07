@@ -19,19 +19,13 @@ export const Footer: React.FC = () => {
           
           {/* Column 1: Brand & Profile */}
           <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center space-x-3">
-              <div className="w-11 h-11 rounded-xl bg-[#35080E] flex items-center justify-center border-2 border-agarbatti-gold shadow-md">
-                <span className="font-serif font-extrabold text-xl text-agarbatti-gold">SP</span>
-              </div>
-              <div>
-                <span className="font-serif font-bold text-2xl text-white tracking-tight block">
-                  SHAPOORJI PALLONJ
-                </span>
-                <span className="text-xs uppercase tracking-wider text-[#F3D27E] font-bold">
-                  Premium Agarbatti &amp; Incense
-                </span>
-              </div>
-            </div>
+            <Link to="/" className="inline-block p-2 rounded-xl bg-[#FCF9F2] border border-agarbatti-gold/30 shadow-md">
+              <img 
+                src="./images/logo.png" 
+                alt="SHAPOORJI PALLONJ - Premium Agarbatti & Incense" 
+                className="h-14 sm:h-16 w-auto object-contain"
+              />
+            </Link>
 
             <p className="text-sm text-[#FDF8EE] leading-relaxed font-normal">
               Premium agarbatti and incense fragrances created to add warmth, positivity and beautiful aroma to everyday moments.
