@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCF9F2"/>
+      <stop offset="100%" stop-color="#F3E9D7"/>
+    </linearGradient>
+    <linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2E170F"/>
+      <stop offset="100%" stop-color="#180B07"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCEAB3"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#9E7A1C"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="10" flood-color="rgba(42, 6, 11, 0.25)"/>
+    </filter>
+  </defs>
+
+  <!-- Background Surface -->
+  <rect width="600" height="450" fill="url(#bgGrad)"/>
+  <ellipse cx="300" cy="380" rx="260" ry="40" fill="#E6D7C0" opacity="0.6"/>
+
+  <!-- Luxury Agarbatti Box Presentation (Center) -->
+  <g transform="translate(130, 80)" filter="url(#shadow)">
+    <!-- Box Body -->
+    <rect width="340" height="180" rx="12" fill="url(#boxGrad)" stroke="url(#goldGrad)" stroke-width="2.5"/>
+    
+    <!-- Golden Ornamental Border -->
+    <rect x="12" y="12" width="316" height="156" rx="8" fill="none" stroke="url(#goldGrad)" stroke-width="1.2" stroke-dasharray="6 3"/>
+    
+    <!-- Brand Crest -->
+    <circle cx="60" cy="55" r="26" fill="#1F0508" stroke="url(#goldGrad)" stroke-width="1.8"/>
+    <text x="60" y="62" font-family="serif" font-size="18" font-weight="bold" fill="url(#goldGrad)" text-anchor="middle">SP</text>
+    
+    <!-- Text Labels -->
+    <text x="100" y="48" font-family="serif" font-size="16" font-weight="bold" fill="#FFFFFF" letter-spacing="1">SHAPOORJI PALLONJ</text>
+    <text x="100" y="66" font-family="sans-serif" font-size="9" font-weight="bold" fill="url(#goldGrad)" letter-spacing="2">PREMIUM INCENSE COLLECTION</text>
+    
+    <!-- Product Name Plate -->
+    <rect x="25" y="95" width="290" height="48" rx="6" fill="#150406" stroke="#E5C158" stroke-width="1.5"/>
+    <text x="170" y="118" font-family="serif" font-size="16" font-weight="bold" fill="url(#goldGrad)" text-anchor="middle">SAMBRANI & LOBAN CONES</text>
+    <text x="170" y="134" font-family="sans-serif" font-size="9.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">ENERGY CLEANSING DHOOP CONES</text>
+    
+    <!-- Quality Seal -->
+    <circle cx="295" cy="55" r="15" fill="#E5C158" opacity="0.9"/>
+    <text x="295" y="58" font-family="sans-serif" font-size="7.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">PURE</text>
+  </g>
+
+  <!-- Burning Incense Sticks & Stand in Foreground -->
+  <g transform="translate(160, 360)">
+    <!-- Wooden Incense Boat Holder -->
+    <path d="M -80 0 L 260 0 C 270 0, 275 -10, 260 -12 L -60 -12 C -75 -12, -85 0, -80 0 Z" fill="#5D3A29" stroke="#3E2317" stroke-width="1.5" filter="drop-shadow(0 6px 10px rgba(0,0,0,0.3))"/>
+    <circle cx="-65" cy="-6" r="3" fill="#2E1A11"/>
+
+    <!-- Incense Stick Resting in Holder -->
+    <line x1="-65" y1="-6" x2="230" y2="-45" stroke="#7C4A2D" stroke-width="3.5" stroke-linecap="round"/>
+    
+    <!-- Burning Ember Tip -->
+    <circle cx="230" cy="-45" r="3" fill="#FF5722" filter="drop-shadow(0 0 6px #FF3D00)"/>
+    <circle cx="230" cy="-45" r="1.5" fill="#FFE082"/>
+
+    <!-- Rising Smoke Curl -->
+    <path d="M 230 -45 Q 260 -100, 220 -160 T 250 -240 T 210 -320" fill="none" stroke="rgba(100, 70, 50, 0.4)" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Aromatic Ingredients Accents -->
+  <g transform="translate(480, 350)">
+    <circle cx="0" cy="0" r="20" fill="#FFE082" filter="drop-shadow(0 6px 10px rgba(0,0,0,0.2))"/>
+    <circle cx="0" cy="0" r="12" fill="#FFFFFF" opacity="0.6"/>
+    <circle cx="0" cy="0" r="6" fill="#FFC107"/>
+    
+    <circle cx="-25" cy="15" r="15" fill="#FFE082" opacity="0.9"/>
+    <circle cx="-25" cy="15" r="8" fill="#FFF59D"/>
+  </g>
+</svg>
