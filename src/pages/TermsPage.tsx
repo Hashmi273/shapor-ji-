@@ -1,101 +1,137 @@
-import React, { useEffect } from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, FileText } from 'lucide-react';
+import { Scale, ShieldCheck, Building2, Flower2 } from 'lucide-react';
 
-const TermsPage: React.FC = () => {
-  useEffect(() => {
-    document.title = 'Terms & Conditions | Zion Marketing — Enterprise Communication';
-  }, []);
-
+export const TermsPage: React.FC = () => {
   return (
-    <div className="bg-white min-h-screen text-zion-dark font-sans pt-28 pb-20">
-      <div className="bg-[#EEF4FF] border-b border-[#D6E4FF] py-14 text-center reveal">
-        <div className="container mx-auto px-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#D6E4FF] bg-white mb-4 shadow-sm">
-            <FileText className="w-3.5 h-3.5 text-zion-orange" />
-            <span className="text-xs font-bold text-zion-blue uppercase tracking-wider">Service Agreement</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-zion-deep-blue mb-3">Terms & Conditions</h1>
-          <p className="text-zion-slate text-sm font-medium">Effective Date: September 2026</p>
-        </div>
-      </div>
+    <main className="pt-28 sm:pt-32 pb-24 bg-white text-agarbatti-earth min-h-screen">
       
-      <div className="max-w-4xl mx-auto px-6 py-16 reveal">
-        <div className="space-y-8 bg-white p-8 md:p-12 rounded-3xl border border-[#E2E8F0] shadow-card">
-          <section>
-            <h2 className="text-xl font-bold mb-3 text-zion-blue">1. Agreement to Terms</h2>
-            <p className="text-zion-dark-gray leading-relaxed text-sm">
-              These Terms and Conditions constitute a legally binding agreement between you and Zion Marketing regarding your access to and use of our communication gateway, APIs, web dashboards, SMPP binds and associated enterprise services.
-            </p>
-          </section>
+      {/* Header */}
+      <section className="bg-incense-hero text-white py-14 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-agarbatti-900 border border-agarbatti-gold/40 text-agarbatti-gold text-xs font-semibold uppercase tracking-wider">
+            <Scale className="w-4 h-4 text-agarbatti-gold" />
+            <span>Website &amp; Product Terms</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-serif font-bold text-white">
+            Terms &amp; Conditions
+          </h1>
+          <p className="text-xs sm:text-sm text-agarbatti-gold-100/90">
+            Brand: <strong className="text-white">SHAPOORJI PALLONJ</strong> • Operating Entity: <strong className="text-white">LUKAR ENTERPRISES</strong>
+          </p>
+          <p className="text-[11px] text-agarbatti-gold-200/70">
+            Effective Date: September 2026
+          </p>
+        </div>
+      </section>
 
-          <section>
-            <h2 className="text-xl font-bold mb-3 text-zion-blue">2. Description of Services</h2>
-            <p className="text-zion-dark-gray leading-relaxed text-sm">
-              Zion Marketing provides enterprise cloud communication infrastructure, including Bulk SMS (Promotional, Transactional, OTP), RCS Business Messaging, WhatsApp Business API, Cloud IVR systems, Outbound Dialing (OBD) voice broadcasts, SMPP connectivity, and Site Branding digital design services.
-            </p>
-          </section>
+      {/* Main Content */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10 text-slate-700 leading-relaxed text-sm">
+        
+        {/* Intro */}
+        <div className="p-5 rounded-2xl bg-agarbatti-cream-card border border-agarbatti-cream-border space-y-2">
+          <h2 className="text-base font-bold text-agarbatti-900 font-serif">
+            1. Agreement to Terms
+          </h2>
+          <p className="text-xs sm:text-sm text-agarbatti-earth-muted">
+            By accessing or using the brand website of <strong className="text-agarbatti-900">SHAPOORJI PALLONJ</strong> (operated by <strong className="text-agarbatti-900">LUKAR ENTERPRISES</strong>), you acknowledge that you have read, understood, and agreed to these Terms and Conditions.
+          </p>
+        </div>
 
-          <section>
-            <h2 className="text-xl font-bold mb-3 text-zion-blue">3. Acceptable Use Policy & Messaging Compliance</h2>
-            <p className="text-zion-dark-gray leading-relaxed text-sm mb-3">
-              Users must strictly adhere to Indian telecommunications regulations, TRAI DLT guidelines, and carrier acceptable use policies. Specifically:
-            </p>
-            <ul className="list-disc list-inside space-y-1.5 text-zion-dark-gray text-sm pl-2">
-              <li>Messages must only be dispatched to recipients who have provided explicit affirmative consent or ongoing transaction relationship.</li>
-              <li>Promotional traffic must strictly adhere to permissible time windows specified by telecom regulations.</li>
-              <li>Unsolicited spam, fraudulent phishing, deceptive content, harassment, or illegal material is strictly prohibited and results in immediate account termination.</li>
-              <li>All SMS headers and content templates must be registered and approved on regulatory DLT portals.</li>
-            </ul>
-          </section>
+        {/* Section 2: Website Usage */}
+        <div className="space-y-3">
+          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
+            2. Website Usage
+          </h2>
+          <p>
+            You agree to use this website in a lawful and responsible manner. You must not attempt to disrupt the website, introduce malicious software, or submit fake/spam inquiries through the contact forms.
+          </p>
+        </div>
 
-          <section>
-            <h2 className="text-xl font-bold mb-3 text-zion-blue">4. Platform Availability & SLA</h2>
-            <p className="text-zion-dark-gray leading-relaxed text-sm">
-              Zion Marketing endeavors to maintain a 99.9% platform availability SLA. Scheduled maintenance windows will be communicated in advance. We are not liable for upstream carrier-level downtime, mobile handset disconnects, or disruptions beyond our direct infrastructure.
-            </p>
-          </section>
+        {/* Section 3: Product Information & Images */}
+        <div className="space-y-3">
+          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
+            3. Product Information, Fragrance Notes &amp; Images
+          </h2>
+          <p>
+            All product images, packaging photos, fragrance descriptions, and pack sizes displayed on this website are provided for illustrative and informational purposes. Actual box artwork, stick thickness, burn durations, and fragrance intensity may slightly vary across manufacturing batches.
+          </p>
+        </div>
 
-          <section>
-            <h2 className="text-xl font-bold mb-3 text-zion-blue">5. Billing, Credits & Payment Terms</h2>
-            <p className="text-zion-dark-gray leading-relaxed text-sm">
-              Services are billed according to agreed volume tiers, prepaid message credit balances, or enterprise monthly postpaid billing schedules as stipulated in your specific service agreement. Unused promotional credits are subject to standard expiration terms.
-            </p>
-          </section>
+        {/* Section 4: Enquiries & Availability */}
+        <div className="space-y-3">
+          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
+            4. Inquiries, Product Availability &amp; Pricing
+          </h2>
+          <p>
+            Submitting an enquiry does not constitute a confirmed financial transaction or price reservation. Commercial supply, wholesale volume pricing, and shipping schedules are confirmed directly by our sales desk at <strong className="text-agarbatti-900">LUKAR ENTERPRISES</strong>.
+          </p>
+        </div>
 
-          <section>
-            <h2 className="text-xl font-bold mb-3 text-zion-blue">6. Intellectual Property & Brand Rights</h2>
-            <p className="text-zion-dark-gray leading-relaxed text-sm">
-              All proprietary software, APIs, routing algorithms, documentation, and the Zion Marketing brand identity remain the exclusive property of Zion Marketing. You retain full ownership of the campaign content and assets you upload to our platform.
+        {/* Section 5: Intellectual Property */}
+        <div className="space-y-3">
+          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
+            5. Intellectual Property &amp; Non-Affiliation
+          </h2>
+          <p>
+            The original graphic designs, text copy, and website arrangement are the intellectual property of <strong className="text-agarbatti-900">LUKAR ENTERPRISES</strong> or licensed for use.
+          </p>
+          <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-1">
+            <strong>Important Brand Notice:</strong>
+            <p>
+              This website is an independent consumer brand showcase for incense and agarbatti products operated by Lukar Enterprises. It makes no claim of ownership or affiliation with any third-party real-estate or corporate conglomerates unless authorized under written agreement.
             </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold mb-3 text-zion-blue">7. Governing Law & Jurisdiction</h2>
-            <p className="text-zion-dark-gray leading-relaxed text-sm">
-              These terms are governed by and construed in accordance with the laws of India. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the courts of India.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-bold mb-3 text-zion-blue">8. Contact Us</h2>
-            <p className="text-zion-dark-gray leading-relaxed text-sm">
-              For questions regarding these Terms & Conditions, please contact us at <a href="mailto:hello@zionmarketing.in" className="text-zion-orange font-bold hover:underline">hello@zionmarketing.in</a>.
-            </p>
-          </section>
-
-          <div className="pt-6 border-t border-[#E2E8F0] flex items-center justify-between">
-            <Link to="/" className="btn-secondary-white inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold">
-              <ArrowLeft className="w-4 h-4 text-zion-blue" />
-              <span>Back to Home</span>
-            </Link>
-            <Link to="/privacy-policy" className="text-xs font-bold text-zion-orange hover:underline">
-              View Privacy Policy &rarr;
-            </Link>
           </div>
         </div>
+
+        {/* Section 6: Limitation of Liability */}
+        <div className="space-y-3">
+          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
+            6. Limitation of Liability
+          </h2>
+          <p>
+            LUKAR ENTERPRISES shall not be liable for any indirect, incidental, or consequential damages resulting from the use of this website or reliance on general website descriptions prior to confirmed order documentation.
+          </p>
+        </div>
+
+        {/* Section 7: Changes to Website */}
+        <div className="space-y-3">
+          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
+            7. Website Modifications
+          </h2>
+          <p>
+            We reserve the right to update product offerings, fragrance descriptions, and website terms at any time without prior notice.
+          </p>
+        </div>
+
+        {/* Section 8: Governing Law */}
+        <div className="space-y-3">
+          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
+            8. Governing Law &amp; Jurisdiction
+          </h2>
+          <p>
+            These terms shall be governed by the laws of India, and any disputes shall be subject to the exclusive jurisdiction of the competent courts in <strong className="text-agarbatti-900">New Delhi, India</strong>.
+          </p>
+        </div>
+
+        {/* Section 9: Contact */}
+        <div className="p-6 rounded-2xl bg-agarbatti-950 text-agarbatti-gold-100 border border-agarbatti-800 space-y-3">
+          <div className="flex items-center gap-2 text-agarbatti-gold text-xs font-bold uppercase tracking-wider">
+            <Building2 className="w-4 h-4" />
+            <span>Commercial &amp; Legal Desk</span>
+          </div>
+          <h3 className="text-base font-serif font-bold text-white">
+            LUKAR ENTERPRISES
+          </h3>
+          <div className="text-xs space-y-1 text-agarbatti-gold-100/90">
+            <p><strong>Address:</strong> H NO 120, SECOND FLOOR, MADANGIR VILLAGE, DR. AMBEDKAR NAGAR, NEW DELHI, SOUTH DELHI, DELHI - 110062</p>
+            <p><strong>Mobile:</strong> +91 8700983465</p>
+            <p><strong>Email:</strong> viveklukar1999@gmail.com</p>
+          </div>
+        </div>
+
       </div>
-    </div>
+    </main>
   );
 };
 

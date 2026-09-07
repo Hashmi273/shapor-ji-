@@ -1,100 +1,133 @@
-import React, { useEffect } from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Shield } from 'lucide-react';
+import { ShieldCheck, Lock, FileText, Flower2, Building2, Mail, Phone, MapPin } from 'lucide-react';
 
-const PrivacyPolicyPage: React.FC = () => {
-  useEffect(() => {
-    document.title = 'Privacy Policy | Zion Marketing — Enterprise Communication';
-  }, []);
-
+export const PrivacyPolicyPage: React.FC = () => {
   return (
-    <div className="bg-white min-h-screen text-zion-dark font-sans pt-28 pb-20">
-      <div className="bg-[#EEF4FF] border-b border-[#D6E4FF] py-14 text-center reveal">
-        <div className="container mx-auto px-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#D6E4FF] bg-white mb-4 shadow-sm">
-            <Shield className="w-3.5 h-3.5 text-zion-orange" />
-            <span className="text-xs font-bold text-zion-blue uppercase tracking-wider">Legal Compliance</span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-zion-deep-blue mb-3">Privacy Policy</h1>
-          <p className="text-zion-slate text-sm font-medium">Effective Date: September 2026</p>
-        </div>
-      </div>
+    <main className="pt-28 sm:pt-32 pb-24 bg-white text-agarbatti-earth min-h-screen">
       
-      <div className="max-w-4xl mx-auto px-6 py-16 reveal">
-        <div className="space-y-8 bg-white p-8 md:p-12 rounded-3xl border border-[#E2E8F0] shadow-card">
-          <section>
-            <h2 className="text-xl font-bold mb-3 text-zion-blue">1. Introduction</h2>
-            <p className="text-zion-dark-gray leading-relaxed text-sm">
-              Zion Marketing ("we", "us", "our") operates enterprise communication solutions including Bulk SMS, RCS Business Messaging, WhatsApp Business API, Cloud IVR, OBD Voice Calls, SMPP Connectivity and Site Branding services. This Privacy Policy describes how we collect, process, store and protect your business and personal information.
-            </p>
-          </section>
+      {/* Header */}
+      <section className="bg-incense-hero text-white py-14 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-agarbatti-900 border border-agarbatti-gold/40 text-agarbatti-gold text-xs font-semibold uppercase tracking-wider">
+            <ShieldCheck className="w-4 h-4 text-agarbatti-gold" />
+            <span>Privacy &amp; Data Protection</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-serif font-bold text-white">
+            Privacy Policy
+          </h1>
+          <p className="text-xs sm:text-sm text-agarbatti-gold-100/90">
+            Brand: <strong className="text-white">SHAPOORJI PALLONJ</strong> • Legal Entity: <strong className="text-white">LUKAR ENTERPRISES</strong>
+          </p>
+          <p className="text-[11px] text-agarbatti-gold-200/70">
+            Last Updated: September 2026
+          </p>
+        </div>
+      </section>
 
-          <section>
-            <h2 className="text-xl font-bold mb-3 text-zion-blue">2. Information We Collect</h2>
-            <p className="text-zion-dark-gray leading-relaxed text-sm mb-3">
-              We collect information necessary to provide reliable communication services, including:
-            </p>
-            <ul className="list-disc list-inside space-y-1.5 text-zion-dark-gray text-sm pl-2">
-              <li><strong className="text-zion-deep-blue">Account & Contact Data:</strong> Name, business email, contact phone number, company name, and billing details.</li>
-              <li><strong className="text-zion-deep-blue">Technical & Telemetry Data:</strong> IP addresses, browser types, API access logs, timestamped delivery receipts (DLR), and routing diagnostics.</li>
-              <li><strong className="text-zion-deep-blue">Messaging Metadata:</strong> Sender IDs, recipient MSISDNs, message length, throughput metrics (we do not inspect or store payload content beyond necessary delivery routing).</li>
-            </ul>
-          </section>
+      {/* Main Policy Content */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10 text-slate-700 leading-relaxed text-sm">
+        
+        {/* Intro */}
+        <div className="p-5 rounded-2xl bg-agarbatti-cream-card border border-agarbatti-cream-border space-y-2">
+          <h2 className="text-base font-bold text-agarbatti-900 font-serif">
+            1. Scope &amp; Operating Entity
+          </h2>
+          <p className="text-xs sm:text-sm text-agarbatti-earth-muted">
+            This Privacy Policy explains how <strong className="text-agarbatti-900">LUKAR ENTERPRISES</strong> (the legal commercial entity operating the consumer fragrance brand <strong className="text-agarbatti-900">SHAPOORJI PALLONJ</strong>) collects, handles, stores, and protects personal and commercial data provided by users through our website forms and communication channels.
+          </p>
+        </div>
 
-          <section>
-            <h2 className="text-xl font-bold mb-3 text-zion-blue">3. How We Use Information</h2>
-            <p className="text-zion-dark-gray leading-relaxed text-sm">
-              Your information is utilized solely to provision messaging sockets, execute routing through telecommunications carriers, generate billing invoices, deliver technical SLA support, and ensure compliance with TRAI and DLT telecommunications mandates.
-            </p>
-          </section>
+        {/* Section 2: Info Collected */}
+        <div className="space-y-3">
+          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
+            2. Information Collected Through Enquiry Forms
+          </h2>
+          <p>
+            When you visit our website, request agarbatti samples, or submit product enquiries, we collect information needed to communicate with you:
+          </p>
+          <ul className="list-disc pl-5 space-y-1.5 text-slate-600 text-xs sm:text-sm">
+            <li><strong>Personal Contact Information:</strong> Full Name, Email Address, Mobile / WhatsApp Number.</li>
+            <li><strong>Business &amp; Retail Details:</strong> Company/Shop Name, delivery address, city, state.</li>
+            <li><strong>Enquiry &amp; Requirement Details:</strong> Selected agarbatti fragrance, quantity requirement, festive gift inquiries, and message details.</li>
+            <li><strong>Consent Records:</strong> Your explicit consent for mandatory enquiry follow-ups and optional marketing updates.</li>
+          </ul>
+        </div>
 
-          <section>
-            <h2 className="text-xl font-bold mb-3 text-zion-blue">4. Communication & Consent</h2>
-            <p className="text-zion-dark-gray leading-relaxed text-sm">
-              We uphold strict opt-in compliance. We only send marketing updates with your explicit affirmative consent. Service-related alerts, OTPs, and technical notices are dispatched as essential parts of your active service agreement.
-            </p>
-          </section>
+        {/* Section 3: How info is used */}
+        <div className="space-y-3">
+          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
+            3. How Your Information is Used
+          </h2>
+          <p>
+            The collected information is used strictly for legitimate customer service and commercial purposes:
+          </p>
+          <ul className="list-disc pl-5 space-y-1.5 text-slate-600 text-xs sm:text-sm">
+            <li>Responding to product enquiries, sample requests, and providing fragrance recommendations.</li>
+            <li>Contacting you via Phone Call, SMS, WhatsApp, or Email regarding your specific inquiry.</li>
+            <li>Sending promotional offers, new fragrance launches, and festival updates ONLY if you selected the optional marketing opt-in.</li>
+            <li>Processing orders, invoicing (Lukar Enterprises GST billing), and coordinating logistics.</li>
+          </ul>
+        </div>
 
-          <section>
-            <h2 className="text-xl font-bold mb-3 text-zion-blue">5. Data Security & Encryption</h2>
-            <p className="text-zion-dark-gray leading-relaxed text-sm">
-              We apply industry-standard security protocols, including TLS 1.3 encryption in transit, AES-256 encryption for stored metadata, restricted role-based access control (RBAC), and continuous network vulnerability monitoring.
-            </p>
-          </section>
+        {/* Section 4: Data Protection */}
+        <div className="space-y-3">
+          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
+            4. Data Protection &amp; Security
+          </h2>
+          <p>
+            We take reasonable administrative, technical, and physical precautions to safeguard your personal details against unauthorized access, loss, or misuse. We do not sell, rent, or lease your contact information to third-party telemarketers.
+          </p>
+        </div>
 
-          <section>
-            <h2 className="text-xl font-bold mb-3 text-zion-blue">6. Data Sharing & Third Parties</h2>
-            <p className="text-zion-dark-gray leading-relaxed text-sm">
-              We do not sell, rent, or trade your data. Telemetry and routing data are transmitted only to licensed telecommunication carriers (SMSCs, telco operators) necessary for message termination, or as required by regulatory authorities.
-            </p>
-          </section>
+        {/* Section 5: Cookies */}
+        <div className="space-y-3">
+          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
+            5. Cookies &amp; Website Analytics
+          </h2>
+          <p>
+            Our website uses standard essential cookies and lightweight analytics to monitor page performance, remember user preferences, and provide smooth navigation. You can adjust your browser settings to decline cookies at any time.
+          </p>
+        </div>
 
-          <section>
-            <h2 className="text-xl font-bold mb-3 text-zion-blue">7. Your Rights & Data Retention</h2>
-            <p className="text-zion-dark-gray leading-relaxed text-sm">
-              You retain the right to review, update, or request the deletion of your account information. Message logs and delivery records are retained for the statutory period required by telecom regulations before automated purging.
-            </p>
-          </section>
+        {/* Section 6: Third-party services */}
+        <div className="space-y-3">
+          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
+            6. Third-Party Services
+          </h2>
+          <p>
+            We may use trusted service providers for website hosting (such as GitHub Pages), maps embedding (Google Maps), and email/form delivery. These third parties process data solely as necessary to perform their respective technical services.
+          </p>
+        </div>
 
-          <section>
-            <h2 className="text-xl font-bold mb-3 text-zion-blue">8. Contact Information</h2>
-            <p className="text-zion-dark-gray leading-relaxed text-sm">
-              For any privacy inquiries or compliance questions, please contact our Data Protection Officer at <a href="mailto:hello@zionmarketing.in" className="text-zion-orange font-bold hover:underline">hello@zionmarketing.in</a>.
-            </p>
-          </section>
+        {/* Section 7: User Rights */}
+        <div className="space-y-3">
+          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
+            7. User Rights &amp; Opt-Out
+          </h2>
+          <p>
+            You have the right to request access to your submitted details, update incorrect information, or opt-out of marketing communications at any time by contacting our grievance desk.
+          </p>
+        </div>
 
-          <div className="pt-6 border-t border-[#E2E8F0] flex items-center justify-between">
-            <Link to="/" className="btn-secondary-white inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold">
-              <ArrowLeft className="w-4 h-4 text-zion-blue" />
-              <span>Back to Home</span>
-            </Link>
-            <Link to="/terms-and-conditions" className="text-xs font-bold text-zion-orange hover:underline">
-              View Terms & Conditions &rarr;
-            </Link>
+        {/* Section 8: Contact Information */}
+        <div className="p-6 rounded-2xl bg-agarbatti-950 text-agarbatti-gold-100 border border-agarbatti-800 space-y-3">
+          <div className="flex items-center gap-2 text-agarbatti-gold text-xs font-bold uppercase tracking-wider">
+            <Building2 className="w-4 h-4" />
+            <span>Contact &amp; Grievance Desk</span>
+          </div>
+          <h3 className="text-base font-serif font-bold text-white">
+            LUKAR ENTERPRISES
+          </h3>
+          <div className="text-xs space-y-1 text-agarbatti-gold-100/90">
+            <p><strong>Address:</strong> H NO 120, SECOND FLOOR, MADANGIR VILLAGE, DR. AMBEDKAR NAGAR, NEW DELHI, SOUTH DELHI, DELHI - 110062</p>
+            <p><strong>Mobile:</strong> +91 8700983465</p>
+            <p><strong>Email:</strong> viveklukar1999@gmail.com</p>
           </div>
         </div>
+
       </div>
-    </div>
+    </main>
   );
 };
 

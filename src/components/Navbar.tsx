@@ -1,240 +1,239 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, MessageSquare, Smartphone, MessageCircle, Phone, PhoneOutgoing, Server, Building2, ChevronDown, ArrowRight } from 'lucide-react';
-import zionLogo from '/zion-logo.jpg';
+import { 
+  Menu, 
+  X, 
+  Phone, 
+  Mail, 
+  ShieldCheck, 
+  Sparkles, 
+  Flower2, 
+  Flame, 
+  Info, 
+  Send, 
+  ChevronRight, 
+  Layers 
+} from 'lucide-react';
 
-const products = [
-  { name: 'Bulk SMS', path: '/sms', icon: MessageSquare, description: 'Promotional, OTP & Transactional SMS' },
-  { name: 'RCS Messaging', path: '/rcs', icon: Smartphone, description: 'Rich interactive next-gen messaging' },
-  { name: 'WhatsApp API', path: '/whatsapp', icon: MessageCircle, description: 'Automated 2-way business chat' },
-  { name: 'Meta Messaging', path: '/meta', icon: MessageSquare, description: 'FB & Instagram customer engagement' },
-  { name: 'IVR Solutions', path: '/ivr', icon: Phone, description: 'Intelligent automated voice response' },
-  { name: 'OBD Voice Calls', path: '/obd', icon: PhoneOutgoing, description: 'High-volume outbound calling' },
-  { name: 'SMPP Connect', path: '/smpp', icon: Server, description: 'Carrier-grade protocol (5,000+ TPS)' },
-  { name: 'Enterprise APIs', path: '/api-integration', icon: Server, description: 'Direct CRM & software integration' },
-  { name: 'Real Estate Branding', path: '/site-branding', icon: Building2, description: 'Project launch & sales office design' },
-];
+interface NavbarProps {
+  onOpenEnquiryModal?: (productName?: string) => void;
+}
 
-export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [productsOpen, setProductsOpen] = useState(false);
+export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiryModal }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [location]);
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'About Us', path: '/about' },
+    { name: 'Our Products', path: '/products' },
+    { name: 'Fragrances', path: '/fragrances' },
+    { name: 'Why Choose Us', path: '/#why-choose-us' },
+    { name: 'Contact Us', path: '/contact' },
+  ];
+
+  const isActive = (path: string) => {
+    if (path === '/') return location.pathname === '/';
+    if (path.startsWith('/#')) return false;
+    return location.pathname.startsWith(path);
+  };
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'py-3.5 bg-white/95 backdrop-blur-md border-b border-[#E2E8F0] shadow-md shadow-slate-900/5' 
-          : 'py-5 bg-white/90 backdrop-blur-sm border-b border-[#EEF4FF]'
-      }`}
-    >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="relative z-50 flex items-center group" onClick={() => setMobileMenuOpen(false)}>
-            <img src={zionLogo} alt="Zion Marketing Logo" className="h-[32px] lg:h-[38px] object-contain transition-transform group-hover:scale-[1.02]" />
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
-            <Link 
-              to="/" 
-              className={`text-sm font-semibold transition-colors hover:text-zion-orange ${
-                location.pathname === '/' ? 'text-zion-orange' : 'text-zion-blue'
-              }`}
-            >
-              Home
-            </Link>
-            
-            {/* Products Dropdown */}
-            <div className="relative group">
-              <button className="flex items-center space-x-1.5 text-zion-blue hover:text-zion-orange text-sm font-semibold transition-colors py-2 outline-none group-hover:text-zion-orange">
-                <span>Products</span>
-                <ChevronDown className="w-4 h-4 text-zion-orange group-hover:rotate-180 transition-transform duration-300" />
-              </button>
-              
-              {/* Mega Menu Dropdown */}
-              <div className="absolute top-full left-1/2 -translate-x-1/2 w-[680px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-3 group-hover:translate-y-0 pt-3 z-50 pointer-events-none group-hover:pointer-events-auto">
-                <div className="bg-white border border-[#D6E4FF] rounded-2xl p-6 shadow-2xl shadow-blue-950/10 relative overflow-hidden">
-                  {/* Subtle top brand line */}
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-zion-blue via-zion-orange to-zion-blue" />
-                  
-                  <div className="grid grid-cols-2 gap-3 relative z-10 pt-2">
-                    {products.map((product) => {
-                      const Icon = product.icon;
-                      return (
-                        <Link 
-                          key={product.name} 
-                          to={product.path}
-                          className="flex items-start space-x-3.5 p-3 rounded-xl hover:bg-[#EEF4FF] border border-transparent hover:border-[#D6E4FF] transition-all duration-200 group/item"
-                        >
-                          <div className="bg-[#EEF4FF] p-2.5 rounded-lg border border-[#D6E4FF] group-hover/item:border-zion-orange group-hover/item:bg-white transition-all duration-200">
-                            <Icon className="w-5 h-5 text-zion-blue group-hover/item:text-zion-orange transition-colors" />
-                          </div>
-                          <div>
-                            <div className="text-zion-blue font-bold text-sm group-hover/item:text-zion-orange transition-colors flex items-center gap-1.5">
-                              <span>{product.name}</span>
-                              <ArrowRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all text-zion-orange" />
-                            </div>
-                            <div className="text-zion-slate text-xs mt-0.5 leading-relaxed">{product.description}</div>
-                          </div>
-                        </Link>
-                      );
-                    })}
-                  </div>
-
-                  <div className="mt-4 pt-3 border-t border-[#E2E8F0] flex items-center justify-between text-xs text-zion-slate">
-                    <span className="font-medium">Enterprise Grade Communication & Branding</span>
-                    <Link to="/contact" className="text-zion-orange font-bold hover:underline flex items-center gap-1">
-                      Schedule a Consultation &rarr;
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <a href="/#solutions" className="text-zion-blue hover:text-zion-orange text-sm font-semibold transition-colors">
-              Solutions
-            </a>
-            <a href="/#about" className="text-zion-blue hover:text-zion-orange text-sm font-semibold transition-colors">
-              About Us
-            </a>
-            <Link 
-              to="/contact" 
-              className={`text-sm font-semibold transition-colors hover:text-zion-orange ${
-                location.pathname === '/contact' ? 'text-zion-orange' : 'text-zion-blue'
-              }`}
-            >
-              Contact Us
-            </Link>
-          </nav>
-
-          {/* Right Action CTA Buttons */}
-          <div className="hidden lg:flex items-center space-x-3">
-            <a
-              href="tel:+919819291927"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold text-zion-deep-blue bg-[#EEF4FF] hover:bg-[#D6E4FF] border border-[#D6E4FF] transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5 text-zion-orange" />
-              <span>+91 98192 91927</span>
-            </a>
-            <Link 
-              to="/contact" 
-              className="btn-orange-primary inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-bold tracking-wide"
-            >
-              <span>Get Started</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      {/* Top Spiritual Announcement Bar */}
+      <div className="bg-agarbatti-950 text-agarbatti-gold-100 text-xs border-b border-agarbatti-800/80 hidden sm:block">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center">
+          <div className="flex items-center space-x-3">
+            <span className="inline-flex items-center gap-1.5 font-medium text-agarbatti-gold">
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>Legal Entity: <strong className="text-white font-semibold">LUKAR ENTERPRISES</strong></span>
+            </span>
+            <span className="text-agarbatti-800">|</span>
+            <span className="text-agarbatti-gold-200 hidden md:inline">
+              Premium Agarbatti &amp; Incense Fragrance Products
+            </span>
           </div>
-
-          {/* Mobile menu toggle */}
-          <button 
-            className="lg:hidden relative z-50 text-zion-blue hover:text-zion-orange p-2 focus:outline-none"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="flex items-center space-x-5 text-agarbatti-gold-100">
+            <a 
+              href="tel:+918700983465" 
+              className="hover:text-agarbatti-gold transition-colors flex items-center gap-1.5"
+              title="Call Helpline"
+            >
+              <Phone className="w-3.5 h-3.5 text-agarbatti-gold" />
+              <span>+91 8700983465</span>
+            </a>
+            <span className="text-agarbatti-800">|</span>
+            <a 
+              href="mailto:viveklukar1999@gmail.com" 
+              className="hover:text-agarbatti-gold transition-colors flex items-center gap-1.5"
+              title="Email Inquiries"
+            >
+              <Mail className="w-3.5 h-3.5 text-agarbatti-gold" />
+              <span className="hidden lg:inline">viveklukar1999@gmail.com</span>
+              <span className="lg:hidden">Email Us</span>
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
-      <div 
-        className={`lg:hidden fixed inset-0 bg-white/98 backdrop-blur-xl z-40 transition-all duration-300 ${
-          mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+      {/* Main Luxury Navigation Bar */}
+      <nav 
+        className={`transition-all duration-300 ${
+          scrolled 
+            ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-agarbatti-cream-border py-3' 
+            : 'bg-[#FFFDF9]/90 backdrop-blur-sm border-b border-agarbatti-cream-border/60 py-4'
         }`}
       >
-        <div className={`flex flex-col h-full pt-28 px-6 pb-8 overflow-y-auto ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-8'} transition-transform duration-300`}>
-          <nav className="flex flex-col space-y-5 flex-1">
-            <Link 
-              to="/" 
-              className="text-xl font-bold text-zion-blue hover:text-zion-orange transition-colors" 
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Home
-            </Link>
-            
-            <div className="space-y-3">
-              <button 
-                className="flex items-center justify-between w-full text-xl font-bold text-zion-blue focus:outline-none"
-                onClick={() => setProductsOpen(!productsOpen)}
-              >
-                <span>Products</span>
-                <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${productsOpen ? 'rotate-180 text-zion-orange' : 'text-zion-blue'}`} />
-              </button>
-              
-              <div className={`overflow-hidden transition-all duration-300 ${productsOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                <div className="pl-4 flex flex-col space-y-3 border-l-2 border-zion-orange ml-2 py-2">
-                  {products.map((product) => (
-                    <Link 
-                      key={product.name} 
-                      to={product.path}
-                      className="text-zion-slate hover:text-zion-orange py-1 text-base font-medium flex items-center space-x-3 transition-colors"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      <product.icon className="w-4 h-4 text-zion-orange" />
-                      <span>{product.name}</span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+          
+          {/* Brand Logo & Lotus/Flame Monogram */}
+          <Link to="/" className="flex items-center space-x-3 group" aria-label="SHAPOORJI PALLONJ Homepage">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-agarbatti-900 to-agarbatti-950 flex items-center justify-center border-1.5 border-agarbatti-gold/70 shadow-sm group-hover:border-agarbatti-gold transition-colors flex-shrink-0">
+              <span className="font-serif font-extrabold text-base sm:text-lg text-agarbatti-gold tracking-wider">
+                SP
+              </span>
             </div>
+            <div className="flex flex-col">
+              <span className="font-serif font-bold text-lg sm:text-xl text-agarbatti-900 tracking-tight group-hover:text-agarbatti-700 transition-colors leading-tight">
+                SHAPOORJI PALLONJ
+              </span>
+              <span className="text-[10px] sm:text-[11px] font-medium tracking-wide text-agarbatti-earth-muted uppercase">
+                Premium Agarbatti &amp; Incense
+              </span>
+            </div>
+          </Link>
 
-            <a 
-              href="/#solutions" 
-              className="text-xl font-bold text-zion-blue hover:text-zion-orange transition-colors" 
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Solutions
-            </a>
-            <a 
-              href="/#about" 
-              className="text-xl font-bold text-zion-blue hover:text-zion-orange transition-colors" 
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              About Us
-            </a>
-            <Link 
-              to="/contact" 
-              className="text-xl font-bold text-zion-blue hover:text-zion-orange transition-colors" 
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Contact Us
-            </Link>
-          </nav>
+          {/* Desktop Navigation Links */}
+          <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
+            {navLinks.map((link) => {
+              const active = isActive(link.path);
+              return (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 relative ${
+                    active 
+                      ? 'text-agarbatti-900 font-semibold bg-agarbatti-gold-100/50' 
+                      : 'text-agarbatti-earth hover:text-agarbatti-900 hover:bg-agarbatti-cream-card'
+                  }`}
+                >
+                  {link.name}
+                  {active && (
+                    <span className="absolute bottom-0.5 left-3 right-3 h-0.5 bg-agarbatti-gold rounded-full" />
+                  )}
+                </Link>
+              );
+            })}
+          </div>
 
-          <div className="space-y-3 mt-8">
-            <a 
-              href="tel:+919819291927" 
-              className="w-full text-center py-3.5 rounded-full font-bold text-sm text-zion-deep-blue bg-[#EEF4FF] border border-[#D6E4FF] flex items-center justify-center gap-2"
-              onClick={() => setMobileMenuOpen(false)}
+          {/* Right Side CTA Button */}
+          <div className="hidden md:flex items-center space-x-3">
+            <button
+              onClick={() => onOpenEnquiryModal ? onOpenEnquiryModal() : window.location.href = '/contact'}
+              className="btn-gold-primary px-5 py-2.5 rounded-lg text-xs sm:text-sm font-semibold tracking-wide flex items-center gap-1.5"
             >
-              <Phone className="w-4 h-4 text-zion-orange" />
-              <span>Call Us: +91 98192 91927</span>
-            </a>
-            <Link 
-              to="/contact" 
-              className="btn-orange-primary w-full text-center py-3.5 rounded-full font-bold text-sm block"
-              onClick={() => setMobileMenuOpen(false)}
+              <span>Shop / Enquire Now</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex lg:hidden items-center space-x-2">
+            <button
+              onClick={() => onOpenEnquiryModal ? onOpenEnquiryModal() : window.location.href = '/contact'}
+              className="btn-gold-primary px-3 py-1.5 rounded-md text-xs font-semibold"
             >
-              Get Started &rarr;
-            </Link>
+              Enquire
+            </button>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-md text-agarbatti-900 hover:bg-agarbatti-cream-card focus:outline-none focus:ring-2 focus:ring-agarbatti-gold"
+              aria-label="Toggle Navigation Menu"
+              aria-expanded={isOpen}
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
-      </div>
+
+        {/* Mobile Dropdown / Drawer */}
+        {isOpen && (
+          <div className="lg:hidden bg-[#FFFDF9] border-b border-agarbatti-cream-border shadow-xl px-4 pt-3 pb-6 space-y-3 animate-fadeIn">
+            <div className="bg-agarbatti-950 text-agarbatti-gold-100 p-3 rounded-lg text-xs space-y-1">
+              <div className="flex items-center gap-1.5 text-agarbatti-gold font-medium">
+                <ShieldCheck className="w-4 h-4 text-agarbatti-gold" />
+                <span>Legal Entity: <strong>LUKAR ENTERPRISES</strong></span>
+              </div>
+              <p className="text-[11px] text-agarbatti-gold-200/80">
+                Premium Indian Incense &amp; Fragrance Brand (MSME Registered)
+              </p>
+            </div>
+
+            <div className="space-y-1">
+              {navLinks.map((link) => {
+                const active = isActive(link.path);
+                return (
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                      active
+                        ? 'bg-agarbatti-900 text-white font-semibold'
+                        : 'text-agarbatti-earth hover:bg-agarbatti-cream-card hover:text-agarbatti-900'
+                    }`}
+                  >
+                    <span>{link.name}</span>
+                  </Link>
+                );
+              })}
+            </div>
+
+            <div className="pt-3 border-t border-agarbatti-cream-border space-y-2 text-xs text-agarbatti-earth-muted">
+              <a 
+                href="tel:+918700983465" 
+                className="flex items-center gap-2 text-agarbatti-earth font-medium hover:text-agarbatti-gold p-1"
+              >
+                <Phone className="w-4 h-4 text-agarbatti-gold" />
+                <span>+91 8700983465</span>
+              </a>
+              <a 
+                href="mailto:viveklukar1999@gmail.com" 
+                className="flex items-center gap-2 text-agarbatti-earth font-medium hover:text-agarbatti-gold p-1"
+              >
+                <Mail className="w-4 h-4 text-agarbatti-gold" />
+                <span className="truncate">viveklukar1999@gmail.com</span>
+              </a>
+            </div>
+
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                if (onOpenEnquiryModal) onOpenEnquiryModal();
+                else window.location.href = '/contact';
+              }}
+              className="w-full btn-gold-primary py-2.5 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 shadow-md mt-2"
+            >
+              <span>Submit Product Enquiry</span>
+              <Send className="w-4 h-4" />
+            </button>
+          </div>
+        )}
+      </nav>
     </header>
   );
-}
+};
+
+export default Navbar;

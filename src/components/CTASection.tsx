@@ -1,73 +1,71 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Mail, ShieldCheck } from 'lucide-react';
+import { Phone, Mail, ArrowRight, Flower2, ShieldCheck, Sparkles } from 'lucide-react';
 
-const CTASection = () => {
+interface CTASectionProps {
+  onOpenEnquiryModal?: () => void;
+}
+
+export const CTASection: React.FC<CTASectionProps> = ({ onOpenEnquiryModal }) => {
   return (
-    <section id="cta" className="py-24 relative overflow-hidden bg-white">
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Large Blue Gradient Section (30% Blue Block) */}
-        <div className="relative rounded-3xl p-8 md:p-16 lg:p-20 overflow-hidden bg-gradient-to-br from-[#102F68] via-[#12397B] to-[#071B3A] shadow-2xl shadow-blue-950/20 reveal-scale text-white">
+    <section className="py-20 lg:py-24 bg-incense-hero text-white relative overflow-hidden">
+      {/* Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-agarbatti-gold/15 rounded-full filter blur-3xl pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
           
-          {/* Subtle Ambient Shapes */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-[#FF6B00]/25 to-transparent rounded-full blur-[90px] pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-[#1D4F91]/50 to-transparent rounded-full blur-[100px] pointer-events-none" />
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-agarbatti-900 border border-agarbatti-gold/40 text-agarbatti-gold text-xs font-semibold uppercase tracking-wider">
+            <Flower2 className="w-4 h-4 text-agarbatti-gold" />
+            <span>Fragrance Inquiries &amp; Bulk Orders</span>
+          </div>
 
-          <div className="relative z-10 flex flex-col items-center text-center max-w-3xl mx-auto">
-            {/* Top Pill */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/20 bg-white/10 mb-8 backdrop-blur-md">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-zion-orange opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-zion-orange shadow-[0_0_8px_#FF6B00]"></span>
-              </span>
-              <span className="text-xs md:text-sm font-bold text-white uppercase tracking-wider">Start Connecting Today</span>
-            </div>
-            
-            {/* Headline: White + Orange highlight on "Customer Communication?" */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight leading-[1.15]">
-              Ready to Scale Your <br className="hidden sm:inline" />
-              <span className="text-zion-orange">Customer Communication?</span>
-            </h2>
-            
-            <p className="text-base sm:text-lg md:text-xl text-blue-100/90 mb-10 max-w-2xl font-normal leading-relaxed">
-              Connect with our enterprise team to setup high-throughput SMS, RCS, WhatsApp Business, Voice or custom SMPP routes for your business.
-            </p>
-            
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-10">
-              <Link 
-                to="/contact" 
-                className="btn-orange-primary w-full sm:w-auto px-9 py-4 rounded-full font-bold text-base flex items-center justify-center gap-2.5 shadow-xl shadow-orange-900/30"
-              >
-                <span>Get Started Now</span>
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              
-              <Link 
-                to="/contact" 
-                className="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/25 transition-all"
-              >
-                <Mail className="w-5 h-5 text-zion-orange" /> 
-                <span>Talk to Our Team</span>
-              </Link>
-            </div>
+          {/* Heading */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold tracking-tight text-white leading-tight">
+            Bring Beautiful Fragrance <span className="text-gradient-gold italic font-normal block sm:inline">Into Your Space</span>
+          </h2>
 
-            {/* Quick Trust Row */}
-            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm text-blue-100/80 font-medium">
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-zion-orange" />
-                <span>Instant Account Setup</span>
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-blue-300" />
-                <span>Custom Enterprise Pricing</span>
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-zion-orange" />
-                <span>24/7 Technical SLA</span>
-              </span>
+          {/* Subtext */}
+          <p className="text-base sm:text-lg text-agarbatti-gold-100/90 max-w-2xl mx-auto leading-relaxed">
+            Experience the soothing calmness of <strong className="text-white">SHAPOORJI PALLONJ</strong> incense products. For retail sample packs, festive gifting, or wholesale distribution, connect with our team at <strong className="text-white">LUKAR ENTERPRISES</strong>.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <button
+              onClick={onOpenEnquiryModal}
+              className="w-full sm:w-auto btn-gold-primary px-8 py-4 rounded-xl text-sm font-semibold tracking-wide flex items-center justify-center gap-2 shadow-xl group"
+            >
+              <span>Shop / Enquire Now</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </button>
+
+            <a
+              href="tel:+918700983465"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-semibold tracking-wide border-1.5 border-agarbatti-gold/40 text-agarbatti-gold hover:bg-agarbatti-gold/10 hover:border-agarbatti-gold transition-all flex items-center justify-center gap-2"
+            >
+              <Phone className="w-4 h-4 text-agarbatti-gold" />
+              <span>Call Helpline: +91 8700983465</span>
+            </a>
+          </div>
+
+          {/* Direct Line Strip */}
+          <div className="pt-8 border-t border-agarbatti-800/80 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-agarbatti-gold-100/80">
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 text-agarbatti-gold" />
+              <span>Legal Entity: <strong className="text-white font-medium">LUKAR ENTERPRISES</strong></span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Mail className="w-4 h-4 text-agarbatti-gold" />
+              <span>Email: <strong className="text-white font-medium">viveklukar1999@gmail.com</strong></span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-agarbatti-gold" />
+              <span>MSME Registered Enterprise</span>
             </div>
           </div>
+
         </div>
       </div>
     </section>
