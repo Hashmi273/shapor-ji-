@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Phone, 
@@ -161,11 +161,11 @@ export const Footer: React.FC = () => {
         {/* Bottom Copyright Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-[#FDF8EE] font-medium">
           <div>
-            &copy; 2026 <strong className="text-white font-bold">SHAPOORJI PALLONJ</strong>. All Rights Reserved.
+            &copy; 2026 <strong className="text-white font-bold">LUKAR ENTERPRISES</strong>. All Rights Reserved.
           </div>
           <div className="flex items-center gap-2">
-            <span>Legal Entity:</span>
-            <span className="text-agarbatti-gold font-bold">LUKAR ENTERPRISES</span>
+            <span>Brand:</span>
+            <span className="text-agarbatti-gold font-bold">SHAPOORJI PALLONJ</span>
             <span className="text-agarbatti-800">|</span>
             <span>New Delhi, India</span>
           </div>
