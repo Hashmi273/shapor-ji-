@@ -1,4 +1,4 @@
-﻿import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { 
   Flower2, 
@@ -61,7 +61,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ onOpenEnquiryModal }
             Our Fragrance <span className="text-gradient-gold italic font-normal">Collection</span>
           </h1>
           <p className="text-sm sm:text-base text-agarbatti-gold-100/90 max-w-2xl mx-auto leading-relaxed">
-            Discover our curated collection of traditional sandalwood, blooming florals, sacred temple chandan, and artisanal masala incense sticks. Operated by <strong className="text-white">LUKAR ENTERPRISES</strong>.
+            Discover our curated collection of traditional sandalwood, blooming florals, sacred temple chandan, and artisanal masala incense sticks. Operated by <strong className="text-white">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong>.
           </p>
         </div>
       </section>
@@ -323,7 +323,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ onOpenEnquiryModal }
 
               {/* Legal Notice */}
               <div className="p-3.5 rounded-lg bg-agarbatti-cream-card border border-agarbatti-cream-border text-[11px] text-agarbatti-earth-muted">
-                <strong className="text-agarbatti-900">Note:</strong> Actual packaging design, stick counts, and fragrance intensity may be customized for specific retail batches or bulk supply by <strong className="text-agarbatti-900">LUKAR ENTERPRISES</strong>.
+                <strong className="text-agarbatti-900">Note:</strong> Actual packaging design, stick counts, and fragrance intensity may be customized for specific retail batches or bulk supply by <strong className="text-agarbatti-900">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong>.
               </div>
             </div>
 

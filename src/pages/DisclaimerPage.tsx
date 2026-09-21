@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { AlertCircle, ShieldCheck, Building2, Flower2, ArrowRight } from 'lucide-react';
 
@@ -17,7 +17,7 @@ export const DisclaimerPage: React.FC = () => {
             General &amp; Product Disclaimer
           </h1>
           <p className="text-xs sm:text-sm text-agarbatti-gold-100/90">
-            Brand: <strong className="text-white">SHAPOORJI PALLONJ</strong> • Operating Entity: <strong className="text-white">LUKAR ENTERPRISES</strong>
+            Brand: <strong className="text-white">SHAPOORJI PALLONJ</strong> • Operating Entity: <strong className="text-white">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong>
           </p>
         </div>
       </section>
@@ -32,7 +32,7 @@ export const DisclaimerPage: React.FC = () => {
             <span>Independent Brand Notice</span>
           </div>
           <p className="text-xs sm:text-sm text-amber-950 leading-relaxed">
-            This website is an independent consumer brand and product showcase for incense and agarbatti products operated exclusively by <strong className="text-amber-950 font-semibold">LUKAR ENTERPRISES</strong> (a registered MSME enterprise based in New Delhi, India). This website is not the official website of, nor does it claim ownership or operation of, any third-party real-estate or corporate conglomerate unless authorized under written bilateral agreement.
+            This website is an independent consumer brand and product showcase for incense and agarbatti products operated exclusively by <strong className="text-amber-950 font-semibold">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong> (GSTIN: 27AAYCS4968E1ZJ, Mumbai, India).
           </p>
         </div>
 
@@ -55,7 +55,7 @@ export const DisclaimerPage: React.FC = () => {
             2. Commercial Inquiries &amp; Orders
           </h2>
           <p>
-            Submitting a contact form or requesting fragrance samples through this website does not represent a confirmed sales order. Final pricing, GST invoicing, and dispatch schedules are formally established through official proforma invoices or communications from <strong className="text-agarbatti-900">LUKAR ENTERPRISES</strong>.
+            Submitting a contact form or requesting fragrance samples through this website does not represent a confirmed sales order. Final pricing, GST invoicing, and dispatch schedules are formally established through official proforma invoices or communications from <strong className="text-agarbatti-900">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong>.
           </p>
         </div>
 
@@ -78,8 +78,9 @@ export const DisclaimerPage: React.FC = () => {
             For retail queries, sample packs, or wholesale distribution inquiries, please contact our registered office:
           </p>
           <div className="text-xs text-agarbatti-earth space-y-1">
-            <p><strong>Legal Entity:</strong> LUKAR ENTERPRISES</p>
-            <p><strong>Address:</strong> H NO 120, SECOND FLOOR, MADANGIR VILLAGE, DR. AMBEDKAR NAGAR, NEW DELHI, SOUTH DELHI, DELHI - 110062</p>
+            <p><strong>Legal Entity:</strong> SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</p>
+            <p><strong>GSTIN / Registration No:</strong> 27AAYCS4968E1ZJ</p>
+            <p><strong>Address:</strong> 41/44, SHAPOORJI PALLONJI CENTRE, MINOO DESAI MARG, COLABA, MUMBAI, Mumbai City, Maharashtra, 400005</p>
             <p><strong>Phone:</strong> +91 8700983465 | <strong>Email:</strong> viveklukar1999@gmail.com</p>
           </div>
           <div className="pt-2">

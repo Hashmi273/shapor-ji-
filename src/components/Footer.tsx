@@ -35,10 +35,10 @@ export const Footer: React.FC = () => {
             <div className="p-4 rounded-xl bg-[#1A0407] border border-agarbatti-gold/40 text-xs text-white space-y-1 shadow-md">
               <div className="flex items-center gap-1.5 text-agarbatti-gold font-bold">
                 <ShieldCheck className="w-4 h-4 text-agarbatti-gold flex-shrink-0" />
-                <span>Operating Legal Entity: LUKAR ENTERPRISES</span>
+                <span>Operating Legal Entity: SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</span>
               </div>
               <p className="text-xs text-[#F5EBE1] leading-normal font-normal">
-                MSME Registered Enterprise (Govt. of India). Operating independently as a consumer incense and fragrance distributor.
+                Registration / GST No: <strong className="text-white">27AAYCS4968E1ZJ</strong>. Operating independently as a consumer incense and fragrance distributor.
               </p>
             </div>
           </div>
@@ -122,8 +122,8 @@ export const Footer: React.FC = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-agarbatti-gold flex-shrink-0 mt-0.5" />
                 <span className="leading-relaxed text-xs sm:text-sm">
-                  <strong className="text-white block font-bold text-sm">LUKAR ENTERPRISES</strong>
-                  H NO 120, SECOND FLOOR, MADANGIR VILLAGE, DR. AMBEDKAR NAGAR, NEW DELHI, SOUTH DELHI, DELHI - 110062
+                  <strong className="text-white block font-bold text-sm">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong>
+                  41/44, SHAPOORJI PALLONJI CENTRE, MINOO DESAI MARG, COLABA, MUMBAI, Mumbai City, Maharashtra, 400005
                 </span>
               </div>
 
@@ -148,20 +148,20 @@ export const Footer: React.FC = () => {
         {/* Legal Disclaimer Box */}
         <div className="py-6 border-b border-[#3D0A10] text-xs text-[#F5EBE1] leading-relaxed">
           <p>
-            <strong className="text-[#F3D27E] font-bold">Important Notice:</strong> This website is an independent consumer brand and product showcase for agarbatti and incense products operated by <span className="text-white font-bold">LUKAR ENTERPRISES</span>. It does not represent itself as the official website of any third-party corporate conglomerate.
+            <strong className="text-[#F3D27E] font-bold">Important Notice:</strong> This website is an independent consumer brand and product showcase for agarbatti and incense products operated by <span className="text-white font-bold">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</span> (GSTIN: 27AAYCS4968E1ZJ).
           </p>
         </div>
 
         {/* Bottom Copyright Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-[#FDF8EE] font-medium">
           <div>
-            &copy; 2026 <strong className="text-white font-bold">LUKAR ENTERPRISES</strong>. All Rights Reserved.
+            &copy; 2026 <strong className="text-white font-bold">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong>. All Rights Reserved.
           </div>
           <div className="flex items-center gap-2">
             <span>Brand:</span>
             <span className="text-agarbatti-gold font-bold">SHAPOORJI PALLONJ</span>
             <span className="text-agarbatti-800">|</span>
-            <span>New Delhi, India</span>
+            <span>Mumbai, Maharashtra, India</span>
           </div>
         </div>
       </div>

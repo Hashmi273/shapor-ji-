@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, ArrowRight, Flower2, ShieldCheck, Sparkles } from 'lucide-react';
 
@@ -28,7 +28,7 @@ export const CTASection: React.FC<CTASectionProps> = ({ onOpenEnquiryModal }) =>
 
           {/* Subtext */}
           <p className="text-base sm:text-lg text-agarbatti-gold-100/90 max-w-2xl mx-auto leading-relaxed">
-            Experience the soothing calmness of <strong className="text-white">SHAPOORJI PALLONJ</strong> incense products. For retail sample packs, festive gifting, or wholesale distribution, connect with our team at <strong className="text-white">LUKAR ENTERPRISES</strong>.
+            Experience the soothing calmness of <strong className="text-white">SHAPOORJI PALLONJ</strong> incense products. For retail sample packs, festive gifting, or wholesale distribution, connect with our team at <strong className="text-white">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong>.
           </p>
 
           {/* CTA Buttons */}
@@ -54,7 +54,7 @@ export const CTASection: React.FC<CTASectionProps> = ({ onOpenEnquiryModal }) =>
           <div className="pt-8 border-t border-agarbatti-800/80 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-agarbatti-gold-100/80">
             <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-agarbatti-gold" />
-              <span>Legal Entity: <strong className="text-white font-medium">LUKAR ENTERPRISES</strong></span>
+              <span>Legal Entity: <strong className="text-white font-medium">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong></span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-4 h-4 text-agarbatti-gold" />
@@ -62,7 +62,7 @@ export const CTASection: React.FC<CTASectionProps> = ({ onOpenEnquiryModal }) =>
             </div>
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-agarbatti-gold" />
-              <span>MSME Registered Enterprise</span>
+              <span>GSTIN: 27AAYCS4968E1ZJ</span>
             </div>
           </div>
 

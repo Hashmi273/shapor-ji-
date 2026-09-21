@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { 
   Users, 
   MessageSquare, 
@@ -22,7 +22,7 @@ export const CustomerApproachSection: React.FC = () => {
       num: '2',
       icon: FileSpreadsheet,
       title: 'Formal Commercial Quote',
-      desc: 'Receive transparent pricing, itemized GST billing, and logistics schedule from Lukar Enterprises.'
+      desc: 'Receive transparent pricing, itemized GST billing, and logistics schedule from Shapoorji Pallonji Real Estate Private Limited.'
     },
     {
       num: '3',

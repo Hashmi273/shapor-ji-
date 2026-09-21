@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, Lock, FileText, Flower2, Building2, Mail, Phone, MapPin } from 'lucide-react';
 
@@ -17,7 +17,7 @@ export const PrivacyPolicyPage: React.FC = () => {
             Privacy Policy
           </h1>
           <p className="text-xs sm:text-sm text-agarbatti-gold-100/90">
-            Brand: <strong className="text-white">SHAPOORJI PALLONJ</strong> • Legal Entity: <strong className="text-white">LUKAR ENTERPRISES</strong>
+            Brand: <strong className="text-white">SHAPOORJI PALLONJ</strong> • Legal Entity: <strong className="text-white">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong>
           </p>
           <p className="text-[11px] text-agarbatti-gold-200/70">
             Last Updated: September 2026
@@ -34,7 +34,7 @@ export const PrivacyPolicyPage: React.FC = () => {
             1. Scope &amp; Operating Entity
           </h2>
           <p className="text-xs sm:text-sm text-agarbatti-earth-muted">
-            This Privacy Policy explains how <strong className="text-agarbatti-900">LUKAR ENTERPRISES</strong> (the legal commercial entity operating the consumer fragrance brand <strong className="text-agarbatti-900">SHAPOORJI PALLONJ</strong>) collects, handles, stores, and protects personal and commercial data provided by users through our website forms and communication channels.
+            This Privacy Policy explains how <strong className="text-agarbatti-900">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong> (the legal commercial entity operating the consumer fragrance brand <strong className="text-agarbatti-900">SHAPOORJI PALLONJ</strong>) collects, handles, stores, and protects personal and commercial data provided by users through our website forms and communication channels.
           </p>
         </div>
 
@@ -66,7 +66,7 @@ export const PrivacyPolicyPage: React.FC = () => {
             <li>Responding to product enquiries, sample requests, and providing fragrance recommendations.</li>
             <li>Contacting you via Phone Call, SMS, WhatsApp, or Email regarding your specific inquiry.</li>
             <li>Sending promotional offers, new fragrance launches, and festival updates ONLY if you selected the optional marketing opt-in.</li>
-            <li>Processing orders, invoicing (Lukar Enterprises GST billing), and coordinating logistics.</li>
+            <li>Processing orders, invoicing (SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED GST billing), and coordinating logistics.</li>
           </ul>
         </div>
 
@@ -117,10 +117,11 @@ export const PrivacyPolicyPage: React.FC = () => {
             <span>Contact &amp; Grievance Desk</span>
           </div>
           <h3 className="text-base font-serif font-bold text-white">
-            LUKAR ENTERPRISES
+            SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED
           </h3>
           <div className="text-xs space-y-1 text-agarbatti-gold-100/90">
-            <p><strong>Address:</strong> H NO 120, SECOND FLOOR, MADANGIR VILLAGE, DR. AMBEDKAR NAGAR, NEW DELHI, SOUTH DELHI, DELHI - 110062</p>
+            <p><strong>GSTIN / Registration No:</strong> 27AAYCS4968E1ZJ</p>
+            <p><strong>Address:</strong> 41/44, SHAPOORJI PALLONJI CENTRE, MINOO DESAI MARG, COLABA, MUMBAI, Mumbai City, Maharashtra, 400005</p>
             <p><strong>Mobile:</strong> +91 8700983465</p>
             <p><strong>Email:</strong> viveklukar1999@gmail.com</p>
           </div>

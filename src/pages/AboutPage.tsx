@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Flower2, 
@@ -32,7 +32,7 @@ export const AboutPage: React.FC = () => {
     },
     {
       title: 'Statutory Compliance',
-      desc: 'Operating with full regulatory compliance under registered MSME legal entity Lukar Enterprises (New Delhi).'
+      desc: 'Operating with full regulatory compliance under registered legal entity SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED (Mumbai).'
     },
     {
       title: 'Continuous Refinement',
@@ -54,7 +54,7 @@ export const AboutPage: React.FC = () => {
             About <span className="text-gradient-gold italic font-normal">SHAPOORJI PALLONJ</span>
           </h1>
           <p className="text-sm sm:text-base text-agarbatti-gold-100/90 max-w-2xl mx-auto leading-relaxed">
-            Crafting premium agarbatti and incense fragrances created to add warmth, positivity and beautiful aroma to everyday moments. Operated by <strong className="text-white">LUKAR ENTERPRISES</strong>.
+            Crafting premium agarbatti and incense fragrances created to add warmth, positivity and beautiful aroma to everyday moments. Operated by <strong className="text-white">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong>.
           </p>
         </div>
       </section>
@@ -88,9 +88,9 @@ export const AboutPage: React.FC = () => {
                 <span>Operating Legal Identity</span>
               </div>
               <p className="text-agarbatti-earth-muted leading-relaxed">
-                Legal Entity: <strong>LUKAR ENTERPRISES</strong><br />
-                Address: H NO 120, Second Floor, Madangir Village, Dr. Ambedkar Nagar, New Delhi - 110062<br />
-                MSME Registered Enterprise (Ministry of Micro, Small and Medium Enterprises, Govt. of India).
+                Legal Entity: <strong>SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong><br />
+                Address: 41/44, SHAPOORJI PALLONJI CENTRE, MINOO DESAI MARG, COLABA, MUMBAI, Mumbai City, Maharashtra, 400005<br />
+                Registration / GST Number: <strong>27AAYCS4968E1ZJ</strong>
               </p>
             </div>
           </div>

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { 
   Phone, 
@@ -110,7 +110,7 @@ export const ContactPage: React.FC = () => {
             Bring Beautiful Fragrance <span className="text-gradient-gold italic font-normal">Into Your Space</span>
           </h1>
           <p className="text-sm sm:text-base text-agarbatti-gold-100/90 max-w-2xl mx-auto leading-relaxed">
-            Connect with our team at <strong className="text-white">LUKAR ENTERPRISES</strong> for retail packs, wholesale fragrance orders, festive gift boxes, and sampling requests.
+            Connect with our team at <strong className="text-white">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong> for retail packs, wholesale fragrance orders, festive gift boxes, and sampling requests.
           </p>
         </div>
       </section>
@@ -129,7 +129,7 @@ export const ContactPage: React.FC = () => {
                   <span>Statutory Business Entity</span>
                 </div>
                 <h3 className="text-xl font-serif font-bold text-agarbatti-900">
-                  LUKAR ENTERPRISES
+                  SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED
                 </h3>
                 <p className="text-xs text-agarbatti-earth-muted">
                   Operating entity for brand <strong className="text-agarbatti-900">SHAPOORJI PALLONJ</strong>
@@ -148,10 +148,10 @@ export const ContactPage: React.FC = () => {
                       Registered Business Address
                     </span>
                     <p className="text-xs sm:text-sm text-agarbatti-earth font-medium leading-relaxed mt-0.5">
-                      H NO 120, SECOND FLOOR,<br />
-                      MADANGIR VILLAGE, DR. AMBEDKAR NAGAR,<br />
-                      NEW DELHI, SOUTH DELHI,<br />
-                      DELHI - 110062, INDIA
+                      41/44, SHAPOORJI PALLONJI CENTRE,<br />
+                      MINOO DESAI MARG, COLABA,<br />
+                      MUMBAI, Mumbai City,<br />
+                      Maharashtra - 400005, INDIA
                     </p>
                   </div>
                 </div>
@@ -196,28 +196,34 @@ export const ContactPage: React.FC = () => {
               </div>
             </div>
 
-            {/* MSME & Registration Card */}
+            {/* Statutory & Registration Card */}
             <div className="bg-agarbatti-950 text-agarbatti-gold-100 p-6 rounded-2xl border border-agarbatti-800 shadow-md space-y-3">
               <div className="flex items-center gap-2 text-agarbatti-gold text-xs font-bold uppercase tracking-wider">
                 <ShieldCheck className="w-4 h-4" />
-                <span>MSME Registration Information</span>
+                <span>GST &amp; Legal Registration</span>
               </div>
               <p className="text-xs text-agarbatti-gold-100/90 leading-relaxed">
-                <strong className="text-white">LUKAR ENTERPRISES</strong> is a verified Micro, Small &amp; Medium Enterprise (MSME) registered under the Ministry of MSME, Government of India.
+                <strong className="text-white">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong> is a registered Private Limited Company in Mumbai, Maharashtra.
               </p>
               <div className="p-3 rounded-xl bg-agarbatti-900 border border-agarbatti-800 text-[11px] text-agarbatti-gold-200/80 space-y-1">
                 <div className="flex justify-between">
                   <span>Legal Enterprise:</span>
-                  <span className="text-white font-semibold">LUKAR ENTERPRISES</span>
+                  <span className="text-white font-semibold">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>GSTIN / Reg No:</span>
+                  <span className="text-agarbatti-gold font-bold">27AAYCS4968E1ZJ</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Location:</span>
-                  <span className="text-white font-medium">South Delhi, Delhi</span>
+                  <span className="text-white font-medium">Colaba, Mumbai, Maharashtra</span>
                 </div>
                 <div className="flex justify-between">
                   <span>Business Sector:</span>
                   <span className="text-agarbatti-gold font-medium">Incense &amp; Fragrance Products</span>
                 </div>
+              </div>
+            </div>
               </div>
             </div>
 
@@ -245,7 +251,7 @@ export const ContactPage: React.FC = () => {
                     Thank you! Your enquiry has been submitted successfully.
                   </h3>
                   <p className="text-sm text-agarbatti-earth-muted max-w-md mx-auto leading-relaxed">
-                    Our team at <strong className="text-agarbatti-900">LUKAR ENTERPRISES</strong> will contact you shortly regarding <strong className="text-agarbatti-900">{formData.productInterested}</strong>.
+                    Our team at <strong className="text-agarbatti-900">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong> will contact you shortly regarding <strong className="text-agarbatti-900">{formData.productInterested}</strong>.
                   </p>
                   
                   <div className="p-4 rounded-xl bg-agarbatti-cream-card border border-agarbatti-cream-border max-w-md mx-auto text-xs text-agarbatti-earth text-left space-y-1.5">
@@ -484,11 +490,11 @@ export const ContactPage: React.FC = () => {
                 Geographic Presence &amp; Location
               </span>
               <h3 className="text-lg font-serif font-bold text-agarbatti-900">
-                Registered Office Location — Madangir, New Delhi
+                Registered Office Location — Colaba, Mumbai
               </h3>
             </div>
             <a
-              href="https://maps.google.com/?q=Madangir+Village+Dr+Ambedkar+Nagar+New+Delhi+110062"
+              href="https://maps.google.com/?q=Shapoorji+Pallonji+Centre+Colaba+Mumbai+400005"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-xs font-bold text-agarbatti-900 hover:text-agarbatti-700 transition-colors"
@@ -500,8 +506,8 @@ export const ContactPage: React.FC = () => {
 
           <div className="w-full h-80 rounded-xl overflow-hidden border border-agarbatti-cream-border shadow-inner">
             <iframe
-              title="Lukar Enterprises Registered Office Map Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14022.610363290505!2d77.2285188!3d28.5200371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce1e41f0219c1%3A0x6b29be19001b9ad9!2sMadangir%2C%20New%20Delhi%2C%20Delhi%20110062!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+              title="Shapoorji Pallonji Real Estate Private Limited Map Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.226553859664!2d72.8256242!3d18.9213813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7d1c14cbdfaa7%3A0xb30e8c755c91b5c!2sColaba%2C%20Mumbai%2C%20Maharashtra%20400005!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}

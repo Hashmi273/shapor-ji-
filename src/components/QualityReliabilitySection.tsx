@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { ShieldCheck, CheckCircle2, Sliders, FileText, Sparkles, Scale, RefreshCw } from 'lucide-react';
 
 export const QualityReliabilitySection: React.FC = () => {
@@ -85,7 +85,7 @@ export const QualityReliabilitySection: React.FC = () => {
               Transparent Documentation with Every Order
             </h4>
             <p className="text-xs text-slate-300 max-w-xl">
-              Commercial dispatches are accompanied by manufacturer test certificates, GST invoices, and delivery challans issued directly by <strong className="text-white">LUKAR ENTERPRISES</strong>.
+              Commercial dispatches are accompanied by manufacturer test certificates, GST invoices, and delivery challans issued directly by <strong className="text-white">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong>.
             </p>
           </div>
 

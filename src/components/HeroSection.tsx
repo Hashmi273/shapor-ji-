@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Sparkles, 
@@ -160,8 +160,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenEnquiryModal }) 
             <p className="text-xs sm:text-sm text-[#FDF8EE] font-medium">Carefully Selected</p>
           </div>
           <div className="space-y-1">
-            <span className="font-serif font-bold text-2xl sm:text-3xl text-agarbatti-gold">MSME</span>
-            <p className="text-xs sm:text-sm text-[#FDF8EE] font-medium">Registered Business</p>
+            <span className="font-serif font-bold text-2xl sm:text-3xl text-agarbatti-gold">GST</span>
+            <p className="text-xs sm:text-sm text-[#FDF8EE] font-medium">Registered Company</p>
           </div>
           <div className="space-y-1">
             <span className="font-serif font-bold text-2xl sm:text-3xl text-white">Pure</span>

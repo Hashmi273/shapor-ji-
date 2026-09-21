@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Scale, ShieldCheck, Building2, Flower2 } from 'lucide-react';
 
@@ -17,7 +17,7 @@ export const TermsPage: React.FC = () => {
             Terms &amp; Conditions
           </h1>
           <p className="text-xs sm:text-sm text-agarbatti-gold-100/90">
-            Brand: <strong className="text-white">SHAPOORJI PALLONJ</strong> • Operating Entity: <strong className="text-white">LUKAR ENTERPRISES</strong>
+            Brand: <strong className="text-white">SHAPOORJI PALLONJ</strong> • Operating Entity: <strong className="text-white">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong>
           </p>
           <p className="text-[11px] text-agarbatti-gold-200/70">
             Effective Date: September 2026
@@ -34,7 +34,7 @@ export const TermsPage: React.FC = () => {
             1. Agreement to Terms
           </h2>
           <p className="text-xs sm:text-sm text-agarbatti-earth-muted">
-            By accessing or using the brand website of <strong className="text-agarbatti-900">SHAPOORJI PALLONJ</strong> (operated by <strong className="text-agarbatti-900">LUKAR ENTERPRISES</strong>), you acknowledge that you have read, understood, and agreed to these Terms and Conditions.
+            By accessing or using the brand website of <strong className="text-agarbatti-900">SHAPOORJI PALLONJ</strong> (operated by <strong className="text-agarbatti-900">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong>), you acknowledge that you have read, understood, and agreed to these Terms and Conditions.
           </p>
         </div>
 
@@ -64,7 +64,7 @@ export const TermsPage: React.FC = () => {
             4. Inquiries, Product Availability &amp; Pricing
           </h2>
           <p>
-            Submitting an enquiry does not constitute a confirmed financial transaction or price reservation. Commercial supply, wholesale volume pricing, and shipping schedules are confirmed directly by our sales desk at <strong className="text-agarbatti-900">LUKAR ENTERPRISES</strong>.
+            Submitting an enquiry does not constitute a confirmed financial transaction or price reservation. Commercial supply, wholesale volume pricing, and shipping schedules are confirmed directly by our sales desk at <strong className="text-agarbatti-900">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong>.
           </p>
         </div>
 
@@ -74,12 +74,12 @@ export const TermsPage: React.FC = () => {
             5. Intellectual Property &amp; Non-Affiliation
           </h2>
           <p>
-            The original graphic designs, text copy, and website arrangement are the intellectual property of <strong className="text-agarbatti-900">LUKAR ENTERPRISES</strong> or licensed for use.
+            The original graphic designs, text copy, and website arrangement are the intellectual property of <strong className="text-agarbatti-900">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong> or licensed for use.
           </p>
           <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-1">
             <strong>Important Brand Notice:</strong>
             <p>
-              This website is an independent consumer brand showcase for incense and agarbatti products operated by Lukar Enterprises. It makes no claim of ownership or affiliation with any third-party real-estate or corporate conglomerates unless authorized under written agreement.
+              This website is an independent consumer brand showcase for incense and agarbatti products operated by SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED (GSTIN: 27AAYCS4968E1ZJ).
             </p>
           </div>
         </div>
@@ -90,7 +90,7 @@ export const TermsPage: React.FC = () => {
             6. Limitation of Liability
           </h2>
           <p>
-            LUKAR ENTERPRISES shall not be liable for any indirect, incidental, or consequential damages resulting from the use of this website or reliance on general website descriptions prior to confirmed order documentation.
+            SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED shall not be liable for any indirect, incidental, or consequential damages resulting from the use of this website or reliance on general website descriptions prior to confirmed order documentation.
           </p>
         </div>
 
@@ -110,7 +110,7 @@ export const TermsPage: React.FC = () => {
             8. Governing Law &amp; Jurisdiction
           </h2>
           <p>
-            These terms shall be governed by the laws of India, and any disputes shall be subject to the exclusive jurisdiction of the competent courts in <strong className="text-agarbatti-900">New Delhi, India</strong>.
+            These terms shall be governed by the laws of India, and any disputes shall be subject to the exclusive jurisdiction of the competent courts in <strong className="text-agarbatti-900">Mumbai, India</strong>.
           </p>
         </div>
 
@@ -121,10 +121,11 @@ export const TermsPage: React.FC = () => {
             <span>Commercial &amp; Legal Desk</span>
           </div>
           <h3 className="text-base font-serif font-bold text-white">
-            LUKAR ENTERPRISES
+            SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED
           </h3>
           <div className="text-xs space-y-1 text-agarbatti-gold-100/90">
-            <p><strong>Address:</strong> H NO 120, SECOND FLOOR, MADANGIR VILLAGE, DR. AMBEDKAR NAGAR, NEW DELHI, SOUTH DELHI, DELHI - 110062</p>
+            <p><strong>GSTIN / Registration No:</strong> 27AAYCS4968E1ZJ</p>
+            <p><strong>Address:</strong> 41/44, SHAPOORJI PALLONJI CENTRE, MINOO DESAI MARG, COLABA, MUMBAI, Mumbai City, Maharashtra, 400005</p>
             <p><strong>Mobile:</strong> +91 8700983465</p>
             <p><strong>Email:</strong> viveklukar1999@gmail.com</p>
           </div>

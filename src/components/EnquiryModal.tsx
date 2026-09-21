@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { X, Send, CheckCircle2, Sparkles, Phone, Mail, User, Building, Flower2 } from 'lucide-react';
 import { PRODUCTS_DATA } from '../data/productsData';
@@ -121,7 +121,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
               Enquire for Agarbatti &amp; Incense
             </h3>
             <p className="text-xs text-agarbatti-gold-100/80 mt-1">
-              Brand: <strong className="text-white">SHAPOORJI PALLONJ</strong> • Operated by Lukar Enterprises
+              Brand: <strong className="text-white">SHAPOORJI PALLONJ</strong> • Operated by SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED
             </p>
           </div>
           <button
@@ -144,7 +144,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                 Thank you! Your enquiry has been submitted successfully.
               </h4>
               <p className="text-sm text-agarbatti-earth-muted max-w-sm mx-auto leading-relaxed">
-                Dear <strong className="text-agarbatti-900">{formData.fullName}</strong>, our team at <strong className="text-agarbatti-900">LUKAR ENTERPRISES</strong> will contact you shortly with fragrance details and commercial availability.
+                Dear <strong className="text-agarbatti-900">{formData.fullName}</strong>, our team at <strong className="text-agarbatti-900">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong> will contact you shortly with fragrance details and commercial availability.
               </p>
               <div className="bg-agarbatti-cream-card p-3.5 rounded-xl border border-agarbatti-cream-border text-xs text-agarbatti-earth max-w-sm mx-auto text-left space-y-1">
                 <div className="flex justify-between">

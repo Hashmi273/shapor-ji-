@@ -59,7 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiryModal }) => {
           <div className="flex items-center space-x-3">
             <span className="inline-flex items-center gap-1.5 font-medium text-agarbatti-gold">
               <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Legal Entity: <strong className="text-white font-semibold">LUKAR ENTERPRISES</strong></span>
+              <span>Legal Entity: <strong className="text-white font-semibold">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong></span>
             </span>
             <span className="text-agarbatti-800">|</span>
             <span className="text-agarbatti-gold-200 hidden md:inline">
@@ -167,10 +167,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenEnquiryModal }) => {
             <div className="bg-agarbatti-950 text-agarbatti-gold-100 p-3 rounded-lg text-xs space-y-1">
               <div className="flex items-center gap-1.5 text-agarbatti-gold font-medium">
                 <ShieldCheck className="w-4 h-4 text-agarbatti-gold" />
-                <span>Legal Entity: <strong>LUKAR ENTERPRISES</strong></span>
+                <span>Legal Entity: <strong>SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong></span>
               </div>
               <p className="text-[11px] text-agarbatti-gold-200/80">
-                Premium Indian Incense &amp; Fragrance Brand (MSME Registered)
+                Premium Indian Incense &amp; Fragrance Brand (GSTIN: 27AAYCS4968E1ZJ)
               </p>
             </div>
 

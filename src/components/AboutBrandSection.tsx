@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Flower2, Sparkles, CheckCircle2, ArrowRight, ShieldCheck, Flame } from 'lucide-react';
 
@@ -49,7 +49,7 @@ export const AboutBrandSection: React.FC = () => {
                 <span>Operating Business Entity</span>
               </div>
               <p className="text-[#3E261B] leading-relaxed font-medium">
-                Brand <strong className="text-[#1A080B]">SHAPOORJI PALLONJ</strong> is commercially operated by <strong className="text-[#1A080B]">LUKAR ENTERPRISES</strong> (MSME Registered Enterprise, New Delhi).
+                Brand <strong className="text-[#1A080B]">SHAPOORJI PALLONJ</strong> is commercially operated by <strong className="text-[#1A080B]">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong> (GSTIN: 27AAYCS4968E1ZJ, Mumbai).
               </p>
             </div>
           </div>
