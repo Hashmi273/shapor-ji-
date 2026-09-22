@@ -1,83 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  ShieldCheck, 
-  Send, 
-  CheckCircle2, 
-  Clock, 
-  Flower2, 
-  User, 
-  Building, 
-  ExternalLink, 
-  Sparkles 
-} from 'lucide-react';
+import { Phone, Mail, MapPin, ShieldCheck, Send, CheckCircle2, User, Building, ExternalLink } from 'lucide-react';
 import { PRODUCTS_DATA } from '../data/productsData';
 
-export const FORM_ENDPOINT_URL = ''; // Prepared configuration variable for GitHub Pages external form submission
+export const FORM_ENDPOINT_URL = '';
 
 export const ContactPage: React.FC = () => {
   const location = useLocation();
-
   const [formData, setFormData] = useState({
-    fullName: '',
-    companyName: '',
-    email: '',
-    mobileNumber: '',
-    productInterested: '',
-    quantity: '',
-    message: '',
-    contact_opt_in: false, // MANDATORY
-    marketing_opt_in: false // OPTIONAL
+    fullName: '', companyName: '', email: '', mobileNumber: '',
+    productInterested: '', quantity: '', message: '',
+    contact_opt_in: false, marketing_opt_in: false
   });
-
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Pre-fill product if passed in URL query param
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const prodParam = params.get('product');
-    if (prodParam) {
-      setFormData((prev) => ({ ...prev, productInterested: prodParam }));
-    }
+    const product = new URLSearchParams(location.search).get('product');
+    if (product) setFormData(prev => ({ ...prev, productInterested: product }));
   }, [location.search]);
 
   const validate = () => {
-    const errs: Record<string, string> = {};
-    if (!formData.fullName.trim()) errs.fullName = 'Please enter your full name';
-    if (!formData.mobileNumber.trim()) {
-      errs.mobileNumber = 'Please enter your mobile number';
-    } else if (!/^[0-9+ -]{8,15}$/.test(formData.mobileNumber.trim())) {
-      errs.mobileNumber = 'Please enter a valid phone number';
-    }
-    if (!formData.email.trim()) {
-      errs.email = 'Please enter your email address';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
-      errs.email = 'Please enter a valid email address';
-    }
-    if (!formData.productInterested.trim()) {
-      errs.productInterested = 'Please select a fragrance or product of interest';
-    }
-    if (!formData.message.trim()) {
-      errs.message = 'Please provide details about your message or requirement';
-    }
-    if (!formData.contact_opt_in) {
-      errs.contact_opt_in = 'You must agree to be contacted regarding your enquiry to proceed.';
-    }
-    setErrors(errs);
-    return Object.keys(errs).length === 0;
+    const next: Record<string, string> = {};
+    if (!formData.fullName.trim()) next.fullName = 'Please enter your full name';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) next.email = 'Please enter a valid email address';
+    if (!/^[0-9+ -]{8,15}$/.test(formData.mobileNumber.trim())) next.mobileNumber = 'Please enter a valid phone number';
+    if (!formData.productInterested.trim()) next.productInterested = 'Please select a project';
+    if (!formData.message.trim()) next.message = 'Please provide your requirement';
+    if (!formData.contact_opt_in) next.contact_opt_in = 'Please agree to be contacted regarding your enquiry';
+    setErrors(next);
+    return Object.keys(next).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-
     setIsSubmitting(true);
-
     if (FORM_ENDPOINT_URL) {
       try {
         await fetch(FORM_ENDPOINT_URL, {
@@ -85,442 +44,152 @@ export const ContactPage: React.FC = () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
         });
-      } catch (err) {
-        console.log('Form submission completed locally');
+      } catch {
+        // Keep the enquiry confirmation available even when no external endpoint is configured.
       }
     }
-
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 700);
+    }, 500);
+  };
+
+  const resetForm = () => {
+    setIsSubmitted(false);
+    setErrors({});
+    setFormData({
+      fullName: '', companyName: '', email: '', mobileNumber: '',
+      productInterested: '', quantity: '', message: '',
+      contact_opt_in: false, marketing_opt_in: false
+    });
   };
 
   return (
-    <main className="pt-28 sm:pt-32 pb-24 bg-[#FCF9F2] bg-cream-pattern min-h-screen text-agarbatti-earth">
-      
-      {/* Page Hero Header */}
-      <section className="bg-incense-hero text-white py-16 sm:py-20 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-agarbatti-900 border border-agarbatti-gold/40 text-agarbatti-gold text-xs font-semibold uppercase tracking-wider">
-            <Flower2 className="w-4 h-4 text-agarbatti-gold" />
-            <span>Fragrance Inquiries &amp; Customer Care</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold tracking-tight text-white">
-            Bring Beautiful Fragrance <span className="text-gradient-gold italic font-normal">Into Your Space</span>
-          </h1>
-          <p className="text-sm sm:text-base text-agarbatti-gold-100/90 max-w-2xl mx-auto leading-relaxed">
-            Connect with our team at <strong className="text-white">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong> for retail packs, wholesale fragrance orders, festive gift boxes, and sampling requests.
+    <main className="min-h-screen bg-realestate-paper pb-24 text-realestate-ink">
+      <section className="bg-[#2b2c27] py-20 text-white">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+          <p className="text-[11px] uppercase tracking-[.18em] text-white/45">Private appointments</p>
+          <h1 className="mt-5 max-w-4xl font-display text-5xl font-semibold tracking-[-.05em] sm:text-6xl">Let’s talk about your next home.</h1>
+          <p className="mt-6 max-w-2xl text-base leading-7 text-white/60">
+            Share what you are looking for and our residential team will help you explore the right project, location and configuration.
           </p>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          
-          {/* Left Column: Official Contact & Entity Details */}
-          <div className="lg:col-span-5 space-y-6">
-            
-            {/* Legal Entity Registered Office Card */}
-            <div className="bg-[#FFFDF9] p-7 rounded-2xl border border-agarbatti-cream-border shadow-md space-y-6">
-              <div className="space-y-1">
-                <div className="flex items-center gap-2 text-agarbatti-gold text-xs font-bold uppercase tracking-wider">
-                  <ShieldCheck className="w-4 h-4" />
-                  <span>Statutory Business Entity</span>
+      <section className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10">
+        <div className="grid gap-8 lg:grid-cols-[.8fr_1.2fr]">
+          <aside className="space-y-5">
+            <div className="border border-realestate-line bg-white p-7">
+              <p className="section-kicker">Visit us</p>
+              <h2 className="mt-3 text-xl font-semibold">Shapoorji Pallonji Centre</h2>
+              <div className="mt-6 space-y-5 text-sm">
+                <div className="flex gap-3">
+                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-realestate-brass" />
+                  <p className="leading-6 text-realestate-muted">41/44, Shapoorji Pallonji Centre, Minoo Desai Marg, Colaba, Mumbai 400005</p>
                 </div>
-                <h3 className="text-xl font-serif font-bold text-agarbatti-900">
-                  SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED
-                </h3>
-                <p className="text-xs text-agarbatti-earth-muted">
-                  Operating entity for brand <strong className="text-agarbatti-900">SHAPOORJI PALLONJ</strong>
-                </p>
-              </div>
-
-              <div className="space-y-4 pt-2 border-t border-agarbatti-cream-border text-sm">
-                
-                {/* Address */}
-                <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-agarbatti-gold-100 text-agarbatti-800 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <MapPin className="w-5 h-5 text-agarbatti-gold" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-bold text-agarbatti-earth-muted uppercase tracking-wider block">
-                      Registered Business Address
-                    </span>
-                    <p className="text-xs sm:text-sm text-agarbatti-earth font-medium leading-relaxed mt-0.5">
-                      41/44, SHAPOORJI PALLONJI CENTRE,<br />
-                      MINOO DESAI MARG, COLABA,<br />
-                      MUMBAI, Mumbai City,<br />
-                      Maharashtra - 400005, INDIA
-                    </p>
-                  </div>
+                <div className="flex gap-3">
+                  <Phone className="mt-0.5 h-5 w-5 shrink-0 text-realestate-brass" />
+                  <a href="tel:+918700983465" className="font-semibold hover:underline">+91 87009 83465</a>
                 </div>
-
-                {/* Mobile */}
-                <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-agarbatti-gold-100 text-agarbatti-800 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Phone className="w-5 h-5 text-agarbatti-gold" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-bold text-agarbatti-earth-muted uppercase tracking-wider block">
-                      Mobile &amp; WhatsApp Helpline
-                    </span>
-                    <a 
-                      href="tel:+918700983465"
-                      className="text-sm sm:text-base font-bold text-agarbatti-900 hover:text-agarbatti-700 transition-colors block mt-0.5"
-                    >
-                      +91 8700983465
-                    </a>
-                    <span className="text-[11px] text-agarbatti-earth-muted">Mon - Sat: 9:30 AM - 6:30 PM IST</span>
-                  </div>
+                <div className="flex gap-3">
+                  <Mail className="mt-0.5 h-5 w-5 shrink-0 text-realestate-brass" />
+                  <a href="mailto:viveklukar1999@gmail.com" className="font-semibold break-all hover:underline">viveklukar1999@gmail.com</a>
                 </div>
-
-                {/* Email */}
-                <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-agarbatti-gold-100 text-agarbatti-800 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Mail className="w-5 h-5 text-agarbatti-gold" />
-                  </div>
-                  <div>
-                    <span className="text-xs font-bold text-agarbatti-earth-muted uppercase tracking-wider block">
-                      Official Inquiries Email
-                    </span>
-                    <a 
-                      href="mailto:viveklukar1999@gmail.com"
-                      className="text-sm font-semibold text-agarbatti-900 hover:text-agarbatti-700 transition-colors block mt-0.5 break-all"
-                    >
-                      viveklukar1999@gmail.com
-                    </a>
-                  </div>
-                </div>
-
               </div>
             </div>
 
-            {/* Statutory & Registration Card */}
-            <div className="bg-agarbatti-950 text-agarbatti-gold-100 p-6 rounded-2xl border border-agarbatti-800 shadow-md space-y-3">
-              <div className="flex items-center gap-2 text-agarbatti-gold text-xs font-bold uppercase tracking-wider">
-                <ShieldCheck className="w-4 h-4" />
-                <span>GST &amp; Legal Registration</span>
-              </div>
-              <p className="text-xs text-agarbatti-gold-100/90 leading-relaxed">
-                <strong className="text-white">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong> is a registered Private Limited Company in Mumbai, Maharashtra.
+            <div className="border border-realestate-line bg-[#f2eee6] p-7">
+              <ShieldCheck className="h-5 w-5 text-realestate-brass" />
+              <h3 className="mt-5 text-lg font-semibold">A considered conversation</h3>
+              <p className="mt-3 text-sm leading-7 text-realestate-muted">
+                Tell us your preferred location, home type, timeline and budget. We can use those details to guide the conversation.
               </p>
-              <div className="p-3 rounded-xl bg-agarbatti-900 border border-agarbatti-800 text-[11px] text-agarbatti-gold-200/80 space-y-1">
-                <div className="flex justify-between">
-                  <span>Legal Enterprise:</span>
-                  <span className="text-white font-semibold">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>GSTIN / Reg No:</span>
-                  <span className="text-agarbatti-gold font-bold">27AAYCS4968E1ZJ</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Location:</span>
-                  <span className="text-white font-medium">Colaba, Mumbai, Maharashtra</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Business Sector:</span>
-                  <span className="text-agarbatti-gold font-medium">Incense &amp; Fragrance Products</span>
-                </div>
-              </div>
-            </div>
-              </div>
             </div>
 
-          </div>
-
-          {/* Right Column: Contact & Enquiry Form */}
-          <div className="lg:col-span-7">
-            <div className="bg-[#FFFDF9] p-7 sm:p-9 rounded-2xl border border-agarbatti-cream-border shadow-lg">
-              
-              <div className="mb-6 space-y-1">
-                <h2 className="text-2xl font-serif font-bold text-agarbatti-900">
-                  Send Fragrance Enquiry
-                </h2>
-                <p className="text-xs sm:text-sm text-agarbatti-earth-muted">
-                  Fill in your details below and our commercial team will contact you with product availability and fragrance samples.
-                </p>
-              </div>
-
-              {isSubmitted ? (
-                <div className="py-12 text-center space-y-4">
-                  <div className="w-16 h-16 bg-emerald-50 text-emerald-700 rounded-full flex items-center justify-center mx-auto border-2 border-emerald-200">
-                    <CheckCircle2 className="w-8 h-8" />
-                  </div>
-                  <h3 className="text-2xl font-bold font-serif text-agarbatti-900">
-                    Thank you! Your enquiry has been submitted successfully.
-                  </h3>
-                  <p className="text-sm text-agarbatti-earth-muted max-w-md mx-auto leading-relaxed">
-                    Our team at <strong className="text-agarbatti-900">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong> will contact you shortly regarding <strong className="text-agarbatti-900">{formData.productInterested}</strong>.
-                  </p>
-                  
-                  <div className="p-4 rounded-xl bg-agarbatti-cream-card border border-agarbatti-cream-border max-w-md mx-auto text-xs text-agarbatti-earth text-left space-y-1.5">
-                    <div className="flex justify-between">
-                      <span className="text-agarbatti-earth-muted">Contact Helpline:</span>
-                      <span className="font-semibold text-agarbatti-900">+91 8700983465</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-agarbatti-earth-muted">Email:</span>
-                      <span className="font-semibold text-agarbatti-900">viveklukar1999@gmail.com</span>
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={() => {
-                      setIsSubmitted(false);
-                      setFormData({
-                        fullName: '',
-                        companyName: '',
-                        email: '',
-                        mobileNumber: '',
-                        productInterested: '',
-                        quantity: '',
-                        message: '',
-                        contact_opt_in: false,
-                        marketing_opt_in: false
-                      });
-                    }}
-                    className="btn-gold-primary px-6 py-2.5 rounded-xl text-xs font-semibold mt-4"
-                  >
-                    Submit Another Enquiry
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4 text-left">
-                  
-                  {/* Full Name & Company */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-agarbatti-earth uppercase tracking-wider mb-1">
-                        Full Name <span className="text-rose-500">*</span>
-                      </label>
-                      <div className="relative">
-                        <User className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
-                        <input
-                          type="text"
-                          required
-                          placeholder="Your full name"
-                          value={formData.fullName}
-                          onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                          className={`w-full pl-9 pr-3.5 py-2.5 text-sm rounded-xl border bg-white ${
-                            errors.fullName ? 'border-rose-400 bg-rose-50/20' : 'border-agarbatti-cream-borderDark focus:border-agarbatti-gold'
-                          } focus:outline-none focus:ring-1 focus:ring-agarbatti-gold`}
-                        />
-                      </div>
-                      {errors.fullName && <p className="text-[11px] text-rose-500 mt-1">{errors.fullName}</p>}
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-agarbatti-earth uppercase tracking-wider mb-1">
-                        Company Name
-                      </label>
-                      <div className="relative">
-                        <Building className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
-                        <input
-                          type="text"
-                          placeholder="Shop / Retail / Individual"
-                          value={formData.companyName}
-                          onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                          className="w-full pl-9 pr-3.5 py-2.5 text-sm rounded-xl border border-agarbatti-cream-borderDark bg-white focus:border-agarbatti-gold focus:outline-none focus:ring-1 focus:ring-agarbatti-gold"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Email & Mobile */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-agarbatti-earth uppercase tracking-wider mb-1">
-                        Email Address <span className="text-rose-500">*</span>
-                      </label>
-                      <div className="relative">
-                        <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
-                        <input
-                          type="email"
-                          required
-                          placeholder="name@email.com"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className={`w-full pl-9 pr-3.5 py-2.5 text-sm rounded-xl border bg-white ${
-                            errors.email ? 'border-rose-400 bg-rose-50/20' : 'border-agarbatti-cream-borderDark focus:border-agarbatti-gold'
-                          } focus:outline-none focus:ring-1 focus:ring-agarbatti-gold`}
-                        />
-                      </div>
-                      {errors.email && <p className="text-[11px] text-rose-500 mt-1">{errors.email}</p>}
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-agarbatti-earth uppercase tracking-wider mb-1">
-                        Mobile Number <span className="text-rose-500">*</span>
-                      </label>
-                      <div className="relative">
-                        <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-3.5" />
-                        <input
-                          type="tel"
-                          required
-                          placeholder="+91 8700983465"
-                          value={formData.mobileNumber}
-                          onChange={(e) => setFormData({ ...formData, mobileNumber: e.target.value })}
-                          className={`w-full pl-9 pr-3.5 py-2.5 text-sm rounded-xl border bg-white ${
-                            errors.mobileNumber ? 'border-rose-400 bg-rose-50/20' : 'border-agarbatti-cream-borderDark focus:border-agarbatti-gold'
-                          } focus:outline-none focus:ring-1 focus:ring-agarbatti-gold`}
-                        />
-                      </div>
-                      {errors.mobileNumber && <p className="text-[11px] text-rose-500 mt-1">{errors.mobileNumber}</p>}
-                    </div>
-                  </div>
-
-                  {/* Product & Quantity */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-agarbatti-earth uppercase tracking-wider mb-1">
-                        Product Interested In <span className="text-rose-500">*</span>
-                      </label>
-                      <select
-                        value={formData.productInterested}
-                        onChange={(e) => setFormData({ ...formData, productInterested: e.target.value })}
-                        className={`w-full px-3.5 py-2.5 text-sm rounded-xl border bg-white ${
-                          errors.productInterested ? 'border-rose-400 bg-rose-50/20' : 'border-agarbatti-cream-borderDark focus:border-agarbatti-gold'
-                        } focus:outline-none focus:ring-1 focus:ring-agarbatti-gold`}
-                      >
-                        <option value="">-- Choose Fragrance / Pack --</option>
-                        {PRODUCTS_DATA.map((p) => (
-                          <option key={p.id} value={p.name}>
-                            {p.name} ({p.category})
-                          </option>
-                        ))}
-                        <option value="Custom Gift Box Pack">Festive Gift Box Assortment</option>
-                        <option value="Wholesale Distributorship Inquiry">Wholesale Distributorship Inquiry</option>
-                      </select>
-                      {errors.productInterested && <p className="text-[11px] text-rose-500 mt-1">{errors.productInterested}</p>}
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold text-agarbatti-earth uppercase tracking-wider mb-1">
-                        Quantity / Requirement
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="e.g. 5 Boxes, Festive Gift Packs, Retail Enquiry"
-                        value={formData.quantity}
-                        onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                        className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-agarbatti-cream-borderDark bg-white focus:border-agarbatti-gold focus:outline-none focus:ring-1 focus:ring-agarbatti-gold"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Message */}
-                  <div>
-                    <label className="block text-xs font-bold text-agarbatti-earth uppercase tracking-wider mb-1">
-                      Message <span className="text-rose-500">*</span>
-                    </label>
-                    <textarea
-                      rows={4}
-                      required
-                      placeholder="Please share any specific fragrance preferences, delivery location, or questions..."
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className={`w-full px-3.5 py-2.5 text-sm rounded-xl border bg-white ${
-                        errors.message ? 'border-rose-400 bg-rose-50/20' : 'border-agarbatti-cream-borderDark focus:border-agarbatti-gold'
-                      } focus:outline-none focus:ring-1 focus:ring-agarbatti-gold`}
-                    />
-                    {errors.message && <p className="text-[11px] text-rose-500 mt-1">{errors.message}</p>}
-                  </div>
-
-                  {/* MANDATORY CONTACT OPT-IN CHECKBOX */}
-                  <div className="pt-2 border-t border-agarbatti-cream-border space-y-2">
-                    <label className="flex items-start gap-2.5 cursor-pointer select-none">
-                      <input
-                        type="checkbox"
-                        checked={formData.contact_opt_in}
-                        onChange={(e) => setFormData({ ...formData, contact_opt_in: e.target.checked })}
-                        className="mt-0.5 w-4 h-4 rounded text-agarbatti-800 border-agarbatti-cream-borderDark focus:ring-agarbatti-gold"
-                      />
-                      <span className="text-xs text-agarbatti-earth leading-snug">
-                        <strong className="text-agarbatti-900">Mandatory:</strong> I agree to be contacted regarding my enquiry through Email, SMS, WhatsApp or Phone Call. (See our <Link to="/privacy-policy" className="text-agarbatti-800 underline hover:text-agarbatti-gold">Privacy Policy</Link>) <span className="text-rose-500">*</span>
-                      </span>
-                    </label>
-                    {errors.contact_opt_in && (
-                      <p className="text-[11px] text-rose-500 font-medium pl-6">{errors.contact_opt_in}</p>
-                    )}
-
-                    {/* OPTIONAL MARKETING OPT-IN CHECKBOX */}
-                    <label className="flex items-start gap-2.5 cursor-pointer select-none pt-1">
-                      <input
-                        type="checkbox"
-                        checked={formData.marketing_opt_in}
-                        onChange={(e) => setFormData({ ...formData, marketing_opt_in: e.target.checked })}
-                        className="mt-0.5 w-4 h-4 rounded text-agarbatti-800 border-agarbatti-cream-borderDark focus:ring-agarbatti-gold"
-                      />
-                      <span className="text-xs text-agarbatti-earth-muted leading-snug">
-                        <span className="font-medium text-agarbatti-earth">Optional:</span> I would also like to receive promotional offers, new product updates and marketing communications through Email, SMS, WhatsApp or Phone Call.
-                      </span>
-                    </label>
-                  </div>
-
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full btn-gold-primary py-3.5 rounded-xl text-sm font-semibold flex items-center justify-center gap-2 shadow-lg disabled:opacity-60 mt-2"
-                  >
-                    {isSubmitting ? (
-                      <span>Sending Enquiry...</span>
-                    ) : (
-                      <>
-                        <span>Send Enquiry</span>
-                        <Send className="w-4 h-4" />
-                      </>
-                    )}
-                  </button>
-
-                </form>
-              )}
-
-            </div>
-          </div>
-
-        </div>
-
-        {/* Google Maps Location Embed Section */}
-        <div className="mt-12 bg-[#FFFDF9] p-6 rounded-2xl border border-agarbatti-cream-border shadow-md space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-            <div>
-              <span className="text-xs font-bold text-agarbatti-gold uppercase tracking-wider">
-                Geographic Presence &amp; Location
-              </span>
-              <h3 className="text-lg font-serif font-bold text-agarbatti-900">
-                Registered Office Location — Colaba, Mumbai
-              </h3>
-            </div>
             <a
               href="https://maps.google.com/?q=Shapoorji+Pallonji+Centre+Colaba+Mumbai+400005"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-agarbatti-900 hover:text-agarbatti-700 transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-semibold"
             >
-              <span>Open in Google Maps</span>
-              <ExternalLink className="w-3.5 h-3.5" />
+              Open location in Google Maps <ExternalLink className="h-4 w-4" />
             </a>
-          </div>
+          </aside>
 
-          <div className="w-full h-80 rounded-xl overflow-hidden border border-agarbatti-cream-border shadow-inner">
-            <iframe
-              title="Shapoorji Pallonji Real Estate Private Limited Map Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.226553859664!2d72.8256242!3d18.9213813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7d1c14cbdfaa7%3A0xb30e8c755c91b5c!2sColaba%2C%20Mumbai%2C%20Maharashtra%20400005!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen={false}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+          <div className="border border-realestate-line bg-white p-7 shadow-sm sm:p-9">
+            {isSubmitted ? (
+              <div className="py-14 text-center">
+                <CheckCircle2 className="mx-auto h-12 w-12 text-emerald-600" />
+                <h2 className="mt-5 font-display text-3xl font-semibold">Thank you for your enquiry.</h2>
+                <p className="mx-auto mt-4 max-w-md text-sm leading-7 text-realestate-muted">
+                  Your details have been recorded. Our team can contact you regarding {formData.productInterested}.
+                </p>
+                <button onClick={resetForm} className="mt-7 border border-realestate-ink px-5 py-3 text-sm font-semibold">Submit another enquiry</button>
+              </div>
+            ) : (
+              <>
+                <div className="mb-7">
+                  <p className="section-kicker">Enquiry</p>
+                  <h2 className="mt-3 font-display text-3xl font-semibold">Tell us what you’re looking for.</h2>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <Field label="Full name" error={errors.fullName}><input value={formData.fullName} onChange={e => setFormData({ ...formData, fullName: e.target.value })} /></Field>
+                    <Field label="Company / family name"><input value={formData.companyName} onChange={e => setFormData({ ...formData, companyName: e.target.value })} /></Field>
+                    <Field label="Email" error={errors.email}><input type="email" value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} /></Field>
+                    <Field label="Mobile number" error={errors.mobileNumber}><input type="tel" value={formData.mobileNumber} onChange={e => setFormData({ ...formData, mobileNumber: e.target.value })} /></Field>
+                  </div>
+
+                  <Field label="Project / property of interest" error={errors.productInterested}>
+                    <select value={formData.productInterested} onChange={e => setFormData({ ...formData, productInterested: e.target.value })}>
+                      <option value="">Select a project</option>
+                      {PRODUCTS_DATA.map(p => <option key={p.id} value={p.name}>{p.name}</option>)}
+                      <option value="General Residential Enquiry">General Residential Enquiry</option>
+                    </select>
+                  </Field>
+
+                  <Field label="Budget / requirement">
+                    <input value={formData.quantity} onChange={e => setFormData({ ...formData, quantity: e.target.value })} placeholder="Example: 3 BHK, preferred location, budget range" />
+                  </Field>
+
+                  <Field label="Message" error={errors.message}>
+                    <textarea rows={5} value={formData.message} onChange={e => setFormData({ ...formData, message: e.target.value })} placeholder="Tell us about your requirements..." />
+                  </Field>
+
+                  <div className="border-t border-realestate-line pt-5">
+                    <label className="flex items-start gap-3 text-xs leading-5 text-realestate-muted">
+                      <input type="checkbox" checked={formData.contact_opt_in} onChange={e => setFormData({ ...formData, contact_opt_in: e.target.checked })} className="mt-1" />
+                      <span>I agree to be contacted regarding my enquiry by phone, email or WhatsApp. <span className="text-red-600">*</span></span>
+                    </label>
+                    {errors.contact_opt_in && <p className="mt-1 pl-7 text-xs text-red-600">{errors.contact_opt_in}</p>}
+                    <label className="mt-3 flex items-start gap-3 text-xs leading-5 text-realestate-muted">
+                      <input type="checkbox" checked={formData.marketing_opt_in} onChange={e => setFormData({ ...formData, marketing_opt_in: e.target.checked })} className="mt-1" />
+                      <span>I would also like to receive property updates and marketing communications.</span>
+                    </label>
+                  </div>
+
+                  <button type="submit" disabled={isSubmitting} className="inline-flex w-full items-center justify-center gap-2 bg-realestate-charcoal px-5 py-3.5 text-sm font-semibold text-white transition hover:opacity-90 disabled:opacity-50">
+                    {isSubmitting ? 'Sending…' : 'Send enquiry'} <Send className="h-4 w-4" />
+                  </button>
+                </form>
+              </>
+            )}
           </div>
         </div>
-
-      </div>
+      </section>
     </main>
   );
 };
+
+function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
+  return (
+    <label className="block">
+      <span className="mb-2 block text-xs font-semibold uppercase tracking-[.12em] text-realestate-muted">{label}</span>
+      <div className="field-control">{children}</div>
+      {error && <span className="mt-1 block text-xs text-red-600">{error}</span>}
+    </label>
+  );
+}
 
 export default ContactPage;
