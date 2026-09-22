@@ -32,3 +32,4 @@ return <main className="bg-realestate-sand pb-24">
 </div></article>)}
 </div>
 </div></main>
+}
