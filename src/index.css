@@ -1,143 +1,32 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  body {
-    background-color: #FCF9F2;
-    color: #1C100B;
-    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 400;
-    overflow-x: hidden;
-  }
-  ::selection {
-    background: rgba(197, 155, 39, 0.35);
-    color: #2A060B;
-  }
-  p {
-    color: #2D1A12;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    color: #1A080B;
-    font-weight: 700;
-  }
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
 
-/* ── Spiritual Luxury Cream & Maroon Utilities ────────────── */
-.bg-cream-pattern {
-  background-color: #FCF9F2;
-  background-image: radial-gradient(rgba(197, 155, 39, 0.12) 1.2px, transparent 1.2px);
-  background-size: 28px 28px;
+:root{--sand:#f6f2ea;--paper:#fbfaf7;--ink:#20221f;--muted:#6b6d68;--line:#ded8ce;--charcoal:#262723;--olive:#606858;--brass:#a48352}
+@layer base{
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--sand);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:#d9ccb7;color:var(--ink)}
+h1,h2,h3,h4,h5,h6{font-family:'Manrope',system-ui,sans-serif;color:var(--ink)}
+p{color:var(--muted)}
 }
-
-.bg-incense-hero {
-  background-color: #220509;
-  background-image: 
-    radial-gradient(circle at 20% 30%, rgba(197, 155, 39, 0.22) 0%, transparent 45%),
-    radial-gradient(circle at 80% 70%, rgba(107, 20, 38, 0.45) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(34, 5, 9, 0.98) 0%, rgba(53, 8, 14, 0.96) 100%);
+@layer utilities{
+.font-display{font-family:'Manrope',system-ui,sans-serif}
+.font-editorial{font-family:'Playfair Display',Georgia,serif}
+.bg-realestate-sand{background:var(--sand)}
+.bg-realestate-paper{background:var(--paper)}
+.bg-realestate-charcoal{background:var(--charcoal)}
+.text-realestate-ink{color:var(--ink)}
+.text-realestate-muted{color:var(--muted)}
+.text-realestate-brass{color:var(--brass)}
+.border-realestate-line{border-color:var(--line)}
+.section-kicker{letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;font-weight:600;color:var(--olive)}
+.section-title{font-family:'Manrope',system-ui,sans-serif;font-weight:600;letter-spacing:-.045em;line-height:1.05}
+.editorial-link{position:relative;display:inline-flex;align-items:center;gap:.55rem;font-size:.9rem;font-weight:600;color:var(--ink)}
+.editorial-link::after{content:'';width:34px;height:1px;background:currentColor;transition:width .25s ease}
+.editorial-link:hover::after{width:52px}
+.soft-card{background:rgba(255,255,255,.7);border:1px solid var(--line);box-shadow:0 14px 40px rgba(30,30,26,.05)}
+.site-progress{position:fixed;top:0;left:0;height:2px;background:var(--brass);z-index:70}
 }
-
-.bg-dark-incense {
-  background-color: #150905;
-  background-image: 
-    radial-gradient(circle at 85% 20%, rgba(197, 155, 39, 0.16) 0%, transparent 45%),
-    radial-gradient(circle at 15% 85%, rgba(107, 20, 38, 0.3) 0%, transparent 50%),
-    linear-gradient(160deg, #1C0F0A 0%, #100603 100%);
-}
-
-.card-luxury-cream {
-  background: #FFFFFF;
-  border: 1px solid #E5D7C3;
-  box-shadow: 0 4px 20px -2px rgba(74, 14, 23, 0.06), 0 2px 6px -1px rgba(74, 14, 23, 0.03);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.card-luxury-cream:hover {
-  transform: translateY(-4px);
-  border-color: #C59B27;
-  box-shadow: 0 16px 32px -4px rgba(74, 14, 23, 0.12), 0 6px 14px -2px rgba(197, 155, 39, 0.15);
-}
-
-/* ── Typography & Gradients ──────────────────────── */
-.font-serif-luxury {
-  font-family: 'Playfair Display', Georgia, serif;
-}
-
-.text-gradient-gold {
-  background: linear-gradient(135deg, #F3D27E 0%, #D4AF37 50%, #B38924 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-maroon {
-  background: linear-gradient(135deg, #7E172C 0%, #3D0A10 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ── High-Contrast Luxury Buttons ───────────────────── */
-.btn-gold-primary {
-  background: linear-gradient(135deg, #E4B556 0%, #C59B27 100%);
-  color: #1A0407;
-  font-weight: 700;
-  box-shadow: 0 4px 18px rgba(197, 155, 39, 0.35);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-gold-primary:hover {
-  background: linear-gradient(135deg, #EFCA75 0%, #D4AF37 100%);
-  box-shadow: 0 6px 25px rgba(197, 155, 39, 0.5);
-  transform: translateY(-2px);
-}
-
-.btn-maroon-primary {
-  background: linear-gradient(135deg, #6B1426 0%, #4A0E17 100%);
-  color: #FFFFFF;
-  font-weight: 700;
-  box-shadow: 0 4px 16px rgba(74, 14, 23, 0.35);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-maroon-primary:hover {
-  background: linear-gradient(135deg, #8B1E34 0%, #6B1426 100%);
-  box-shadow: 0 6px 22px rgba(74, 14, 23, 0.45);
-  transform: translateY(-2px);
-}
-
-.btn-outline-gold {
-  background: transparent;
-  border: 2px solid #C59B27;
-  color: #C59B27;
-  font-weight: 700;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.btn-outline-gold:hover {
-  background: rgba(197, 155, 39, 0.15);
-  border-color: #DFB743;
-  color: #DFB743;
-  transform: translateY(-2px);
-}
-
-/* ── Scroll Progress Bar ─────────────────────────── */
-.scroll-progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3.5px;
-  background: linear-gradient(90deg, #6B1426 0%, #C59B27 70%, #E4B556 100%);
-  z-index: 100;
-  transition: width 0.1s cubic-bezier(0.1, 0.9, 0.2, 1);
-  box-shadow: 0 0 10px rgba(197, 155, 39, 0.6);
-}
-
-/* ── Smooth Scrolling & Scrollbar ────────────────── */
-html {
-  scroll-behavior: smooth;
-}
-
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
