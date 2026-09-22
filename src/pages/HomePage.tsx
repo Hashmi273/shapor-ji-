@@ -1,32 +1,28 @@
-﻿import React from 'react';
-import HeroSection from '../components/HeroSection';
-import AboutBrandSection from '../components/AboutBrandSection';
-import FeaturedProductsSection from '../components/FeaturedProductsSection';
-import FragranceExperienceSection from '../components/FragranceExperienceSection';
-import WhyChooseUsSection from '../components/WhyChooseUsSection';
-import ProductExperienceSection from '../components/ProductExperienceSection';
-import UsesSection from '../components/UsesSection';
-import QualitySection from '../components/QualitySection';
-import CTASection from '../components/CTASection';
-
-interface HomePageProps {
-  onOpenEnquiryModal?: (productName?: string) => void;
-}
-
-export const HomePage: React.FC<HomePageProps> = ({ onOpenEnquiryModal }) => {
-  return (
-    <main className="min-h-screen">
-      <HeroSection onOpenEnquiryModal={() => onOpenEnquiryModal && onOpenEnquiryModal()} />
-      <AboutBrandSection />
-      <FeaturedProductsSection onOpenEnquiryModal={onOpenEnquiryModal} />
-      <FragranceExperienceSection />
-      <WhyChooseUsSection />
-      <ProductExperienceSection />
-      <UsesSection />
-      <QualitySection />
-      <CTASection onOpenEnquiryModal={() => onOpenEnquiryModal && onOpenEnquiryModal()} />
-    </main>
-  );
-};
-
-export default HomePage;
+import React from 'react';
+import {ArrowDownRight,ArrowRight,Building2,CalendarDays,MapPin,ShieldCheck,Trees,Waves} from 'lucide-react';
+interface HomePageProps{onOpenEnquiryModal?: (item?:string)=>void}
+export default function HomePage({onOpenEnquiryModal}:HomePageProps){
+const highlights=[['Established','1865','A long-standing Indian enterprise'],['Portfolio','40+','Landmark developments across India'],['Design','Thoughtful','Homes shaped around real living'],['Approach','Craft-led','Quality before excess']];
+const projects=[
+['RERA / Project Portfolio','Mumbai & premium urban destinations','Residential · Mixed-use · Premium','https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85'],
+['Contemporary Residences','Signature city neighbourhoods','High-rise · Lifestyle · Family','https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1400&q=85'],
+['Private Urban Living','Connected, established locations','Premium · Private · Refined','https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=85']];
+return <main>
+<section className="relative min-h-[680px] lg:min-h-[760px] overflow-hidden">
+<img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=2200&q=90" alt="Contemporary luxury residence" className="absolute inset-0 h-full w-full object-cover"/>
+<div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/35 to-black/10"/>
+<div className="relative z-10 mx-auto flex min-h-[680px] max-w-7xl items-end px-5 pb-14 sm:px-8 lg:min-h-[760px] lg:px-10 lg:pb-20">
+<div className="max-w-3xl text-white"><p className="mb-5 text-[11px] font-semibold uppercase tracking-[.2em] text-white/70">Shapoorji Pallonji Real Estate</p>
+<h1 className="font-display text-4xl font-semibold leading-[1.02] tracking-[-.055em] text-white sm:text-6xl lg:text-7xl">Homes that feel considered, <span className="font-editorial font-medium text-white/90">not manufactured.</span></h1>
+<p className="mt-6 max-w-2xl text-base leading-7 text-white/78 sm:text-lg">Discover thoughtfully planned residences where architecture, landscape and everyday comfort are brought together with restraint.</p>
+<div className="mt-8 flex flex-col gap-3 sm:flex-row"><button onClick={()=>onOpenEnquiryModal?.('Residential Enquiry')} className="inline-flex items-center justify-center gap-2 bg-white px-6 py-3.5 text-sm font-semibold text-[#23241f] transition hover:bg-[#eee9df]">Schedule a conversation<ArrowRight className="h-4 w-4"/></button><a href="#projects" className="inline-flex items-center justify-center gap-2 border border-white/40 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/75 hover:bg-white/10">View selected work<ArrowDownRight className="h-4 w-4"/></a></div>
+</div></div>
+<div className="absolute bottom-0 left-0 right-0 border-t border-white/15 bg-black/20"><div className="mx-auto grid max-w-7xl grid-cols-2 gap-px sm:grid-cols-4">{highlights.map(([a,b,c])=><div key={a} className="border-r border-white/10 px-5 py-5 last:border-r-0 lg:px-8"><p className="text-[10px] uppercase tracking-[.16em] text-white/55">{a}</p><p className="mt-1 font-display text-xl font-semibold text-white">{b}</p><p className="mt-1 text-xs text-white/55">{c}</p></div>)}</div></div>
+</section>
+<section className="bg-realestate-paper py-20 lg:py-28"><div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[1.05fr_.95fr] lg:px-10"><div><p className="section-kicker">A different idea of premium</p><h2 className="section-title mt-5 max-w-2xl text-4xl sm:text-5xl">Luxury can be quiet.</h2><p className="mt-6 max-w-xl text-base leading-8">The most memorable homes are rarely the loudest. They reveal themselves through natural light, proportion, circulation, material and the feeling of arriving home.</p><a href="#philosophy" className="editorial-link mt-8">Our design philosophy</a></div>
+<div className="grid gap-4 sm:grid-cols-2">{[[Building2,'Architecture','Clean proportions, practical layouts and a strong relationship with the city around each address.'],[Trees,'Landscape','Green edges, shaded pauses and open spaces designed to slow the pace of everyday life.'],[Waves,'Amenities','Useful, well-proportioned spaces that support wellness, family time and social connection.'],[ShieldCheck,'Trust','A clear journey from first enquiry to property information and assisted decision making.']].map(([Icon,title,copy])=><div key={String(title)} className="soft-card p-6"><Icon className="h-5 w-5 text-realestate-brass"/><h3 className="mt-7 text-lg font-semibold">{String(title)}</h3><p className="mt-3 text-sm leading-6">{String(copy)}</p></div>)}</div></div></section>
+<section id="projects" className="bg-realestate-sand py-20 lg:py-28"><div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10"><div className="flex flex-col justify-between gap-5 border-b border-realestate-line pb-8 sm:flex-row sm:items-end"><div><p className="section-kicker">Selected portfolio</p><h2 className="section-title mt-4 text-4xl sm:text-5xl">Spaces with a point of view.</h2></div><a href="#enquiry" className="editorial-link">Request current availability</a></div><div className="mt-10 grid gap-6 lg:grid-cols-3">{projects.map(([name,location,meta,image])=><article key={name} className="group overflow-hidden border border-realestate-line bg-white"><div className="aspect-[4/3] overflow-hidden"><img src={image as string} alt={name as string} className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.03]"/></div><div className="p-6"><p className="text-[10px] uppercase tracking-[.16em] text-realestate-muted">{meta}</p><h3 className="mt-3 text-xl font-semibold">{name}</h3><div className="mt-4 flex items-center gap-2 text-sm text-realestate-muted"><MapPin className="h-4 w-4 text-realestate-brass"/> {location}</div><button onClick={()=>onOpenEnquiryModal?.(name as string)} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-realestate-ink">Enquire<ArrowRight className="h-4 w-4"/></button></div></article>)}</div></div></section>
+<section id="philosophy" className="bg-realestate-charcoal py-20 text-white lg:py-28"><div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:px-10"><div><p className="text-[11px] uppercase tracking-[.18em] text-white/45">Design philosophy</p><h2 className="mt-5 max-w-md font-display text-4xl font-semibold tracking-[-.045em] text-white sm:text-5xl">Made for how life is actually lived.</h2></div><div className="grid gap-10 sm:grid-cols-2">{[['01','Start with the address','A home begins with its relationship to neighbourhood, access, light and the wider city.'],['02','Plan for everyday life','Layouts are considered around movement, storage, privacy and the moments that happen in between.'],['03','Keep the material language calm','Stone, timber, metal and greenery work together without competing for attention.'],['04','Let the details age well','Good design is not dependent on novelty. It should still feel right years from now.']].map(([n,t,c])=><div key={n} className="border-t border-white/15 pt-5"><p className="text-xs text-white/40">{n}</p><h3 className="mt-4 text-lg font-semibold text-white">{t}</h3><p className="mt-3 text-sm leading-6 text-white/60">{c}</p></div>)}</div></div></section>
+<section className="bg-realestate-paper py-20 lg:py-28"><div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10"><div className="grid gap-8 md:grid-cols-4">{['Detailed project information','Transparent enquiry process','Human-led sales assistance','Location-focused decision making'].map((x,i)=><div key={x} className="border-t border-realestate-line pt-5"><p className="text-xs text-realestate-brass">0{i+1}</p><p className="mt-3 text-sm font-semibold">{x}</p></div>)}</div></div></section>
+<section id="enquiry" className="bg-[#e7e1d6] py-20 lg:py-24"><div className="mx-auto grid max-w-7xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[1.2fr_.8fr] lg:px-10"><div><p className="section-kicker">Private appointments</p><h2 className="section-title mt-4 max-w-2xl text-4xl sm:text-5xl">Tell us what you are looking for.</h2><p className="mt-5 max-w-xl text-base leading-7">Share your preferred location, budget range or project interest. Our team can guide you toward the relevant property information.</p></div><div className="border border-[#cec6b8] bg-white p-7"><div className="flex items-start gap-4"><CalendarDays className="mt-1 h-5 w-5 text-realestate-brass"/><div><h3 className="font-semibold">Request a conversation</h3><p className="mt-2 text-sm leading-6">A simple, human conversation is often the quickest way to narrow down the right options.</p></div></div><button onClick={()=>onOpenEnquiryModal?.('Residential Enquiry')} className="mt-7 w-full bg-[#252621] px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-[#3a3b34]">Start enquiry</button></div></div></section>
+</main>}
