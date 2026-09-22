@@ -105,28 +105,28 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-agarbatti-950/75 backdrop-blur-sm animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4 backdrop-blur-[2px]">
       <div 
-        className="bg-[#FFFDF9] rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden border border-agarbatti-cream-border relative max-h-[92vh] flex flex-col"
+        className="relative flex max-h-[92vh] w-full max-w-lg flex-col overflow-hidden border border-[#d9d2c7] bg-[#fbfaf7] shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="bg-gradient-to-r from-agarbatti-900 to-agarbatti-950 text-white p-5 sm:p-6 relative flex justify-between items-start border-b border-agarbatti-800">
+        <div className="bg-[#2b2c27] text-white p-5 sm:p-6 relative flex justify-between items-start border-b border-white/10">
           <div>
-            <div className="flex items-center gap-2 text-agarbatti-gold text-xs font-semibold uppercase tracking-wider mb-1">
-              <Flower2 className="w-4 h-4 text-agarbatti-gold" />
+            <div className="flex items-center gap-2 text-[#b59767] text-xs font-semibold uppercase tracking-wider mb-1">
+              <Flower2 className="w-4 h-4 text-[#b59767]" />
               <span>Residential Property Enquiry</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold font-serif text-white">
               Enquire about a Property
             </h3>
-            <p className="text-xs text-agarbatti-gold-100/80 mt-1">
+            <p className="text-xs text-[#b59767]-100/80 mt-1">
               Property Sales &amp; Enquiries • Shapoorji Pallonji Real Estate
             </p>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-full text-agarbatti-gold-100 hover:text-white hover:bg-agarbatti-800 transition-colors"
+            className="p-1.5 rounded-full text-[#b59767]-100 hover:text-white hover:bg-agarbatti-800 transition-colors"
             aria-label="Close Modal"
           >
             <X className="w-5 h-5" />
@@ -140,25 +140,25 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
               <div className="w-16 h-16 bg-emerald-50 text-emerald-700 rounded-full flex items-center justify-center mx-auto border-2 border-emerald-200">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
-              <h4 className="text-xl font-bold text-agarbatti-900 font-serif">
+              <h4 className="text-xl font-bold text-[#252621] font-serif">
                 Thank you! Your enquiry has been submitted successfully.
               </h4>
-              <p className="text-sm text-agarbatti-earth-muted max-w-sm mx-auto leading-relaxed">
-                Dear <strong className="text-agarbatti-900">{formData.fullName}</strong>, our team at <strong className="text-agarbatti-900">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong> will contact you shortly with fragrance details and commercial availability.
+              <p className="text-sm text-[#34352f]-muted max-w-sm mx-auto leading-relaxed">
+                Dear <strong className="text-[#252621]">{formData.fullName}</strong>, our team at <strong className="text-[#252621]">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong> will contact you shortly with fragrance details and commercial availability.
               </p>
-              <div className="bg-agarbatti-cream-card p-3.5 rounded-xl border border-agarbatti-cream-border text-xs text-agarbatti-earth max-w-sm mx-auto text-left space-y-1">
+              <div className="bg-[#f1ede5] p-3.5 rounded-xl border border-[#ded8ce] text-xs text-[#34352f] max-w-sm mx-auto text-left space-y-1">
                 <div className="flex justify-between">
-                  <span className="text-agarbatti-earth-muted">Helpline:</span>
-                  <span className="font-semibold text-agarbatti-900">+91 8700983465</span>
+                  <span className="text-[#34352f]-muted">Helpline:</span>
+                  <span className="font-semibold text-[#252621]">+91 8700983465</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-agarbatti-earth-muted">Email:</span>
-                  <span className="font-semibold text-agarbatti-900">viveklukar1999@gmail.com</span>
+                  <span className="text-[#34352f]-muted">Email:</span>
+                  <span className="font-semibold text-[#252621]">viveklukar1999@gmail.com</span>
                 </div>
               </div>
               <button
                 onClick={onClose}
-                className="btn-gold-primary px-6 py-2.5 rounded-lg text-sm font-semibold mt-2"
+                className="bg-[#262723] text-white hover:bg-[#3a3b34] transition px-6 py-2.5 rounded-lg text-sm font-semibold mt-2"
               >
                 Close Window
               </button>
@@ -168,7 +168,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
               
               {/* Full Name */}
               <div>
-                <label className="block text-xs font-semibold text-agarbatti-earth uppercase tracking-wider mb-1">
+                <label className="block text-xs font-semibold text-[#34352f] uppercase tracking-wider mb-1">
                   Full Name <span className="text-rose-500">*</span>
                 </label>
                 <div className="relative">
@@ -180,8 +180,8 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                     className={`w-full pl-9 pr-3 py-2 text-sm rounded-lg border bg-white ${
-                      errors.fullName ? 'border-rose-400 bg-rose-50/20' : 'border-agarbatti-cream-borderDark focus:border-agarbatti-gold'
-                    } focus:outline-none focus:ring-1 focus:ring-agarbatti-gold`}
+                      errors.fullName ? 'border-rose-400 bg-rose-50/20' : 'border-[#ded8ce]Dark focus:border-[#a48352]'
+                    } focus:outline-none focus:ring-1 focus:ring-[#a48352]`}
                   />
                 </div>
                 {errors.fullName && <p className="text-[11px] text-rose-500 mt-1">{errors.fullName}</p>}
@@ -190,7 +190,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
               {/* Company & Email in Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
-                  <label className="block text-xs font-semibold text-agarbatti-earth uppercase tracking-wider mb-1">
+                  <label className="block text-xs font-semibold text-[#34352f] uppercase tracking-wider mb-1">
                     Company Name
                   </label>
                   <div className="relative">
@@ -200,13 +200,13 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                       placeholder="Retail / Wholesale / Individual"
                       value={formData.companyName}
                       onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-agarbatti-cream-borderDark bg-white focus:border-agarbatti-gold focus:outline-none focus:ring-1 focus:ring-agarbatti-gold"
+                      className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-[#ded8ce]Dark bg-white focus:border-[#a48352] focus:outline-none focus:ring-1 focus:ring-[#a48352]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-agarbatti-earth uppercase tracking-wider mb-1">
+                  <label className="block text-xs font-semibold text-[#34352f] uppercase tracking-wider mb-1">
                     Email Address <span className="text-rose-500">*</span>
                   </label>
                   <div className="relative">
@@ -218,8 +218,8 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className={`w-full pl-9 pr-3 py-2 text-sm rounded-lg border bg-white ${
-                        errors.email ? 'border-rose-400 bg-rose-50/20' : 'border-agarbatti-cream-borderDark focus:border-agarbatti-gold'
-                      } focus:outline-none focus:ring-1 focus:ring-agarbatti-gold`}
+                        errors.email ? 'border-rose-400 bg-rose-50/20' : 'border-[#ded8ce]Dark focus:border-[#a48352]'
+                      } focus:outline-none focus:ring-1 focus:ring-[#a48352]`}
                     />
                   </div>
                   {errors.email && <p className="text-[11px] text-rose-500 mt-1">{errors.email}</p>}
@@ -229,7 +229,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
               {/* Mobile Number & Product */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
-                  <label className="block text-xs font-semibold text-agarbatti-earth uppercase tracking-wider mb-1">
+                  <label className="block text-xs font-semibold text-[#34352f] uppercase tracking-wider mb-1">
                     Mobile Number <span className="text-rose-500">*</span>
                   </label>
                   <div className="relative">
@@ -241,21 +241,21 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                       value={formData.mobileNumber}
                       onChange={(e) => setFormData({ ...formData, mobileNumber: e.target.value })}
                       className={`w-full pl-9 pr-3 py-2 text-sm rounded-lg border bg-white ${
-                        errors.mobileNumber ? 'border-rose-400 bg-rose-50/20' : 'border-agarbatti-cream-borderDark focus:border-agarbatti-gold'
-                      } focus:outline-none focus:ring-1 focus:ring-agarbatti-gold`}
+                        errors.mobileNumber ? 'border-rose-400 bg-rose-50/20' : 'border-[#ded8ce]Dark focus:border-[#a48352]'
+                      } focus:outline-none focus:ring-1 focus:ring-[#a48352]`}
                     />
                   </div>
                   {errors.mobileNumber && <p className="text-[11px] text-rose-500 mt-1">{errors.mobileNumber}</p>}
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-agarbatti-earth uppercase tracking-wider mb-1">
+                  <label className="block text-xs font-semibold text-[#34352f] uppercase tracking-wider mb-1">
                     Product Interested In <span className="text-rose-500">*</span>
                   </label>
                   <select
                     value={formData.productInterested}
                     onChange={(e) => setFormData({ ...formData, productInterested: e.target.value })}
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-agarbatti-cream-borderDark bg-white focus:border-agarbatti-gold focus:outline-none focus:ring-1 focus:ring-agarbatti-gold"
+                    className="w-full px-3 py-2 text-sm rounded-lg border border-[#ded8ce]Dark bg-white focus:border-[#a48352] focus:outline-none focus:ring-1 focus:ring-[#a48352]"
                   >
                     <option value="">-- Select Project / Property --</option>
                     {['Runwal 7 Mahalaxmi','Runwal The Central Park','Runwal Auris','Runwal Lands End','Runwal Woods','Puranik’s Abitante Fiore','General Residential Enquiry'].map((item) => (
@@ -268,7 +268,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
 
               {/* Quantity */}
               <div>
-                <label className="block text-xs font-semibold text-agarbatti-earth uppercase tracking-wider mb-1">
+                <label className="block text-xs font-semibold text-[#34352f] uppercase tracking-wider mb-1">
                   Budget / Requirement
                 </label>
                 <input
@@ -276,13 +276,13 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                   placeholder="e.g. ₹2 Cr – ₹3 Cr, 3 BHK, investment or end use"
                   value={formData.quantity}
                   onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                  className="w-full px-3 py-2 text-sm rounded-lg border border-agarbatti-cream-borderDark bg-white focus:border-agarbatti-gold focus:outline-none focus:ring-1 focus:ring-agarbatti-gold"
+                  className="w-full px-3 py-2 text-sm rounded-lg border border-[#ded8ce]Dark bg-white focus:border-[#a48352] focus:outline-none focus:ring-1 focus:ring-[#a48352]"
                 />
               </div>
 
               {/* Message */}
               <div>
-                <label className="block text-xs font-semibold text-agarbatti-earth uppercase tracking-wider mb-1">
+                <label className="block text-xs font-semibold text-[#34352f] uppercase tracking-wider mb-1">
                   Message <span className="text-rose-500">*</span>
                 </label>
                 <textarea
@@ -292,23 +292,23 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className={`w-full px-3 py-2 text-sm rounded-lg border bg-white ${
-                    errors.message ? 'border-rose-400 bg-rose-50/20' : 'border-agarbatti-cream-borderDark focus:border-agarbatti-gold'
-                  } focus:outline-none focus:ring-1 focus:ring-agarbatti-gold`}
+                    errors.message ? 'border-rose-400 bg-rose-50/20' : 'border-[#ded8ce]Dark focus:border-[#a48352]'
+                  } focus:outline-none focus:ring-1 focus:ring-[#a48352]`}
                 />
                 {errors.message && <p className="text-[11px] text-rose-500 mt-1">{errors.message}</p>}
               </div>
 
               {/* MANDATORY CONTACT OPT-IN CHECKBOX */}
-              <div className="pt-2 border-t border-agarbatti-cream-border space-y-2">
+              <div className="pt-2 border-t border-[#ded8ce] space-y-2">
                 <label className="flex items-start gap-2.5 cursor-pointer select-none">
                   <input
                     type="checkbox"
                     checked={formData.contact_opt_in}
                     onChange={(e) => setFormData({ ...formData, contact_opt_in: e.target.checked })}
-                    className="mt-0.5 w-4 h-4 rounded text-agarbatti-800 border-agarbatti-cream-borderDark focus:ring-agarbatti-gold"
+                    className="mt-0.5 w-4 h-4 rounded text-agarbatti-800 border-[#ded8ce]Dark focus:ring-agarbatti-gold"
                   />
-                  <span className="text-xs text-agarbatti-earth leading-snug">
-                    <strong className="text-agarbatti-900">Mandatory:</strong> I agree to be contacted regarding my enquiry through Email, SMS, WhatsApp or Phone Call. (View our <Link to="/privacy-policy" className="text-agarbatti-800 underline hover:text-agarbatti-gold">Privacy Policy</Link>) <span className="text-rose-500">*</span>
+                  <span className="text-xs text-[#34352f] leading-snug">
+                    <strong className="text-[#252621]">Mandatory:</strong> I agree to be contacted regarding my enquiry through Email, SMS, WhatsApp or Phone Call. (View our <Link to="/privacy-policy" className="text-agarbatti-800 underline hover:text-[#b59767]">Privacy Policy</Link>) <span className="text-rose-500">*</span>
                   </span>
                 </label>
                 {errors.contact_opt_in && (
@@ -321,10 +321,10 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     type="checkbox"
                     checked={formData.marketing_opt_in}
                     onChange={(e) => setFormData({ ...formData, marketing_opt_in: e.target.checked })}
-                    className="mt-0.5 w-4 h-4 rounded text-agarbatti-800 border-agarbatti-cream-borderDark focus:ring-agarbatti-gold"
+                    className="mt-0.5 w-4 h-4 rounded text-agarbatti-800 border-[#ded8ce]Dark focus:ring-agarbatti-gold"
                   />
-                  <span className="text-xs text-agarbatti-earth-muted leading-snug">
-                    <span className="font-medium text-agarbatti-earth">Optional:</span> I would also like to receive promotional offers, new product updates and marketing communications through Email, SMS, WhatsApp or Phone Call.
+                  <span className="text-xs text-[#34352f]-muted leading-snug">
+                    <span className="font-medium text-[#34352f]">Optional:</span> I would also like to receive promotional offers, new product updates and marketing communications through Email, SMS, WhatsApp or Phone Call.
                   </span>
                 </label>
               </div>
