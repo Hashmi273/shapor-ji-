@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { X, Send, CheckCircle2, Sparkles, Phone, Mail, User, Building, Flower2 } from 'lucide-react';
-import { PRODUCTS_DATA } from '../data/productsData';
+
 
 interface EnquiryModalProps {
   isOpen: boolean;
@@ -67,7 +67,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
       errs.email = 'Please enter a valid email address';
     }
     if (!formData.productInterested.trim()) {
-      errs.productInterested = 'Please select a fragrance or product of interest';
+      errs.productInterested = 'Please select a project or property interest';
     }
     if (!formData.message.trim()) {
       errs.message = 'Please provide details about your requirement or message';
@@ -115,13 +115,13 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
           <div>
             <div className="flex items-center gap-2 text-agarbatti-gold text-xs font-semibold uppercase tracking-wider mb-1">
               <Flower2 className="w-4 h-4 text-agarbatti-gold" />
-              <span>Fragrance &amp; Product Enquiry</span>
+              <span>Residential Property Enquiry</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold font-serif text-white">
-              Enquire for Agarbatti &amp; Incense
+              Enquire about a Property
             </h3>
             <p className="text-xs text-agarbatti-gold-100/80 mt-1">
-              Brand: <strong className="text-white">SHAPOORJI PALLONJ</strong> • Operated by SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED
+              Property Sales &amp; Enquiries • Shapoorji Pallonji Real Estate
             </p>
           </div>
           <button
@@ -257,13 +257,10 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                     onChange={(e) => setFormData({ ...formData, productInterested: e.target.value })}
                     className="w-full px-3 py-2 text-sm rounded-lg border border-agarbatti-cream-borderDark bg-white focus:border-agarbatti-gold focus:outline-none focus:ring-1 focus:ring-agarbatti-gold"
                   >
-                    <option value="">-- Select Fragrance / Pack --</option>
-                    {PRODUCTS_DATA.map((p) => (
-                      <option key={p.id} value={p.name}>
-                        {p.name}
-                      </option>
+                    <option value="">-- Select Project / Property --</option>
+                    {['Runwal 7 Mahalaxmi','Runwal The Central Park','Runwal Auris','Runwal Lands End','Runwal Woods','Puranik’s Abitante Fiore','General Residential Enquiry'].map((item) => (
+                      <option key={item} value={item}>{item}</option>
                     ))}
-                    <option value="Custom Assortment">Custom Wholesale / Assortment</option>
                   </select>
                   {errors.productInterested && <p className="text-[11px] text-rose-500 mt-1">{errors.productInterested}</p>}
                 </div>
@@ -272,11 +269,11 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
               {/* Quantity */}
               <div>
                 <label className="block text-xs font-semibold text-agarbatti-earth uppercase tracking-wider mb-1">
-                  Quantity / Requirement
+                  Budget / Requirement
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. 10 Boxes, Sample Pack, Retail Bulk Inquiry"
+                  placeholder="e.g. ₹2 Cr – ₹3 Cr, 3 BHK, investment or end use"
                   value={formData.quantity}
                   onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
                   className="w-full px-3 py-2 text-sm rounded-lg border border-agarbatti-cream-borderDark bg-white focus:border-agarbatti-gold focus:outline-none focus:ring-1 focus:ring-agarbatti-gold"
@@ -291,7 +288,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
                 <textarea
                   rows={3}
                   required
-                  placeholder="Share details regarding your fragrance requirements or questions..."
+                  placeholder="Share details regarding your property requirement or preferred location..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className={`w-full px-3 py-2 text-sm rounded-lg border bg-white ${
