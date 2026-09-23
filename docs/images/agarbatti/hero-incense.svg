@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <radialGradient id="heroGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C59B27" stop-opacity="0.3"/>
+      <stop offset="60%" stop-color="#6B1426" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#1C0609" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="boxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4A0E17"/>
+      <stop offset="50%" stop-color="#2A060B"/>
+      <stop offset="100%" stop-color="#150305"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCEAB3"/>
+      <stop offset="50%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#9E7A1C"/>
+    </linearGradient>
+    <filter id="smokeGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Warm Aura -->
+  <rect width="800" height="600" fill="#1C0609"/>
+  <circle cx="400" cy="300" r="300" fill="url(#heroGlow)"/>
+  
+  <!-- Wooden / Brass Altar Surface -->
+  <ellipse cx="400" cy="520" rx="350" ry="60" fill="#2E170F" stroke="#C59B27" stroke-width="1.5" stroke-opacity="0.4"/>
+  <ellipse cx="400" cy="510" rx="330" ry="50" fill="#3D1F14"/>
+
+  <!-- Luxury Incense Packaging Box (3D Angle) -->
+  <g transform="translate(180, 220) rotate(-12)">
+    <rect width="280" height="90" rx="8" fill="url(#boxGrad)" stroke="url(#goldGrad)" stroke-width="2.5" filter="drop-shadow(0 15px 25px rgba(0,0,0,0.7))"/>
+    <rect x="10" y="10" width="260" height="70" rx="4" fill="none" stroke="#C59B27" stroke-width="1" stroke-dasharray="4 2"/>
+    <circle cx="50" cy="45" r="22" fill="#1C0609" stroke="url(#goldGrad)" stroke-width="1.5"/>
+    <text x="50" y="52" font-family="serif" font-size="16" font-weight="bold" fill="url(#goldGrad)" text-anchor="middle">SP</text>
+    <text x="85" y="40" font-family="serif" font-size="16" font-weight="bold" fill="#FFFFFF" letter-spacing="1">SHAPOORJI PALLONJ</text>
+    <text x="85" y="58" font-family="sans-serif" font-size="10" font-weight="bold" fill="url(#goldGrad)" letter-spacing="2">ROYAL SANDALWOOD AGARBATTI</text>
+    <rect x="85" y="66" width="160" height="2" fill="url(#goldGrad)"/>
+  </g>
+
+  <!-- Traditional Brass Incense Stand -->
+  <g transform="translate(480, 420)">
+    <!-- Base Plate -->
+    <ellipse cx="0" cy="30" rx="60" ry="18" fill="url(#goldGrad)" stroke="#755913" stroke-width="1.5"/>
+    <ellipse cx="0" cy="24" rx="45" ry="12" fill="#FCEAB3"/>
+    <!-- Center Lotus Pod -->
+    <path d="M -20 20 C -20 0, 20 0, 20 20 Z" fill="url(#goldGrad)"/>
+    <circle cx="0" cy="5" r="8" fill="#9E7A1C"/>
+    
+    <!-- 3 Burning Agarbatti Sticks -->
+    <!-- Stick 1 (Center) -->
+    <line x1="0" y1="5" x2="-25" y2="-220" stroke="#70422B" stroke-width="3" stroke-linecap="round"/>
+    <line x1="-25" y1="-220" x2="-27" y2="-235" stroke="#FF5722" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="-27" cy="-235" r="3" fill="#FFE082" filter="drop-shadow(0 0 8px #FF5722)"/>
+
+    <!-- Stick 2 (Right) -->
+    <line x1="0" y1="5" x2="35" y2="-200" stroke="#70422B" stroke-width="3" stroke-linecap="round"/>
+    <line x1="35" y1="-200" x2="38" y2="-215" stroke="#FF5722" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="38" cy="-215" r="3" fill="#FFE082" filter="drop-shadow(0 0 8px #FF5722)"/>
+
+    <!-- Stick 3 (Left) -->
+    <line x1="0" y1="5" x2="-55" y2="-180" stroke="#70422B" stroke-width="3" stroke-linecap="round"/>
+    <line x1="-55" y1="-180" x2="-58" y2="-192" stroke="#FF5722" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="-58" cy="-192" r="2.5" fill="#FFE082" filter="drop-shadow(0 0 6px #FF5722)"/>
+
+    <!-- Fragrant Smoke Trails (Curling gracefully) -->
+    <path d="M -27 -235 Q -40 -280, -10 -330 T -35 -420 T -15 -500" fill="none" stroke="rgba(255, 248, 238, 0.45)" stroke-width="4" stroke-linecap="round" filter="url(#smokeGlow)"/>
+    <path d="M 38 -215 Q 60 -260, 30 -310 T 55 -400 T 35 -480" fill="none" stroke="rgba(255, 235, 180, 0.35)" stroke-width="3.5" stroke-linecap="round" filter="url(#smokeGlow)"/>
+    <path d="M -58 -192 Q -85 -240, -60 -290 T -80 -370" fill="none" stroke="rgba(255, 248, 238, 0.3)" stroke-width="3" stroke-linecap="round" filter="url(#smokeGlow)"/>
+  </g>
+
+  <!-- Brass Diya / Deepam with Holy Flame -->
+  <g transform="translate(240, 460)">
+    <ellipse cx="0" cy="20" rx="35" ry="12" fill="url(#goldGrad)"/>
+    <path d="M -30 18 Q 0 35 30 18 Q 38 8 0 8 Q -38 8 -30 18 Z" fill="#D4AF37"/>
+    <ellipse cx="0" cy="12" rx="22" ry="6" fill="#755913"/>
+    <!-- Holy Flame -->
+    <path d="M 0 10 C -8 5, -8 -15, 0 -30 C 8 -15, 8 5, 0 10 Z" fill="#FFB300" filter="drop-shadow(0 0 12px #FF6F00)"/>
+    <path d="M 0 8 C -4 4, -4 -8, 0 -18 C 4 -8, 4 4, 0 8 Z" fill="#FFF59D"/>
+  </g>
+
+  <!-- Marigold & Rose Petals on Altar -->
+  <g transform="translate(360, 480)">
+    <circle cx="0" cy="0" r="14" fill="#FF8F00" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.5))"/>
+    <circle cx="0" cy="0" r="10" fill="#FFC107"/>
+    <circle cx="0" cy="0" r="5" fill="#FF5722"/>
+
+    <circle cx="35" cy="10" r="12" fill="#E91E63" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.5))"/>
+    <circle cx="35" cy="10" r="8" fill="#F48FB1"/>
+    
+    <circle cx="-50" cy="15" r="13" fill="#FF8F00"/>
+    <circle cx="-50" cy="15" r="8" fill="#FFE082"/>
+  </g>
+
+  <!-- Golden Brand Seal in Top Corner -->
+  <g transform="translate(680, 80)">
+    <circle cx="0" cy="0" r="45" fill="#2A060B" stroke="url(#goldGrad)" stroke-width="2"/>
+    <circle cx="0" cy="0" r="38" fill="none" stroke="url(#goldGrad)" stroke-width="1" stroke-dasharray="3 2"/>
+    <text x="0" y="-8" font-family="serif" font-size="14" font-weight="bold" fill="url(#goldGrad)" text-anchor="middle">100% PURE</text>
+    <text x="0" y="8" font-family="serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">AGARBATTI</text>
+    <text x="0" y="22" font-family="sans-serif" font-size="8" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="1">FRAGRANCE</text>
+  </g>
+</svg>

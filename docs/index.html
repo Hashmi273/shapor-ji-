@@ -12,26 +12,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <!-- Static CSS for direct GitHub Pages root serving -->
+  <script type="module" crossorigin src="./assets/main.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/style.css">
 </head>
 <body class="bg-white text-[#002558] antialiased overflow-x-hidden">
   <div id="root"></div>
 
   <!-- Vite Development Script -->
-  <script type="module" src="/src/main.tsx"></script>
 
   <!-- Static Production Fallback Script for GitHub Pages root -->
-  <script type="module">
-    setTimeout(() => {
-      const root = document.getElementById('root');
-      if (!root || root.children.length === 0) {
-        const s = document.createElement('script');
-        s.type = 'module';
-        s.crossOrigin = 'anonymous';
-        s.src = './assets/main.js';
-        document.body.appendChild(s);
-      }
-    }, 100);
-  </script>
 </body>
 </html>
