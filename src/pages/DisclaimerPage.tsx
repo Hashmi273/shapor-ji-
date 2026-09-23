@@ -1,99 +1,67 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { AlertCircle, ShieldCheck, Building2, Flower2, ArrowRight } from 'lucide-react';
+import { AlertCircle, ShieldCheck, Building2, CheckCircle2 } from 'lucide-react';
 
 export const DisclaimerPage: React.FC = () => {
   return (
-    <main className="pt-28 sm:pt-32 pb-24 bg-white text-agarbatti-earth min-h-screen">
-      
+    <main className="min-h-screen bg-[#f8f6f0] pb-24 text-[#111827]">
       {/* Header */}
-      <section className="bg-incense-hero text-white py-14 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-agarbatti-900 border border-agarbatti-gold/40 text-agarbatti-gold text-xs font-semibold uppercase tracking-wider">
-            <AlertCircle className="w-4 h-4 text-agarbatti-gold" />
-            <span>Product &amp; Brand Notice</span>
+      <section className="bg-[#0b1325] text-white py-16 border-b border-[#1e2a44]">
+        <div className="mx-auto max-w-4xl px-5 sm:px-8 text-center space-y-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-[#c5a059]/40 text-[#c5a059] text-xs font-bold uppercase tracking-wider">
+            <AlertCircle className="w-3.5 h-3.5" />
+            <span>Statutory Compliance</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-serif font-bold text-white">
-            General &amp; Product Disclaimer
+          <h1 className="font-display text-3xl sm:text-4xl font-bold">
+            Real Estate &amp; RERA Disclaimer
           </h1>
-          <p className="text-xs sm:text-sm text-agarbatti-gold-100/90">
-            Brand: <strong className="text-white">SHAPOORJI PALLONJ</strong> • Operating Entity: <strong className="text-white">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong>
+          <p className="text-xs sm:text-sm text-white/70">
+            Shapoorji Pallonji Real Estate • Official Disclosure
           </p>
         </div>
       </section>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8 text-slate-700 leading-relaxed text-sm">
-        
-        {/* Independent Entity Statement */}
-        <div className="p-6 rounded-2xl bg-amber-50 border border-amber-200 space-y-3">
-          <div className="flex items-center gap-2 text-amber-900 font-bold font-serif text-base">
-            <ShieldCheck className="w-5 h-5 text-amber-700 flex-shrink-0" />
-            <span>Independent Brand Notice</span>
+      <div className="mx-auto max-w-4xl px-5 py-12 sm:px-8 space-y-8 text-xs sm:text-sm text-[#586071] leading-relaxed">
+        {/* RERA Compliance Statement */}
+        <div className="rounded-xl border border-emerald-200 bg-emerald-50/70 p-6 sm:p-8 space-y-3">
+          <div className="flex items-center gap-2 text-emerald-900 font-display text-base font-bold">
+            <ShieldCheck className="w-5 h-5 text-emerald-700 flex-shrink-0" />
+            <span>Official RERA Regulatory Notice</span>
           </div>
-          <p className="text-xs sm:text-sm text-amber-950 leading-relaxed">
-            This website is an independent consumer brand and product showcase for incense and agarbatti products operated exclusively by <strong className="text-amber-950 font-semibold">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong> (GSTIN: 27AAYCS4968E1ZJ, Mumbai, India).
+          <p className="text-emerald-950 leading-relaxed">
+            All residential and commercial projects showcased on this website are registered with their respective state Real Estate Regulatory Authorities (MahaRERA in Maharashtra, Karnataka RERA in Karnataka). Project details, RERA numbers, and sanctioned floor plans are available on the official state RERA websites for public verification.
           </p>
         </div>
 
-        {/* Product Information & Imagery */}
-        <div className="space-y-3">
-          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
-            1. General Informational Purpose of Product Content
+        {/* Artistic Renders & Imagery */}
+        <div className="rounded-xl border border-[#e2ded4] bg-white p-6 sm:p-8 space-y-3 shadow-sm">
+          <h2 className="font-display text-lg font-bold text-[#0b1325]">
+            1. Artistic Renders &amp; Visual Impressions
           </h2>
           <p>
-            All agarbatti product descriptions, fragrance notes, pack size references, and lifestyle photographs presented on this website are for general informational and illustrative purposes only.
-          </p>
-          <p>
-            Actual product packaging, stick counts, burn times, and fragrance profiles may vary slightly depending on seasonal floral yields, natural raw materials, and customized bulk packaging requirements. Exact details and commercial availability should be verified directly with our commercial team.
+            Images, 3D renderings, virtual walk-throughs, sample apartment photographs, and architectural elevations displayed on this website are artist’s impressions and conceptual representations. Furniture, interior decor items, fixtures, fittings, and landscape foliage are for illustrative representation only and are not part of the standard apartment offering unless expressly stated in the Agreement for Sale.
           </p>
         </div>
 
-        {/* Commercial Inquiries & Quotes */}
-        <div className="space-y-3">
-          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
-            2. Commercial Inquiries &amp; Orders
+        {/* Carpet Area Disclosures */}
+        <div className="rounded-xl border border-[#e2ded4] bg-white p-6 sm:p-8 space-y-3 shadow-sm">
+          <h2 className="font-display text-lg font-bold text-[#0b1325]">
+            2. Carpet Area Specifications
           </h2>
           <p>
-            Submitting a contact form or requesting fragrance samples through this website does not represent a confirmed sales order. Final pricing, GST invoicing, and dispatch schedules are formally established through official proforma invoices or communications from <strong className="text-agarbatti-900">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong>.
+            Carpet areas mentioned for each configuration correspond to the net usable floor area of an apartment, excluding the area covered by external walls, service shafts, and exclusive balconies or verandahs, calculated strictly in accordance with Section 2(k) of the Real Estate (Regulation and Development) Act, 2016.
           </p>
         </div>
 
-        {/* Safe Usage of Incense */}
-        <div className="space-y-3">
-          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
-            3. Safe Usage of Agarbatti Products
+        {/* Pricing & Commercial Availability */}
+        <div className="rounded-xl border border-[#e2ded4] bg-white p-6 sm:p-8 space-y-3 shadow-sm">
+          <h2 className="font-display text-lg font-bold text-[#0b1325]">
+            3. Pricing &amp; Inventory Availability
           </h2>
           <p>
-            Incense sticks should always be burned in well-ventilated areas using suitable heat-resistant holders. Keep burning incense away from flammable materials and out of reach of unattended children and pets.
+            Starting prices and payment plans indicated on this portal are indicative and subject to change without prior notice depending on floor rise, view premiums, statutory taxes (GST, Stamp Duty, Registration), and unit availability. Formal quotations and unit allotment letters are provided directly by our authorized sales lounges.
           </p>
         </div>
-
-        {/* Contact */}
-        <div className="p-6 rounded-2xl bg-agarbatti-cream-card border border-agarbatti-cream-border space-y-3">
-          <h3 className="text-base font-serif font-bold text-agarbatti-900">
-            Questions Regarding Product Availability?
-          </h3>
-          <p className="text-xs sm:text-sm text-agarbatti-earth-muted">
-            For retail queries, sample packs, or wholesale distribution inquiries, please contact our registered office:
-          </p>
-          <div className="text-xs text-agarbatti-earth space-y-1">
-            <p><strong>Legal Entity:</strong> SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</p>
-            <p><strong>GSTIN / Registration No:</strong> 27AAYCS4968E1ZJ</p>
-            <p><strong>Address:</strong> 41/44, SHAPOORJI PALLONJI CENTRE, MINOO DESAI MARG, COLABA, MUMBAI, Mumbai City, Maharashtra, 400005</p>
-            <p><strong>Phone:</strong> +91 8700983465 | <strong>Email:</strong> viveklukar1999@gmail.com</p>
-          </div>
-          <div className="pt-2">
-            <Link
-              to="/contact"
-              className="btn-gold-primary px-5 py-2 rounded-xl text-xs font-semibold inline-flex items-center gap-1.5"
-            >
-              <span>Contact Fragrance Desk</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-        </div>
-
       </div>
     </main>
   );

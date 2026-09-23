@@ -45,25 +45,29 @@ function ScrollProgressBar() {
 function AppShell() {
   const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
   const [selectedEnquiryProduct, setSelectedEnquiryProduct] = useState('');
+
   const openEnquiry = (item = '') => {
     setSelectedEnquiryProduct(item);
     setIsEnquiryModalOpen(true);
   };
+
   const closeEnquiry = () => {
     setSelectedEnquiryProduct('');
     setIsEnquiryModalOpen(false);
   };
 
   return (
-    <div className="min-h-screen bg-realestate-sand text-realestate-ink">
+    <div className="min-h-screen bg-white text-[#002558]">
       <ScrollProgressBar />
       <ScrollToTop />
       <Navbar onOpenEnquiryModal={openEnquiry} />
-      <div className="pt-[104px]">
+      <div className="pt-[76px] md:pt-[110px]">
         <Routes>
           <Route path="/" element={<HomePage onOpenEnquiryModal={openEnquiry} />} />
           <Route path="/products" element={<ProductsPage onOpenEnquiryModal={openEnquiry} />} />
+          <Route path="/projects" element={<ProductsPage onOpenEnquiryModal={openEnquiry} />} />
           <Route path="/fragrances" element={<FragrancesPage />} />
+          <Route path="/experience" element={<FragrancesPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
@@ -73,7 +77,11 @@ function AppShell() {
         </Routes>
       </div>
       <Footer />
-      <EnquiryModal isOpen={isEnquiryModalOpen} onClose={closeEnquiry} defaultProduct={selectedEnquiryProduct} />
+      <EnquiryModal
+        isOpen={isEnquiryModalOpen}
+        onClose={closeEnquiry}
+        defaultProduct={selectedEnquiryProduct}
+      />
     </div>
   );
 }

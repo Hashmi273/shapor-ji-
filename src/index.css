@@ -1,32 +1,125 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root{--sand:#f6f2ea;--paper:#fbfaf7;--ink:#20221f;--muted:#6b6d68;--line:#ded8ce;--charcoal:#262723;--olive:#606858;--brass:#a48352}
-@layer base{
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--sand);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-::selection{background:#d9ccb7;color:var(--ink)}
-h1,h2,h3,h4,h5,h6{font-family:'Manrope',system-ui,sans-serif;color:var(--ink)}
-p{color:var(--muted)}
+:root {
+  /* 40% White Base */
+  --sand: #ffffff;
+  --paper: #ffffff;
+  
+  /* 60% Colors from Shapoorji Pallonji Logo */
+  --ink: #002558;        /* Logo Dark Navy text */
+  --muted: #4a5e7b;      /* Slate Blue Muted */
+  --line: #d8e3f0;      /* Crisp Ice Border */
+  --charcoal: #001d45;  /* Deep Navy */
+  --sp-navy: #003882;   /* Logo "S" & wordmark */
+  --sp-blue: #0077c8;   /* Logo "P" Cerulean */
+  --sp-sky: #0090f0;
+  --sp-ice: #f2f6fa;    /* Subtle Ice background for section breaks */
 }
-@layer utilities{
-.font-display{font-family:'Manrope',system-ui,sans-serif}
-.font-editorial{font-family:'Playfair Display',Georgia,serif}
-.bg-realestate-sand{background:var(--sand)}
-.bg-realestate-paper{background:var(--paper)}
-.bg-realestate-charcoal{background:var(--charcoal)}
-.text-realestate-ink{color:var(--ink)}
-.text-realestate-muted{color:var(--muted)}
-.text-realestate-brass{color:var(--brass)}
-.border-realestate-line{border-color:var(--line)}
-.section-kicker{letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;font-weight:600;color:var(--olive)}
-.section-title{font-family:'Manrope',system-ui,sans-serif;font-weight:600;letter-spacing:-.045em;line-height:1.05}
-.editorial-link{position:relative;display:inline-flex;align-items:center;gap:.55rem;font-size:.9rem;font-weight:600;color:var(--ink)}
-.editorial-link::after{content:'';width:34px;height:1px;background:currentColor;transition:width .25s ease}
-.editorial-link:hover::after{width:52px}
-.soft-card{background:rgba(255,255,255,.7);border:1px solid var(--line);box-shadow:0 14px 40px rgba(30,30,26,.05)}
-.site-progress{position:fixed;top:0;left:0;height:2px;background:var(--brass);z-index:70}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    margin: 0;
+    background: #ffffff;
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection {
+    background: #0077c8;
+    color: #ffffff;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    color: var(--ink);
+    letter-spacing: -0.025em;
+  }
+  p {
+    color: var(--muted);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+  .bg-realestate-sand {
+    background: #ffffff;
+  }
+  .bg-realestate-paper {
+    background: #ffffff;
+  }
+  .bg-realestate-charcoal {
+    background: var(--charcoal);
+  }
+  .text-realestate-ink {
+    color: var(--ink);
+  }
+  .text-realestate-muted {
+    color: var(--muted);
+  }
+  .text-realestate-brass {
+    color: var(--sp-blue);
+  }
+  .border-realestate-line {
+    border-color: var(--line);
+  }
+  .section-kicker {
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--sp-blue);
+  }
+  .section-title {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  .editorial-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.925rem;
+    font-weight: 700;
+    color: var(--sp-navy);
+    transition: color 0.2s ease;
+  }
+  .editorial-link::after {
+    content: '';
+    width: 28px;
+    height: 2px;
+    background: var(--sp-blue);
+    transition: width 0.25s ease;
+  }
+  .editorial-link:hover {
+    color: var(--sp-blue);
+  }
+  .editorial-link:hover::after {
+    width: 45px;
+  }
+  .soft-card {
+    background: #ffffff;
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 30px -5px rgba(0, 56, 130, 0.05);
+    border-radius: 0.75rem;
+  }
+  .site-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #003882, #0077c8);
+    z-index: 80;
+  }
 }

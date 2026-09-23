@@ -1,132 +1,62 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { ShieldCheck, Lock, FileText, Flower2, Building2, Mail, Phone, MapPin } from 'lucide-react';
+import { ShieldCheck, Lock, Mail, Phone, MapPin } from 'lucide-react';
 
 export const PrivacyPolicyPage: React.FC = () => {
   return (
-    <main className="pt-28 sm:pt-32 pb-24 bg-white text-agarbatti-earth min-h-screen">
-      
-      {/* Header */}
-      <section className="bg-incense-hero text-white py-14 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-agarbatti-900 border border-agarbatti-gold/40 text-agarbatti-gold text-xs font-semibold uppercase tracking-wider">
-            <ShieldCheck className="w-4 h-4 text-agarbatti-gold" />
-            <span>Privacy &amp; Data Protection</span>
+    <main className="min-h-screen bg-[#f8f6f0] pb-24 text-[#111827]">
+      <section className="bg-[#0b1325] text-white py-16 border-b border-[#1e2a44]">
+        <div className="mx-auto max-w-4xl px-5 sm:px-8 text-center space-y-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-[#c5a059]/40 text-[#c5a059] text-xs font-bold uppercase tracking-wider">
+            <Lock className="w-3.5 h-3.5" />
+            <span>Data Protection</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-serif font-bold text-white">
-            Privacy Policy
+          <h1 className="font-display text-3xl sm:text-4xl font-bold">
+            Customer Privacy Policy
           </h1>
-          <p className="text-xs sm:text-sm text-agarbatti-gold-100/90">
-            Brand: <strong className="text-white">SHAPOORJI PALLONJ</strong> • Legal Entity: <strong className="text-white">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong>
-          </p>
-          <p className="text-[11px] text-agarbatti-gold-200/70">
-            Last Updated: September 2026
+          <p className="text-xs sm:text-sm text-white/70">
+            Shapoorji Pallonji Real Estate • Last Updated: January 2026
           </p>
         </div>
       </section>
 
-      {/* Main Policy Content */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10 text-slate-700 leading-relaxed text-sm">
-        
-        {/* Intro */}
-        <div className="p-5 rounded-2xl bg-agarbatti-cream-card border border-agarbatti-cream-border space-y-2">
-          <h2 className="text-base font-bold text-agarbatti-900 font-serif">
-            1. Scope &amp; Operating Entity
+      <div className="mx-auto max-w-4xl px-5 py-12 sm:px-8 space-y-8 text-xs sm:text-sm text-[#586071] leading-relaxed">
+        <div className="rounded-xl border border-[#e2ded4] bg-white p-6 sm:p-8 space-y-3 shadow-sm">
+          <h2 className="font-display text-lg font-bold text-[#0b1325]">
+            1. Overview &amp; Commitment to Privacy
           </h2>
-          <p className="text-xs sm:text-sm text-agarbatti-earth-muted">
-            This Privacy Policy explains how <strong className="text-agarbatti-900">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong> (the legal commercial entity operating the consumer fragrance brand <strong className="text-agarbatti-900">SHAPOORJI PALLONJ</strong>) collects, handles, stores, and protects personal and commercial data provided by users through our website forms and communication channels.
+          <p>
+            Shapoorji Pallonji Real Estate respects your personal privacy. This Privacy Policy describes how we handle, protect, and process the personal information you submit when booking site visits, requesting project brochures, or consulting with our sales relationship executives.
           </p>
         </div>
 
-        {/* Section 2: Info Collected */}
-        <div className="space-y-3">
-          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
-            2. Information Collected Through Enquiry Forms
+        <div className="rounded-xl border border-[#e2ded4] bg-white p-6 sm:p-8 space-y-3 shadow-sm">
+          <h2 className="font-display text-lg font-bold text-[#0b1325]">
+            2. Information We Collect
           </h2>
-          <p>
-            When you visit our website, request agarbatti samples, or submit product enquiries, we collect information needed to communicate with you:
-          </p>
-          <ul className="list-disc pl-5 space-y-1.5 text-slate-600 text-xs sm:text-sm">
-            <li><strong>Personal Contact Information:</strong> Full Name, Email Address, Mobile / WhatsApp Number.</li>
-            <li><strong>Business &amp; Retail Details:</strong> Company/Shop Name, delivery address, city, state.</li>
-            <li><strong>Enquiry &amp; Requirement Details:</strong> Selected agarbatti fragrance, quantity requirement, festive gift inquiries, and message details.</li>
-            <li><strong>Consent Records:</strong> Your explicit consent for mandatory enquiry follow-ups and optional marketing updates.</li>
+          <ul className="list-disc pl-5 space-y-2 text-xs sm:text-sm">
+            <li><strong>Identity &amp; Contact Details:</strong> Full name, personal email address, mobile phone number.</li>
+            <li><strong>Property Preferences:</strong> Preferred cities (Mumbai, Pune, Bengaluru), desired configurations (1, 2, 3, 4 BHK), budget ranges, and intended purchase timelines.</li>
+            <li><strong>Site Visit Scheduling Data:</strong> Preferred appointment dates, times, and sample apartment visit requests.</li>
           </ul>
         </div>
 
-        {/* Section 3: How info is used */}
-        <div className="space-y-3">
-          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
-            3. How Your Information is Used
+        <div className="rounded-xl border border-[#e2ded4] bg-white p-6 sm:p-8 space-y-3 shadow-sm">
+          <h2 className="font-display text-lg font-bold text-[#0b1325]">
+            3. How We Use Your Information
           </h2>
           <p>
-            The collected information is used strictly for legitimate customer service and commercial purposes:
-          </p>
-          <ul className="list-disc pl-5 space-y-1.5 text-slate-600 text-xs sm:text-sm">
-            <li>Responding to product enquiries, sample requests, and providing fragrance recommendations.</li>
-            <li>Contacting you via Phone Call, SMS, WhatsApp, or Email regarding your specific inquiry.</li>
-            <li>Sending promotional offers, new fragrance launches, and festival updates ONLY if you selected the optional marketing opt-in.</li>
-            <li>Processing orders, invoicing (SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED GST billing), and coordinating logistics.</li>
-          </ul>
-        </div>
-
-        {/* Section 4: Data Protection */}
-        <div className="space-y-3">
-          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
-            4. Data Protection &amp; Security
-          </h2>
-          <p>
-            We take reasonable administrative, technical, and physical precautions to safeguard your personal details against unauthorized access, loss, or misuse. We do not sell, rent, or lease your contact information to third-party telemarketers.
+            Your information is used strictly to fulfill your real estate requests: sending requested digital brochures, verifying site visit appointments, providing customized cost sheets, and updating you regarding statutory project milestones and pre-launch booking windows. We do not sell or lease your personal information to third-party marketing brokers.
           </p>
         </div>
 
-        {/* Section 5: Cookies */}
-        <div className="space-y-3">
-          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
-            5. Cookies &amp; Website Analytics
+        <div className="rounded-xl border border-[#e2ded4] bg-white p-6 sm:p-8 space-y-3 shadow-sm">
+          <h2 className="font-display text-lg font-bold text-[#0b1325]">
+            4. Data Security &amp; Contact
           </h2>
           <p>
-            Our website uses standard essential cookies and lightweight analytics to monitor page performance, remember user preferences, and provide smooth navigation. You can adjust your browser settings to decline cookies at any time.
+            We implement stringent technical and organizational security measures to protect your contact data against unauthorized access, loss, or disclosure. If you wish to update your preferences or unsubscribe from property updates, please contact our data desk at <strong className="text-[#0b1325]">realestate@shapoorji.com</strong> or call <strong className="text-[#0b1325]">+91 87009 83465</strong>.
           </p>
         </div>
-
-        {/* Section 6: Third-party services */}
-        <div className="space-y-3">
-          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
-            6. Third-Party Services
-          </h2>
-          <p>
-            We may use trusted service providers for website hosting (such as GitHub Pages), maps embedding (Google Maps), and email/form delivery. These third parties process data solely as necessary to perform their respective technical services.
-          </p>
-        </div>
-
-        {/* Section 7: User Rights */}
-        <div className="space-y-3">
-          <h2 className="text-lg font-bold text-agarbatti-900 font-serif">
-            7. User Rights &amp; Opt-Out
-          </h2>
-          <p>
-            You have the right to request access to your submitted details, update incorrect information, or opt-out of marketing communications at any time by contacting our grievance desk.
-          </p>
-        </div>
-
-        {/* Section 8: Contact Information */}
-        <div className="p-6 rounded-2xl bg-agarbatti-950 text-agarbatti-gold-100 border border-agarbatti-800 space-y-3">
-          <div className="flex items-center gap-2 text-agarbatti-gold text-xs font-bold uppercase tracking-wider">
-            <Building2 className="w-4 h-4" />
-            <span>Contact &amp; Grievance Desk</span>
-          </div>
-          <h3 className="text-base font-serif font-bold text-white">
-            SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED
-          </h3>
-          <div className="text-xs space-y-1 text-agarbatti-gold-100/90">
-            <p><strong>GSTIN / Registration No:</strong> 27AAYCS4968E1ZJ</p>
-            <p><strong>Address:</strong> 41/44, SHAPOORJI PALLONJI CENTRE, MINOO DESAI MARG, COLABA, MUMBAI, Mumbai City, Maharashtra, 400005</p>
-            <p><strong>Mobile:</strong> +91 8700983465</p>
-            <p><strong>Email:</strong> viveklukar1999@gmail.com</p>
-          </div>
-        </div>
-
       </div>
     </main>
   );

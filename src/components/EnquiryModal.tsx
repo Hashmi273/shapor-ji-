@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { X, Send, CheckCircle2, Sparkles, Phone, Mail, User, Building, Flower2 } from 'lucide-react';
-
+import { X, Send, CheckCircle2, Phone, Mail, User, Building, Calendar, Download, Sparkles } from 'lucide-react';
+import { REAL_ESTATE_PROJECTS } from '../data/realEstateData';
 
 interface EnquiryModalProps {
   isOpen: boolean;
@@ -9,7 +8,7 @@ interface EnquiryModalProps {
   defaultProduct?: string;
 }
 
-export const FORM_ENDPOINT_URL = ''; // Configurable endpoint for GitHub Pages external form submission
+export const FORM_ENDPOINT_URL = '';
 
 export const EnquiryModal: React.FC<EnquiryModalProps> = ({
   isOpen,
@@ -18,14 +17,15 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
 }) => {
   const [formData, setFormData] = useState({
     fullName: '',
-    companyName: '',
     email: '',
     mobileNumber: '',
-    productInterested: defaultProduct,
-    quantity: '',
+    projectInterested: defaultProduct,
+    enquiryType: 'Schedule Site Visit',
+    configuration: '3 BHK',
+    budget: '₹1.5 Cr - ₹3 Cr',
+    preferredDate: '',
     message: '',
-    contact_opt_in: false, // MANDATORY
-    marketing_opt_in: false // OPTIONAL
+    contact_opt_in: true
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -34,7 +34,7 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
 
   useEffect(() => {
     if (defaultProduct) {
-      setFormData(prev => ({ ...prev, productInterested: defaultProduct }));
+      setFormData((prev) => ({ ...prev, projectInterested: defaultProduct }));
     }
   }, [defaultProduct]);
 
@@ -57,23 +57,20 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
     const errs: Record<string, string> = {};
     if (!formData.fullName.trim()) errs.fullName = 'Please enter your full name';
     if (!formData.mobileNumber.trim()) {
-      errs.mobileNumber = 'Please enter your mobile number';
+      errs.mobileNumber = 'Please enter your phone number';
     } else if (!/^[0-9+ -]{8,15}$/.test(formData.mobileNumber.trim())) {
-      errs.mobileNumber = 'Please enter a valid phone number';
+      errs.mobileNumber = 'Please enter a valid 10-digit mobile number';
     }
     if (!formData.email.trim()) {
-      errs.email = 'Please enter your email address';
+      errs.email = 'Please enter your email';
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
       errs.email = 'Please enter a valid email address';
     }
-    if (!formData.productInterested.trim()) {
-      errs.productInterested = 'Please select a project or property interest';
-    }
-    if (!formData.message.trim()) {
-      errs.message = 'Please provide details about your requirement or message';
+    if (!formData.projectInterested.trim()) {
+      errs.projectInterested = 'Please select a project';
     }
     if (!formData.contact_opt_in) {
-      errs.contact_opt_in = 'You must agree to be contacted regarding your enquiry to proceed.';
+      errs.contact_opt_in = 'Please accept consent to be contacted';
     }
     setErrors(errs);
     return Object.keys(errs).length === 0;
@@ -82,10 +79,8 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-
     setIsSubmitting(true);
-    
-    // If external form endpoint is provided, submit payload
+
     if (FORM_ENDPOINT_URL) {
       try {
         await fetch(FORM_ENDPOINT_URL, {
@@ -93,260 +88,273 @@ export const EnquiryModal: React.FC<EnquiryModalProps> = ({
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(formData)
         });
-      } catch (err) {
-        console.log('Form submission completed locally');
+      } catch {
+        // Fallback for static builds
       }
     }
 
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 700);
+    }, 600);
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4 backdrop-blur-[2px]">
-      <div 
-        className="relative flex max-h-[92vh] w-full max-w-lg flex-col overflow-hidden border border-[#d9d2c7] bg-[#fbfaf7] shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Modal Header */}
-        <div className="bg-[#2b2c27] text-white p-5 sm:p-6 relative flex justify-between items-start border-b border-white/10">
-          <div>
-            <div className="flex items-center gap-2 text-[#b59767] text-xs font-semibold uppercase tracking-wider mb-1">
-              <Flower2 className="w-4 h-4 text-[#b59767]" />
-              <span>Residential Property Enquiry</span>
-            </div>
-            <h3 className="text-xl sm:text-2xl font-bold font-serif text-white">
-              Enquire about a Property
-            </h3>
-            <p className="text-xs text-[#b59767]-100/80 mt-1">
-              Property Sales &amp; Enquiries • Shapoorji Pallonji Real Estate
-            </p>
-          </div>
-          <button
-            onClick={onClose}
-            className="p-1.5 rounded-full text-[#b59767]-100 hover:text-white hover:bg-agarbatti-800 transition-colors"
-            aria-label="Close Modal"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in overflow-y-auto">
+      <div className="relative w-full max-w-xl bg-white border border-[#d8e3f0] rounded-2xl shadow-2xl p-6 sm:p-8 my-8 text-left">
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-5 right-5 p-2 text-[#4a5e7b] hover:text-[#002558] hover:bg-[#f0f6fc] rounded-full transition"
+          aria-label="Close modal"
+        >
+          <X className="w-5 h-5" />
+        </button>
 
-        {/* Modal Content */}
-        <div className="p-5 sm:p-6 overflow-y-auto">
-          {isSubmitted ? (
-            <div className="text-center py-8 space-y-4">
-              <div className="w-16 h-16 bg-emerald-50 text-emerald-700 rounded-full flex items-center justify-center mx-auto border-2 border-emerald-200">
-                <CheckCircle2 className="w-8 h-8" />
+        {isSubmitted ? (
+          <div className="py-8 text-center space-y-4">
+            <div className="w-16 h-16 bg-blue-50 text-[#0077c8] rounded-full flex items-center justify-center mx-auto border border-[#c4def3]">
+              <CheckCircle2 className="w-9 h-9" />
+            </div>
+            <h3 className="font-display text-2xl font-bold text-[#002558]">
+              Enquiry Received Successfully!
+            </h3>
+            <p className="text-sm text-[#4a5e7b] max-w-md mx-auto leading-relaxed">
+              Thank you, <strong className="text-[#002558]">{formData.fullName}</strong>. Our senior relationship manager for <strong className="text-[#0077c8]">{formData.projectInterested || 'Shapoorji Pallonji Properties'}</strong> has been assigned to your request.
+            </p>
+            <div className="bg-[#f0f6fc] border border-[#d8e3f0] rounded-xl p-4 text-xs text-[#4a5e7b] max-w-md mx-auto space-y-2">
+              <div className="flex justify-between">
+                <span>Priority Helpline:</span>
+                <span className="font-bold text-[#003882]">+91 87009 83465</span>
               </div>
-              <h4 className="text-xl font-bold text-[#252621] font-serif">
-                Thank you! Your enquiry has been submitted successfully.
-              </h4>
-              <p className="text-sm text-[#34352f]-muted max-w-sm mx-auto leading-relaxed">
-                Dear <strong className="text-[#252621]">{formData.fullName}</strong>, our team at <strong className="text-[#252621]">SHAPOORJI PALLONJI REAL ESTATE PRIVATE LIMITED</strong> will contact you shortly with fragrance details and commercial availability.
-              </p>
-              <div className="bg-[#f1ede5] p-3.5 rounded-xl border border-[#ded8ce] text-xs text-[#34352f] max-w-sm mx-auto text-left space-y-1">
-                <div className="flex justify-between">
-                  <span className="text-[#34352f]-muted">Helpline:</span>
-                  <span className="font-semibold text-[#252621]">+91 8700983465</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-[#34352f]-muted">Email:</span>
-                  <span className="font-semibold text-[#252621]">viveklukar1999@gmail.com</span>
-                </div>
+              <div className="flex justify-between">
+                <span>Brochure &amp; Pricing:</span>
+                <span className="font-semibold text-[#0077c8]">Sent to {formData.email}</span>
               </div>
+            </div>
+
+            <div className="pt-2 flex justify-center gap-3">
               <button
                 onClick={onClose}
-                className="bg-[#262723] text-white hover:bg-[#3a3b34] transition px-6 py-2.5 rounded-lg text-sm font-semibold mt-2"
+                className="bg-[#003882] text-white hover:bg-[#0077c8] transition px-6 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider shadow-sm"
               >
                 Close Window
               </button>
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4 text-left">
-              
-              {/* Full Name */}
-              <div>
-                <label className="block text-xs font-semibold text-[#34352f] uppercase tracking-wider mb-1">
-                  Full Name <span className="text-rose-500">*</span>
-                </label>
-                <div className="relative">
-                  <User className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
-                  <input
-                    type="text"
-                    required
-                    placeholder="Enter your full name"
-                    value={formData.fullName}
-                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    className={`w-full pl-9 pr-3 py-2 text-sm rounded-lg border bg-white ${
-                      errors.fullName ? 'border-rose-400 bg-rose-50/20' : 'border-[#ded8ce]Dark focus:border-[#a48352]'
-                    } focus:outline-none focus:ring-1 focus:ring-[#a48352]`}
-                  />
-                </div>
-                {errors.fullName && <p className="text-[11px] text-rose-500 mt-1">{errors.fullName}</p>}
+          </div>
+        ) : (
+          <div>
+            <div className="mb-6 flex items-center gap-3">
+              <img
+                src="/sp-logo.png"
+                alt="Shapoorji Pallonji Logo"
+                className="h-8 w-auto object-contain"
+              />
+              <div className="border-l border-[#d8e3f0] pl-3">
+                <span className="block text-[10px] font-extrabold uppercase tracking-widest text-[#0077c8]">
+                  Sales Experience Desk
+                </span>
               </div>
+            </div>
 
-              {/* Company & Email in Grid */}
+            <h2 className="font-display text-2xl font-bold text-[#002558]">
+              {formData.enquiryType === 'Schedule Site Visit' ? 'Book a Private Site Visit' : 'Request Property Information'}
+            </h2>
+            <p className="text-xs text-[#4a5e7b] mt-1 mb-5">
+              Receive official floor plans, price sheet, and schedule a guided VIP tour.
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Project & Enquiry Type */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
-                  <label className="block text-xs font-semibold text-[#34352f] uppercase tracking-wider mb-1">
-                    Company Name
+                  <label className="block text-xs font-bold text-[#002558] uppercase tracking-wider mb-1">
+                    Select Project <span className="text-rose-500">*</span>
                   </label>
-                  <div className="relative">
-                    <Building className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
-                    <input
-                      type="text"
-                      placeholder="Retail / Wholesale / Individual"
-                      value={formData.companyName}
-                      onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                      className="w-full pl-9 pr-3 py-2 text-sm rounded-lg border border-[#ded8ce]Dark bg-white focus:border-[#a48352] focus:outline-none focus:ring-1 focus:ring-[#a48352]"
-                    />
-                  </div>
+                  <select
+                    value={formData.projectInterested}
+                    onChange={(e) => setFormData({ ...formData, projectInterested: e.target.value })}
+                    className={`w-full px-3 py-2.5 text-xs rounded-lg border bg-white ${
+                      errors.projectInterested ? 'border-rose-400' : 'border-[#d8e3f0]'
+                    } focus:border-[#0077c8] focus:outline-none focus:ring-1 focus:ring-[#0077c8]`}
+                  >
+                    <option value="">-- Choose Development --</option>
+                    {REAL_ESTATE_PROJECTS.map((p) => (
+                      <option key={p.id} value={p.name}>
+                        {p.name} ({p.city})
+                      </option>
+                    ))}
+                    <option value="General Residential Enquiry">General Residential Portfolio</option>
+                  </select>
+                  {errors.projectInterested && <p className="text-[11px] text-rose-500 mt-1">{errors.projectInterested}</p>}
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#34352f] uppercase tracking-wider mb-1">
+                  <label className="block text-xs font-bold text-[#002558] uppercase tracking-wider mb-1">
+                    Purpose of Enquiry
+                  </label>
+                  <select
+                    value={formData.enquiryType}
+                    onChange={(e) => setFormData({ ...formData, enquiryType: e.target.value })}
+                    className="w-full px-3 py-2.5 text-xs rounded-lg border border-[#d8e3f0] bg-white focus:border-[#0077c8] focus:outline-none focus:ring-1 focus:ring-[#0077c8]"
+                  >
+                    <option value="Schedule Site Visit">Schedule Site Visit</option>
+                    <option value="Download Brochure & Floor Plans">Download Brochure &amp; Floor Plans</option>
+                    <option value="Price Sheet & Payment Plans">Price Sheet &amp; Payment Plans</option>
+                    <option value="Virtual 3D Video Tour">Virtual 3D Video Tour</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Full Name & Phone */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label className="block text-xs font-bold text-[#002558] uppercase tracking-wider mb-1">
+                    Full Name <span className="text-rose-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <User className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                    <input
+                      type="text"
+                      placeholder="e.g. Rahul Sharma"
+                      value={formData.fullName}
+                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                      className={`w-full pl-9 pr-3 py-2.5 text-xs rounded-lg border bg-white ${
+                        errors.fullName ? 'border-rose-400' : 'border-[#d8e3f0]'
+                      } focus:border-[#0077c8] focus:outline-none focus:ring-1 focus:ring-[#0077c8]`}
+                    />
+                  </div>
+                  {errors.fullName && <p className="text-[11px] text-rose-500 mt-1">{errors.fullName}</p>}
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-[#002558] uppercase tracking-wider mb-1">
+                    Phone Number <span className="text-rose-500">*</span>
+                  </label>
+                  <div className="relative">
+                    <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                    <input
+                      type="tel"
+                      placeholder="+91 98765 43210"
+                      value={formData.mobileNumber}
+                      onChange={(e) => setFormData({ ...formData, mobileNumber: e.target.value })}
+                      className={`w-full pl-9 pr-3 py-2.5 text-xs rounded-lg border bg-white ${
+                        errors.mobileNumber ? 'border-rose-400' : 'border-[#d8e3f0]'
+                      } focus:border-[#0077c8] focus:outline-none focus:ring-1 focus:ring-[#0077c8]`}
+                    />
+                  </div>
+                  {errors.mobileNumber && <p className="text-[11px] text-rose-500 mt-1">{errors.mobileNumber}</p>}
+                </div>
+              </div>
+
+              {/* Email & Typology */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label className="block text-xs font-bold text-[#002558] uppercase tracking-wider mb-1">
                     Email Address <span className="text-rose-500">*</span>
                   </label>
                   <div className="relative">
                     <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
                     <input
                       type="email"
-                      required
-                      placeholder="name@email.com"
+                      placeholder="name@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className={`w-full pl-9 pr-3 py-2 text-sm rounded-lg border bg-white ${
-                        errors.email ? 'border-rose-400 bg-rose-50/20' : 'border-[#ded8ce]Dark focus:border-[#a48352]'
-                      } focus:outline-none focus:ring-1 focus:ring-[#a48352]`}
+                      className={`w-full pl-9 pr-3 py-2.5 text-xs rounded-lg border bg-white ${
+                        errors.email ? 'border-rose-400' : 'border-[#d8e3f0]'
+                      } focus:border-[#0077c8] focus:outline-none focus:ring-1 focus:ring-[#0077c8]`}
                     />
                   </div>
                   {errors.email && <p className="text-[11px] text-rose-500 mt-1">{errors.email}</p>}
                 </div>
-              </div>
-
-              {/* Mobile Number & Product */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                <div>
-                  <label className="block text-xs font-semibold text-[#34352f] uppercase tracking-wider mb-1">
-                    Mobile Number <span className="text-rose-500">*</span>
-                  </label>
-                  <div className="relative">
-                    <Phone className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
-                    <input
-                      type="tel"
-                      required
-                      placeholder="+91 8700983465"
-                      value={formData.mobileNumber}
-                      onChange={(e) => setFormData({ ...formData, mobileNumber: e.target.value })}
-                      className={`w-full pl-9 pr-3 py-2 text-sm rounded-lg border bg-white ${
-                        errors.mobileNumber ? 'border-rose-400 bg-rose-50/20' : 'border-[#ded8ce]Dark focus:border-[#a48352]'
-                      } focus:outline-none focus:ring-1 focus:ring-[#a48352]`}
-                    />
-                  </div>
-                  {errors.mobileNumber && <p className="text-[11px] text-rose-500 mt-1">{errors.mobileNumber}</p>}
-                </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#34352f] uppercase tracking-wider mb-1">
-                    Product Interested In <span className="text-rose-500">*</span>
+                  <label className="block text-xs font-bold text-[#002558] uppercase tracking-wider mb-1">
+                    Preferred Configuration
                   </label>
                   <select
-                    value={formData.productInterested}
-                    onChange={(e) => setFormData({ ...formData, productInterested: e.target.value })}
-                    className="w-full px-3 py-2 text-sm rounded-lg border border-[#ded8ce]Dark bg-white focus:border-[#a48352] focus:outline-none focus:ring-1 focus:ring-[#a48352]"
+                    value={formData.configuration}
+                    onChange={(e) => setFormData({ ...formData, configuration: e.target.value })}
+                    className="w-full px-3 py-2.5 text-xs rounded-lg border border-[#d8e3f0] bg-white focus:border-[#0077c8] focus:outline-none focus:ring-1 focus:ring-[#0077c8]"
                   >
-                    <option value="">-- Select Project / Property --</option>
-                    {['Runwal 7 Mahalaxmi','Runwal The Central Park','Runwal Auris','Runwal Lands End','Runwal Woods','Puranik’s Abitante Fiore','General Residential Enquiry'].map((item) => (
-                      <option key={item} value={item}>{item}</option>
-                    ))}
+                    <option value="1 BHK">1 BHK</option>
+                    <option value="2 BHK">2 BHK</option>
+                    <option value="3 BHK">3 BHK</option>
+                    <option value="4 BHK Luxury Suites">4 BHK Luxury Suites</option>
+                    <option value="Duplex / Penthouse">Duplex / Penthouse</option>
                   </select>
-                  {errors.productInterested && <p className="text-[11px] text-rose-500 mt-1">{errors.productInterested}</p>}
                 </div>
               </div>
 
-              {/* Quantity */}
-              <div>
-                <label className="block text-xs font-semibold text-[#34352f] uppercase tracking-wider mb-1">
-                  Budget / Requirement
-                </label>
-                <input
-                  type="text"
-                  placeholder="e.g. ₹2 Cr – ₹3 Cr, 3 BHK, investment or end use"
-                  value={formData.quantity}
-                  onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                  className="w-full px-3 py-2 text-sm rounded-lg border border-[#ded8ce]Dark bg-white focus:border-[#a48352] focus:outline-none focus:ring-1 focus:ring-[#a48352]"
-                />
+              {/* Preferred Date & Budget */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div>
+                  <label className="block text-xs font-bold text-[#002558] uppercase tracking-wider mb-1">
+                    Preferred Site Visit Date
+                  </label>
+                  <div className="relative">
+                    <Calendar className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
+                    <input
+                      type="date"
+                      value={formData.preferredDate}
+                      onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
+                      className="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-[#d8e3f0] bg-white focus:border-[#0077c8] focus:outline-none focus:ring-1 focus:ring-[#0077c8]"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-[#002558] uppercase tracking-wider mb-1">
+                    Approximate Budget
+                  </label>
+                  <select
+                    value={formData.budget}
+                    onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                    className="w-full px-3 py-2.5 text-xs rounded-lg border border-[#d8e3f0] bg-white focus:border-[#0077c8] focus:outline-none focus:ring-1 focus:ring-[#0077c8]"
+                  >
+                    <option value="Under ₹1 Cr">Under ₹1 Cr</option>
+                    <option value="₹1 Cr - ₹2 Cr">₹1 Cr - ₹2 Cr</option>
+                    <option value="₹2 Cr - ₹4 Cr">₹2 Cr - ₹4 Cr</option>
+                    <option value="₹4 Cr - ₹10 Cr">₹4 Cr - ₹10 Cr</option>
+                    <option value="₹10 Cr+ Ultra Luxury">₹10 Cr+ Ultra Luxury</option>
+                  </select>
+                </div>
               </div>
 
-              {/* Message */}
-              <div>
-                <label className="block text-xs font-semibold text-[#34352f] uppercase tracking-wider mb-1">
-                  Message <span className="text-rose-500">*</span>
-                </label>
-                <textarea
-                  rows={3}
-                  required
-                  placeholder="Share details regarding your property requirement or preferred location..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className={`w-full px-3 py-2 text-sm rounded-lg border bg-white ${
-                    errors.message ? 'border-rose-400 bg-rose-50/20' : 'border-[#ded8ce]Dark focus:border-[#a48352]'
-                  } focus:outline-none focus:ring-1 focus:ring-[#a48352]`}
-                />
-                {errors.message && <p className="text-[11px] text-rose-500 mt-1">{errors.message}</p>}
-              </div>
-
-              {/* MANDATORY CONTACT OPT-IN CHECKBOX */}
-              <div className="pt-2 border-t border-[#ded8ce] space-y-2">
-                <label className="flex items-start gap-2.5 cursor-pointer select-none">
+              {/* Opt-in check */}
+              <div className="pt-2">
+                <label className="flex items-start gap-2.5 text-xs text-[#4a5e7b] cursor-pointer">
                   <input
                     type="checkbox"
                     checked={formData.contact_opt_in}
                     onChange={(e) => setFormData({ ...formData, contact_opt_in: e.target.checked })}
-                    className="mt-0.5 w-4 h-4 rounded text-agarbatti-800 border-[#ded8ce]Dark focus:ring-agarbatti-gold"
+                    className="mt-0.5 rounded accent-[#0077c8]"
                   />
-                  <span className="text-xs text-[#34352f] leading-snug">
-                    <strong className="text-[#252621]">Mandatory:</strong> I agree to be contacted regarding my enquiry through Email, SMS, WhatsApp or Phone Call. (View our <Link to="/privacy-policy" className="text-agarbatti-800 underline hover:text-[#b59767]">Privacy Policy</Link>) <span className="text-rose-500">*</span>
+                  <span>
+                    I authorize Shapoorji Pallonji Real Estate to contact me via Call, SMS, WhatsApp &amp; Email with project updates.
                   </span>
                 </label>
-                {errors.contact_opt_in && (
-                  <p className="text-[11px] text-rose-500 font-medium pl-6">{errors.contact_opt_in}</p>
-                )}
-
-                {/* OPTIONAL MARKETING OPT-IN CHECKBOX */}
-                <label className="flex items-start gap-2.5 cursor-pointer select-none pt-1">
-                  <input
-                    type="checkbox"
-                    checked={formData.marketing_opt_in}
-                    onChange={(e) => setFormData({ ...formData, marketing_opt_in: e.target.checked })}
-                    className="mt-0.5 w-4 h-4 rounded text-agarbatti-800 border-[#ded8ce]Dark focus:ring-agarbatti-gold"
-                  />
-                  <span className="text-xs text-[#34352f]-muted leading-snug">
-                    <span className="font-medium text-[#34352f]">Optional:</span> I would also like to receive promotional offers, new product updates and marketing communications through Email, SMS, WhatsApp or Phone Call.
-                  </span>
-                </label>
+                {errors.contact_opt_in && <p className="text-[11px] text-rose-500 mt-1">{errors.contact_opt_in}</p>}
               </div>
 
               {/* Submit CTA */}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full btn-gold-primary py-3 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 shadow-lg disabled:opacity-50 mt-2"
+                className="w-full mt-4 flex items-center justify-center gap-2 bg-[#003882] hover:bg-[#0077c8] text-white py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider transition duration-200 shadow-md"
               >
                 {isSubmitting ? (
-                  <span>Sending Enquiry...</span>
+                  <span>Processing Request...</span>
                 ) : (
                   <>
-                    <span>Send Enquiry</span>
-                    <Send className="w-4 h-4" />
+                    <span>Submit &amp; Instant Brochure Access</span>
+                    <Send className="w-3.5 h-3.5" />
                   </>
                 )}
               </button>
             </form>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

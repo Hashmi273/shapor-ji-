@@ -1,4 +1,4 @@
-﻿/** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
@@ -7,47 +7,57 @@ export default {
   theme: {
     extend: {
       colors: {
-        agarbatti: {
-          // Rich Maroon / Deep Crimson
-          950: '#2A060B',
-          900: '#3D0A10',
-          850: '#4A0E17',
-          800: '#6B1426',
-          700: '#8B1E34',
-          600: '#A82B44',
-          500: '#C73855',
-          
-          // Royal Gold & Sandalwood Brass
+        sp: {
+          // 60% Theme Colors extracted directly from the Shapoorji Pallonji Logo:
+          navy: {
+            DEFAULT: '#003882', // The primary "S" and wordmark navy blue
+            dark: '#002558',    // Deepest corporate navy
+            deep: '#001D45',
+            800: '#002E6B',
+            700: '#003882',
+            600: '#0047A3',
+            500: '#005ACF',
+          },
+          blue: {
+            DEFAULT: '#0077C8', // The vibrant "P" cerulean blue
+            light: '#0090F0',
+            sky: '#38A7F4',
+            50: '#F0F6FC',
+            100: '#E1EEF9',
+            200: '#C4DEF3',
+            300: '#97C6EC',
+            400: '#5BA9E2',
+            500: '#0077C8',
+            600: '#0062A8',
+          },
+          ice: {
+            DEFAULT: '#F2F6FA', // Light cool background for contrast against pure white
+            soft: '#F8FAFC',
+            border: '#D3E0EE',
+            card: '#FFFFFF',
+          }
+        },
+        estate: {
+          950: '#001D45',
+          900: '#002558',
+          800: '#003882',
+          700: '#0047A3',
           gold: {
-            DEFAULT: '#C59B27',
-            light: '#DFB743',
-            dark: '#9E7A1C',
-            50: '#FDFBF5',
-            100: '#FAF3DC',
-            200: '#F5E6B8',
-            300: '#EECD87',
-            400: '#E4B556',
-            500: '#C59B27',
-            600: '#9E7A1C',
-            700: '#755913',
+            DEFAULT: '#0077C8', // Redirect legacy accents to the logo's cerulean blue
+            light: '#38A7F4',
+            dark: '#005ACF',
+            50: '#F0F6FC',
+            100: '#E1EEF9',
+            200: '#C4DEF3',
+            300: '#97C6EC',
+            400: '#5BA9E2',
+            500: '#0077C8',
           },
-          
-          // Earthy Brown & Incense Charcoal
-          earth: {
-            DEFAULT: '#2E1A11',
-            dark: '#1C0F0A',
-            charcoal: '#221510',
-            muted: '#5A3E31',
-            light: '#8C6753',
-          },
-          
-          // Sandalwood & Cream Surfaces
-          cream: {
-            DEFAULT: '#FCF9F2',
-            soft: '#FFFDF9',
-            card: '#FAF5EB',
-            border: '#EFE5D5',
-            borderDark: '#DFCFB7',
+          sand: {
+            DEFAULT: '#F8FAFC',
+            light: '#FFFFFF',
+            dark: '#EDF2F7',
+            muted: '#D0DCEB',
           }
         }
       },
@@ -58,44 +68,19 @@ export default {
           '-apple-system',
           'BlinkMacSystemFont',
           'Segoe UI',
-          'Roboto',
           'sans-serif'
         ],
-        serif: [
-          'Playfair Display',
-          'Georgia',
-          'serif'
-        ],
         display: [
-          'Playfair Display',
           'Plus Jakarta Sans',
-          'serif'
+          'Manrope',
+          'sans-serif'
         ]
       },
       boxShadow: {
-        'incense': '0 4px 20px -2px rgba(74, 14, 23, 0.08), 0 2px 6px -1px rgba(74, 14, 23, 0.04)',
-        'incense-hover': '0 20px 35px -5px rgba(74, 14, 23, 0.14), 0 10px 15px -5px rgba(197, 155, 39, 0.12)',
-        'gold-glow': '0 4px 25px rgba(197, 155, 39, 0.3)',
-        'maroon-glow': '0 8px 30px rgba(74, 14, 23, 0.35)',
-      },
-      animation: {
-        'float-smoke': 'floatSmoke 8s ease-in-out infinite',
-        'fade-in': 'fadeIn 0.5s ease-in-out forwards',
-        'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite',
-      },
-      keyframes: {
-        floatSmoke: {
-          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)', opacity: '0.4' },
-          '50%': { transform: 'translateY(-12px) rotate(2deg)', opacity: '0.7' },
-        },
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        pulseSubtle: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.85' },
-        }
+        'estate': '0 4px 20px -2px rgba(0, 56, 130, 0.08), 0 2px 6px -1px rgba(0, 56, 130, 0.04)',
+        'estate-hover': '0 20px 35px -5px rgba(0, 56, 130, 0.16), 0 10px 15px -5px rgba(0, 119, 200, 0.12)',
+        'blue-glow': '0 4px 25px rgba(0, 119, 200, 0.35)',
+        'estate-card': '0 10px 30px -5px rgba(0, 37, 88, 0.06)',
       }
     },
   },
